@@ -24,12 +24,12 @@
 
 1. Clone this repo
 
-    * ```git clone git@github.com:JTannerShaw/.then.git```
+    * ```git clone git@github.com:JTannerShaw/One-to-Ten.git```
 
 2. Install Frontend and Backend dependencies
 
-    * ```cd frontend > npm install```
-    * ```cd backend > npm install```
+    * ```blank atm```
+    * ```blank atm```
 
 3. Create a .env file base on the .env.example given
 
@@ -37,12 +37,12 @@
 
 5. Migrate and Seed models
 
-    * ```npx dotenv sequelize db:migrate```
-    * ```npx dotenv sequelize db:seed:all```
+    * ```blank atm```
+    * ```blank atm```
 
 6. You can start the app using
 
-    * ```npm start```
+    * ```flask run```
 
 7. You can use the Demo user or create an account.
 
