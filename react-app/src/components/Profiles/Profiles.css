@@ -1,0 +1,37 @@
+/* profile section */
+.profile__container {
+    padding: 80px;
+}
+
+.profile__title {
+    color: var(--accent-color-2);
+}
+
+.profile__navigation {
+    margin-top: 50px;
+    color: var(--accent-color-2);
+    font-size: var(--h3-size);
+    font-weight: 600;
+}
+
+.profile__navigation--link {
+    margin: 10px 0;
+}
+
+/* stats section */
+.profile__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    color: var(--accent-color-2);
+}
+
+.profile__stats--num {
+    font-size: var(--h1-size);
+    font-weight: 600;
+}
+
+.profile__stats--caption {
+    font-size: var(--h3-size);
+    font-weight: 600;
+}
