@@ -13,3 +13,9 @@ def questions():
 def question(id):
     question = Questions.query.get(id)
     return question.to_dict()
+
+
+@question_routes.route('/<int:id>/stats')
+def question_stats(id):
+    question = Questions.query.get(id)
+    return question.question_stats.to_dict()

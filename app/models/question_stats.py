@@ -15,7 +15,6 @@ class QuestionStats(db.Model):
     return {
       'id': self.id,
       'response_count': self.response_count,
-      'average': self.average,
+      'average': str(self.average),
       'question_id': self.question_id
     }
-    
