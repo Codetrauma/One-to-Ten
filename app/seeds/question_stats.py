@@ -10,3 +10,7 @@ def seed_question_stats():
   db.session.add(demo_question_stats_2)
   db.session.add(demo_question_stats_3)
   db.session.commit()
+
+def undo_question_stats():
+  db.session.execute('TRUNCATE question_stats RESTART IDENTITY CASCADE;')
+  db.session.commit()

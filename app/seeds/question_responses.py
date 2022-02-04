@@ -11,3 +11,7 @@ def seed_question_responses():
   db.session.add(new_question_response_1)
   db.session.add(new_question_response_2)
   db.session.commit()
+
+def undo_question_responses():
+  db.session.execute('TRUNCATE question_responses RESTART IDENTITY CASCADE;')
+  db.session.commit()
