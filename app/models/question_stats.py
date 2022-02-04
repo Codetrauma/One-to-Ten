@@ -10,3 +10,12 @@ class QuestionStats(db.Model):
   question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
   stats = db.relationship('Questions', back_populates='question_stats', cascade='all')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'response_count': self.response_count,
+      'average': self.average,
+      'question_id': self.question_id
+    }
+    

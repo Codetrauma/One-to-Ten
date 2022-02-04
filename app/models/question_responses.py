@@ -12,3 +12,11 @@ class QuestionResponses(db.Model):
 
   u_q_responses = db.relationship('User', back_populates='user_question_responses', cascade='all')
   q_responses = db.relationship('Questions', back_populates='question_responses', cascade='all')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'response': str(self.response),
+      'user_id': self.user_id,
+      'question_id': self.question_id
+    }

@@ -10,3 +10,9 @@ class Surveys(db.Model):
 
   survey = db.relationship('Questions', back_populates='question', cascade='all, delete-orphan')
   survey_responses = db.relationship('SurveyResponses', back_populates='s_responses', cascade='all, delete-orphan')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'name': self.name
+    }

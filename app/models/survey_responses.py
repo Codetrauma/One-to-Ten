@@ -10,3 +10,10 @@ class SurveyResponses(db.Model):
 
   u_s_responses = db.relationship('User', back_populates='user_survey_responses', cascade='all')
   s_responses = db.relationship('Surveys', back_populates='survey_responses', cascade='all')
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'user_id': self.user_id,
+      'survey_id': self.survey_id
+    }
