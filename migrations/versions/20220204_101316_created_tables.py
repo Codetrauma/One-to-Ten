@@ -83,6 +83,17 @@ def upgrade():
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('matches',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('compatibility_score', sa.Integer(), nullable=False),
+    sa.Column('user_1_id', sa.Integer(), nullable=False),
+    sa.Column('user_2_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_1_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_2_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_1_id'),
+    sa.UniqueConstraint('user_2_id')
+    )
     # ### end Alembic commands ###
 
 
@@ -94,4 +105,5 @@ def downgrade():
     op.drop_table('questions')
     op.drop_table('users')
     op.drop_table('surveys')
+    op.drop_table('matches')
     # ### end Alembic commands ###
