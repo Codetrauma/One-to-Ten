@@ -1,8 +1,8 @@
-"""created tables
+"""new tables
 
-Revision ID: 08583a609139
-Revises: ffdc0a98111c
-Create Date: 2022-02-04 10:13:16.432558
+Revision ID: 254ac0dbf9a1
+Revises: 08583a609139
+Create Date: 2022-02-04 13:25:10.372295
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '08583a609139'
-down_revision = 'ffdc0a98111c'
+revision = '254ac0dbf9a1'
+down_revision = '08583a609139'
 branch_labels = None
 depends_on = None
 
@@ -34,7 +34,7 @@ def upgrade():
     sa.Column('dob', sa.Date(), nullable=False),
     sa.Column('city', sa.String(), nullable=False),
     sa.Column('state_abbreviation', sa.String(), nullable=False),
-    sa.Column('biography', sa.String(), nullable=False),
+    sa.Column('biography', sa.String(), nullable=True),
     sa.Column('facebook', sa.String(), nullable=True),
     sa.Column('instagram', sa.String(), nullable=True),
     sa.Column('snapchat', sa.String(), nullable=True),
@@ -44,6 +44,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('first_name')
+    )
+    op.create_table('matches',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('compatibility_score', sa.Numeric(), nullable=False),
+    sa.Column('user_1_id', sa.Integer(), nullable=False),
+    sa.Column('user_2_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_1_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['user_2_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('questions',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -83,15 +92,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('matches',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('compatibility_score', sa.Integer(), nullable=False),
-    sa.Column('user_1_id', sa.Integer(), nullable=False),
-    sa.Column('user_2_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['user_1_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['user_2_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    )
     # ### end Alembic commands ###
 
 
@@ -101,7 +101,7 @@ def downgrade():
     op.drop_table('question_responses')
     op.drop_table('survey_responses')
     op.drop_table('questions')
+    op.drop_table('matches')
     op.drop_table('users')
     op.drop_table('surveys')
-    op.drop_table('matches')
     # ### end Alembic commands ###

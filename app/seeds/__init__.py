@@ -5,6 +5,7 @@ from .surveys import seed_surveys, undo_surveys
 from .survey_responses import seed_survey_responses, undo_survey_responses
 from .question_responses import seed_question_responses, undo_question_responses
 from .question_stats import seed_question_stats, undo_question_stats
+from .matches import seed_matches, undo_matches
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,6 +21,7 @@ def seed():
     seed_questions()
     seed_question_responses()
     seed_question_stats()
+    seed_matches()
     # Add other seed functions here
 
 
@@ -32,4 +34,5 @@ def undo():
     undo_questions()
     undo_question_responses()
     undo_question_stats()
+    undo_matches()
     # Add other undo functions here
