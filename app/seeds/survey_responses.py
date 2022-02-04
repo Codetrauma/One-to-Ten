@@ -3,8 +3,8 @@ from app.models import db, SurveyResponses
 
 def seed_survey_responses():
   demo_survey_response = SurveyResponses(user_id=1, survey_id=1)
-  new_survey_response_1 = SurveyResponses(user_id=1, survey_id=2)
-  new_survey_response_2 = SurveyResponses(user_id=2, survey_id=2)
+  new_survey_response_1 = SurveyResponses(user_id=3, survey_id=2)
+  new_survey_response_2 = SurveyResponses(user_id=2, survey_id=3)
 
   db.session.add(demo_survey_response)
   db.session.add(new_survey_response_1)
