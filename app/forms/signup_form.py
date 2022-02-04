@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField, SelectField
+from wtforms import StringField, DateField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
@@ -29,7 +29,7 @@ class SignUpForm(FlaskForm):
     dob = DateField('Date of Birth', format='%Y-%m-%d', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state_abbreviation = StringField('State Abbreviation', validators=[DataRequired()])
-    biography = StringField('Biography')
+    biography = TextAreaField('Biography')
     facebook = StringField('Facebook')
     instagram = StringField('Instagram')
     twitter = StringField('Twitter')
