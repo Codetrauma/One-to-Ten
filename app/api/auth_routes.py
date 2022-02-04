@@ -70,7 +70,14 @@ def sign_up():
             gender=form.data['gender'],
             dob=form.data['dob'],
             city=form.data['city'],
-            state_abbreviation=form.data['state_abbreviation']
+            state_abbreviation=form.data['state_abbreviation'],
+            biography=form.data['biography'],
+            facebook=form.data['facebook'],
+            instagram=form.data['instagram'],
+            twitter=form.data['twitter'],
+            snapchat=form.data['snapchat'],
+            tiktok=form.data['tiktok'],
+            github=form.data['github']
         )
         db.session.add(user)
         db.session.commit()
