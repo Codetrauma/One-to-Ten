@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     dob = db.Column(db.Date, nullable=False)
     city = db.Column(db.String, nullable=False)
     state_abbreviation = db.Column(db.String, nullable=False)
-    biography = db.Column(db.String, nullable=False)
+    biography = db.Column(db.String)
     facebook = db.Column(db.String)
     instagram = db.Column(db.String)
     snapchat = db.Column(db.String)
