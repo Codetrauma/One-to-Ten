@@ -35,3 +35,14 @@
     font-size: var(--h3-size);
     font-weight: 600;
 }
+
+/* link styling */
+.profile__navigation--link a {
+    box-sizing: content-box;
+    color: var(--accent-color-2);
+    text-decoration: none;
+}
+
+.profile__navigation--link a:hover {
+    border-bottom: 3px solid var(--accent-color-2);
+}

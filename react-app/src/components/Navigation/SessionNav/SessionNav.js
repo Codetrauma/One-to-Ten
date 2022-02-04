@@ -32,6 +32,12 @@ function SessionNav({ sessionUser }) {
                             </NavLink>
                         </div>
                         <div className="nav__bar--grid-right">
+                            <NavLink
+                                activeClassName='nav__bar--link-active'
+                                className="nav__bar--link"
+                                to={`/responses`}>
+                                My Responses
+                            </NavLink>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../Profiles.css';
 
 function SessionProfile({ sessionUser }) {
@@ -10,10 +11,26 @@ function SessionProfile({ sessionUser }) {
                         Hello Amy.
                     </h1>
                     <div className="profile__navigation">
-                        <p className="profile__navigation--link">View Matches</p>
-                        <p className="profile__navigation--link">Answer Questions</p>
-                        <p className="profile__navigation--link">Edit Profile</p>
-                        {/* <p className="profile__navigation--link">Edit Preferences</p> */}
+                        <p className="profile__navigation--link">
+                            <Link to={`/users/${sessionUser.id}/matches`}>
+                                View Matches
+                            </Link>
+                        </p>
+                        <p className="profile__navigation--link">
+                            <Link to="/surveys">
+                                Answer Questions
+                            </Link>
+                        </p>
+                        <p className="profile__navigation--link">
+                            <Link to={`/users/${sessionUser.id}/responses`}>
+                                My Responses
+                            </Link>
+                        </p>
+                        <p className="profile__navigation--link">
+                            <Link to={`/users/${sessionUser.id}/profile`}>
+                                Edit Profile
+                            </Link>
+                        </p>
                     </div>
                 </div>
                 <div className="flex__container--child profile__container">

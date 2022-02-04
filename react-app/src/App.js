@@ -52,7 +52,7 @@ function App() {
             <User />
           </ProtectedRoute>
           <ProtectedRoute path='/' exact={true} >
-            <h1>My Homepage</h1>
+            <h1>Redirect to user profile?</h1>
           </ProtectedRoute>
         </Switch>
       </div>
