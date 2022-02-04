@@ -1,1 +1,69 @@
-/* TODO Add site wide styles */
+:root {
+    --main-color: #6868ac;
+    --accent-color-1: #29282d;
+    --accent-color-2: #f1ede9;
+    --accent-color-3: #615c60;
+    --accent-color-4: #d65079;
+    --accent-color-5: #e187b8;
+    --accent-color-6: #b3906c;
+
+    --body-font: neue-haas-unica, sans-serif;
+
+    --body-normal: 16px;
+    --body-small: 0.9em;
+    --h1-size: 4em;
+    --h2-size: 2.2em;
+    --h3-size: 1.8em;
+    --h4-size: 1.4em;
+
+    --heavy-weight: 600;
+    --light-weight: 400;
+
+    --half-border: 2px;
+    --full-border: 4px;
+
+    --letter-spacing-normal: 0.2px;
+    --letter-spacing-small: 0.1px;
+}
+
+*,
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: var(--body-normal);
+    font-family: var(--body-font);
+    background-color: var(--main-color);
+    overflow: hidden;
+}
+
+h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--heavy-weight);
+}
+
+h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--heavy-weight);
+}
+
+h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--heavy-weight);
+}
+
+h4 {
+    font-size: var(--h4-size);
+    font-weight: var(--heavy-weight);
+}
+
+.p-1 {
+    letter-spacing: var(--letter-spacing-normal);
+}
+
+.p-2 {
+    font-size: var(--body-small);
+    letter-spacing: var(--letter-spacing-small);
+}
