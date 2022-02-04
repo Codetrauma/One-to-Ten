@@ -1,7 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from .question_responses import QuestionResponses
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -38,14 +38,15 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'email': self.email
         }
 
 
-    user_locations = db.relationship('UserLocations', back_populates='locations', uselist=False, cascade='all, delete-orphan')
-    user_profile = db.relationship('Profiles', back_populates='profile', uselist=False, cascade='all, delete-orphan')
-    user_preferences = db.relationship('Preferences', back_populates='preferences', uselist=False, cascade='all, delete-orphan')
+    # user_locations = db.relationship('UserLocations', back_populates='locations', uselist=False, cascade='all, delete-orphan')
+    # user_profile = db.relationship('Profiles', back_populates='profile', uselist=False, cascade='all, delete-orphan')
+    # user_preferences = db.relationship('Preferences', back_populates='preferences', uselist=False, cascade='all, delete-orphan')
     # user_1_matches = db.relationship('Matches', back_populates='user1', cascade='all, delete-orphan')
     # user_2_matches = db.relationship('Matches', back_populates='user2', cascade='all, delete-orphan')
     user_question_responses = db.relationship('QuestionResponses', back_populates='u_q_responses', cascade='all, delete-orphan')
