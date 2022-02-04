@@ -1,0 +1,215 @@
+
+/* Form inputs */
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+ }
+
+label{
+    position: absolute;
+    font-size: var(--h3-size);
+    color: var(--accent-color-1);
+    font-family: var(--body-font);
+    font-weight: var(--heavy-weight);
+    /* margin-left: 15px; */
+    top: 6px;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease-in-out;
+    font-weight: var(--heavy-weight);
+ }
+
+
+
+input, textarea{
+    font-weight: var(--heavy-weight);
+    font-family: var(--body-font);
+    display: block;
+    height: fit-content;
+    width: 100%;
+    /* min-width: 320px; */
+    color: var(--accent-color-1);
+    padding: 8px 0px;
+    border: 0;
+    line-height: 1;
+    outline: 0;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+ }
+
+ input {
+     font-size: var(--h4-size);
+     height: 50px;
+     overflow: hidden;
+ }
+
+ textarea{
+     font-size: var(--body-normal);
+ }
+
+ .required:after{
+     content:'*';
+     color:var(--accent-color-4);
+ }
+
+
+.form-input {
+     margin-bottom: 5px;
+     border: 0;
+     /* padding: 0px 0px 0px 25px; */
+     box-sizing: border-box;
+     position: relative;
+}
+
+.form-input textarea {
+    min-height: 150px;
+}
+
+ form button{
+       padding: 8px;
+   }
+
+.form-input input[data-toolong="true"],
+.form-input input[data-toolong="true"] ~ label,
+.form-input textarea[data-toolong="true"],
+.form-input textarea[data-toolong="true"] ~ label
+     {
+       color: var(--accent-color-4)
+     }
+
+.form-input input[data-toolong="true"] ~ .length-counter,
+.form-input textarea[data-toolong="true"] ~ .length-counter
+   {
+     font-weight: var(--heavy-weight);
+     }
+
+
+input::placeholder,
+textarea::placeholder
+   {
+     color: transparent;
+   }
+
+
+ input:focus ~ .length-counter,
+ textarea:focus ~ .length-counter
+ {
+     color: var(--accent-color-1);
+     font-weight: var(--heavy-weight);
+ }
+
+ input ~ .length-counter,
+ textarea ~ .length-counter
+ {
+     color: transparent;
+     position: absolute;
+     font-size: var(--body-small);
+     transition: all 0.2s ease-in-out;
+ }
+
+
+ textarea ~ .length-counter,
+ input ~ .length-counter
+ {
+
+     top: 0px;
+     right: 0px;
+
+ }
+
+
+
+
+ input[data-toolong="true"] ~ .length-counter,
+ textarea[data-toolong="true"] ~ .length-counter
+ {
+     color: var(--accent-color-4)
+ }
+
+
+
+ input[data-hasinput="false"],
+ input:valid,
+ input:focus,
+ textarea[data-hasinput="false"],
+ textarea:valid,
+ textarea:focus
+    {
+        padding: 15px 0px 0px;
+    }
+
+ input[data-hasinput="true"] + label,
+ input:focus + label,
+ textarea[data-hasinput="true"] + label,
+ textarea:focus + label
+    {
+        font-size: (var(--body-small));
+        transform: translate3d(0, -9px, 0);
+    }
+
+ input:focus::placeholder,
+ textarea:focus::placeholder
+    {
+     color: var(--accent-color-3)
+    }
+
+.error-area > div
+    {
+        color: var(--accent-color-4);
+        text-align: center;
+        font-size: var(--body-small);
+        position: relative;
+        width: 100%;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+ .error-area
+    {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 0px 5px;
+    }
+
+ .suggestion
+    {
+        color: var(--accent-color-1);
+        border-radius: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        padding: 0px 10px;
+        background-color: var(--accent-color-5);
+    }
+
+ .database-errors
+    {
+        padding-top: 2px;
+    }
+
+
+
+ button:disabled,
+ button[disabled]
+    {
+    /* background-color: var(--neutral-600); */
+    color: var(--accent-color-4);
+    pointer-events: none;
+    }
+
+ .disabledLink
+    {
+        pointer-events: none;
+    }
+
+ input:-internal-autofill-selected
+    {
+        appearance: menulist-button;
+        background-image: none !important;
+        background-color: inherit !important;
+        color: inherit !important;
+    }

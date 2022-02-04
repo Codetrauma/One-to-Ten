@@ -30,12 +30,14 @@
 body {
     margin: 0;
     box-sizing: border-box;
+    font-family: var(--body-font);
 }
 
 body {
     font-size: var(--body-normal);
     font-family: var(--body-font);
-    background-color: var(--main-color);
+    background-color: var(--accent-color-2);
+    color: var(--accent-color-1);
     overflow: hidden;
 }
 
@@ -66,4 +68,15 @@ h4 {
 .p-2 {
     font-size: var(--body-small);
     letter-spacing: var(--letter-spacing-small);
+}
+
+
+button.arrow-before{
+    background-color: pink;
+    font-size: var(--h3-size);
+    font-weight: var(--heavy-weight);
+    color: var(--accent-color-1);
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
 }
