@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import ArrowButton from '../Forms/ArrowButton/ArrowButton';
 import FormInput from '../Forms/FormInput/FormInput';
+
 
 
 
@@ -204,7 +206,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form id='login' onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
@@ -216,6 +218,7 @@ const LoginForm = () => {
               type='text'
               stateVar={email}
               setStateVar={setEmail}
+              maxLength={60}
               required={true}
               restrictSafe={true}
               placeholder={``}
@@ -235,28 +238,14 @@ const LoginForm = () => {
                      setValidationObject={setValidationObject}
         />
 
-        {/* <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        /> */}
-      {/* <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        /> */}
-      <button className='arrow-before' type='submit'>
-        Login
+      <ArrowButton
+        type='submit'
+        formId='login'
+        validationObject={validationObject}
+      >
+        Log In
+      </ArrowButton>
 
-      </button>
-      {/* </div> */}
     </form>
   );
 };

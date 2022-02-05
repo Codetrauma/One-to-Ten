@@ -10,7 +10,6 @@ import User from './components/User';
 import { authenticate } from './store/session';
 
 import StyleGuide from './components/StyleGuide';
-import SampleLogin from './components/Forms/SampleLogin';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +30,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       {/* <StyleGuide /> */}
-      {/* <SampleLogin/> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />

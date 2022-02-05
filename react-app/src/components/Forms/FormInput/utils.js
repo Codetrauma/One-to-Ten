@@ -46,12 +46,3 @@ export const okToSubmitField = (str, minLength, maxLength, required, pattern, ad
     return true;
 }
 
-
-// const isWebsite = (str) => {
-//     const websiteRegEx = new RegExp(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/, 'g')
-//     return websiteRegEx.test(str)
-// }
-// const isImageUrl = (str) => {
-//     const imageRegEx = new  RegExp(/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\.(?:jpg|gif|png|svg)/, 'g')
-//     return imageRegEx.test(str)
-// }

@@ -1,6 +1,14 @@
 
 /* Form inputs */
 
+body {
+    font-size: var(--body-normal);
+    font-family: var(--body-font);
+    background-color: var(--accent-color-2);
+    color: var(--accent-color-1);
+    overflow: hidden;
+}
+
 form{
     display: flex;
     flex-direction: column;
@@ -11,14 +19,13 @@ form{
 label{
     position: absolute;
     font-size: var(--h3-size);
-    color: var(--accent-color-1);
+    color: var(--accent-color-3);
     font-family: var(--body-font);
     font-weight: var(--heavy-weight);
     /* margin-left: 15px; */
     top: 6px;
     transform: translate3d(0, 0, 0);
     transition: all 0.2s ease-in-out;
-    font-weight: var(--heavy-weight);
  }
 
 
@@ -27,9 +34,9 @@ input, textarea{
     font-weight: var(--heavy-weight);
     font-family: var(--body-font);
     display: block;
-    height: fit-content;
-    width: 100%;
-    /* min-width: 320px; */
+    /* height: fit-content; */
+    min-width: 375px;
+    width: fit-content;
     color: var(--accent-color-1);
     padding: 8px 0px;
     border: 0;
@@ -51,7 +58,12 @@ input, textarea{
 
  .required:after{
      content:'*';
-     color:var(--accent-color-4);
+     color:var(--accent-color-3);
+ }
+
+ .required:after{
+     content:'*';
+     color:var(--accent-color-3);
  }
 
 
@@ -166,7 +178,7 @@ textarea::placeholder
         word-wrap: break-word;
     }
 
- .error-area
+ /* .error-area
     {
         position: relative;
         width: 100%;
@@ -174,7 +186,7 @@ textarea::placeholder
         align-items: center;
         justify-content: center;
         margin: 0px 0px 5px;
-    }
+    } */
 
  .suggestion
     {
@@ -189,6 +201,7 @@ textarea::placeholder
  .database-errors
     {
         padding-top: 2px;
+        font-weight: var(--heavy-weight);
     }
 
 
@@ -196,14 +209,13 @@ textarea::placeholder
  button:disabled,
  button[disabled]
     {
-    /* background-color: var(--neutral-600); */
-    color: var(--accent-color-4);
-    pointer-events: none;
+      color: var(--accent-color-3);
+      pointer-events: none;
     }
 
  .disabledLink
     {
-        pointer-events: none;
+      pointer-events: none;
     }
 
  input:-internal-autofill-selected

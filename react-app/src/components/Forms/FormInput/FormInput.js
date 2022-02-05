@@ -26,7 +26,6 @@ const FormInput = (
 ) => {
 
     useEffect(() => {
-        console.log({validationObject})
         if (required && !stateVar) {
             let currentValidationObject = { ...validationObject }
             currentValidationObject[id] = false
@@ -71,7 +70,7 @@ const FormInput = (
                 <div className='form-input'>
                     {type === 'textarea' &&
                         <textarea className='textarea'
-                            id={id}
+                        id={id}
                             value={stateVar}
                             required={required}
                             onChange={updateStateVar}
