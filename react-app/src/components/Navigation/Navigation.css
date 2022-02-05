@@ -1,0 +1,76 @@
+#nav__bar--container {
+    position: absolute;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1.3fr 2fr 2fr 1.3fr;
+    height: var(--nav-height);
+    width: 100%;
+    background-color: var(--main-color);
+    z-index: 1;
+}
+
+.nav__bar--child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px 30px;
+    color: var(--accent-color-2);
+    font-weight: 600;
+    border-top: var(--full-border) solid var(--accent-color-1);
+}
+
+/* individual navbar cell styling */
+.nav__bar--1 {
+    border-right: var(--half-border) solid var(--accent-color-1);
+}
+
+.nav__bar--2,
+.nav__bar--3 {
+    border-right: var(--half-border) solid var(--accent-color-1);
+    border-left: var(--half-border) solid var(--accent-color-1);
+}
+
+.nav__bar--4 {
+    border-left: var(--half-border) solid var(--accent-color-1);
+}
+
+/* navigation cell 4/4 grid styling*/
+.nav__bar--grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1.4fr;
+    align-items: end;
+}
+
+.nav__bar--grid div {
+    width: 100%;
+}
+.nav__bar--grid-right {
+    text-align: right;
+}
+
+.nav__bar--user-no {
+    font-size: var(--h2-size);
+    line-height: 1em;
+}
+
+/* navigation links styling */
+#nav__bar--container a {
+    box-sizing: content-box;
+    color: var(--accent-color-2);
+    text-decoration: none;
+}
+
+.nav__bar--link:hover,
+.nav__bar--link-active {
+    border-bottom: var(--half-border) solid var(--accent-color-2);
+}
+
+.nav__bar--logout {
+    border: none;
+    all: unset;
+}

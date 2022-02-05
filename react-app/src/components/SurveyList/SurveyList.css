@@ -1,0 +1,33 @@
+#surveys__container {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 50px;
+    row-gap: 20px;
+}
+
+.survey__button--container {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.survey__button--link {
+    height: 12vh;
+    width: 12vh;
+    margin: 0 auto;
+    background-color: var(--accent-color-2);
+    border: 3px solid var(--accent-color-3);
+    border-radius: 100%;
+}
+
+.survey__button--title {
+    color: var(--accent-color-3);
+    margin-top: 7px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.survey__button--link:hover {
+    background-color: var(--main-color);
+    border: 3px solid var(--accent-color-1);
+}

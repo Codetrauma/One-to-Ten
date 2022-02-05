@@ -3,13 +3,17 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import User from './components/User';
+import User from './components/Profiles/Profiles';
 import { authenticate } from './store/session';
 
-import StyleGuide from './components/StyleGuide';
+import Navigation from './components/Navigation/Navigation';
+import SurveyList from './components/SurveyList/SurveyList';
+import Dots from './components/Dots/Dots';
+import StyleGuide from './components/StyleGuide/StyleGuide';
+
+import './App.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,25 +32,31 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       {/* <StyleGuide /> */}
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
-      </Switch>
+      <Navigation />
+      <div id="main__content">
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/surveys' exact={true} >
+            <SurveyList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/' exact={true} >
+            <h1>Redirect to user profile?</h1>
+          </ProtectedRoute>
+        </Switch>
+      </div>
+      <Dots />
     </BrowserRouter>
   );
 }
