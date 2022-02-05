@@ -1,0 +1,26 @@
+body {
+    background-color: var(--accent-color-2);
+}
+
+h1{
+    padding: 0px;
+}
+
+.login-form{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 600px;
+}
+
+.left-col, .right-col{
+    width: fit-content;
+    padding: 50px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-col{
+    justify-content: flex-end;
+}
