@@ -34,7 +34,7 @@ export const getOneUser = (id) => async dispatch => {
 
     if (response.ok) {
         const user = await response.json()
-        dispatch(loadUsers(user))
+        dispatch(loadUsers([user]))
     }
 };
 
@@ -42,7 +42,7 @@ export const changeUser = (payload, id) => async dispatch => {
 
     const response = await fetch(`/api/users/${id}`, {
         method: 'PUT',
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
     })
 
@@ -58,14 +58,16 @@ export const changeUser = (payload, id) => async dispatch => {
 const initialState = { users: {} }
 
 const userReducer = (state = initialState, action) => {
-    let newState = { ... state };
+    let newState;
 
     switch (action.type) {
         case LOAD_USERS: {
-
-            newState.users = action.users.forEach((user) => {
-                user[user.id] = user;
-            });
+            newState = { ...state };
+            newState.users = action.users.reduce((users, user) => {
+                console.log(user)
+                users[user.id] = user;
+                return users
+            }, {});
 
             return newState;
         }
@@ -73,6 +75,8 @@ const userReducer = (state = initialState, action) => {
         case UPDATE_USER: {
 
         }
+        default:
+            return state;
     }
 };
 

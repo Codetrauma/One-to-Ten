@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import UserProfile from './UserProfile/UserProfile';
+import { getOneUser } from '../../store/users';
 
 import '../../utils.css';
-import { getOneUser } from '../../store/users';
 
 function User() {
   // const [user, setUser] = useState({});
@@ -13,7 +13,7 @@ function User() {
 
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.users.parseInt(userId, 10));
+  const user = useSelector(state => state.users?.userId);
 
   // useEffect(() => {
   //   if (!userId) {
@@ -35,7 +35,9 @@ function User() {
   }
 
   return (
-    <>
+    <>{
+      console.log(sessionUser.id, userId, sessionUser === userId)
+    }
       {sessionUser.id === parseInt(userId, 10) ? <UserProfile sessionUser={sessionUser} /> : (
         <ul>
           <li>
