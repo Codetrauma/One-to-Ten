@@ -1,0 +1,29 @@
+/* split containers styling */
+#flex__container--split {
+    height: 100%;
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    gap: 120px;
+}
+
+.flex__container--child {
+    width: 100%;
+}
+
+/* divider between flex containers */
+#flex__container--divider {
+    position: absolute;
+    height: 100%;
+    border-right: 4px solid var(--accent-color-1);
+    z-index: -1;
+}
+
+/* background color changes */
+#light__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color-2);
+    z-index: -2;
+}

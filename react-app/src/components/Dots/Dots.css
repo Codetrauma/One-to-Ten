@@ -1,0 +1,48 @@
+:root {
+    --distance-x: 34px;
+    --distance-y: 30px;
+}
+
+.main__dots {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: var(--accent-color-1);
+    border-radius: 100%;
+    z-index: 10;
+}
+
+/* dots styling: left col */
+.main__dots--tl {
+    top: var(--distance-x);
+    left: var(--distance-y);
+}
+
+.main__dots--bl {
+    left: var(--distance-y);
+    bottom: var(--distance-x);
+}
+
+/* dots styling: middle col */
+.main__dots--tc {
+    top: var(--distance-x);
+    left: 50%;
+    transform: translateX(-7px);
+}
+
+.main__dots--bc {
+    left: 50%;
+    transform: translateX(-7px);
+    bottom: var(--distance-x);
+}
+
+/* dots styling: right col */
+.main__dots--tr {
+    top: var(--distance-x);
+    right: var(--distance-y);
+}
+
+.main__dots--br {
+    right: var(--distance-y);
+    bottom: var(--distance-x);
+}
