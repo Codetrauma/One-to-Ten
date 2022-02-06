@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
 import FormInput from '../Forms/FormInput/FormInput';
+import Lorem from '../Lorem/Lorem';
 import './Login.css'
 
 
@@ -23,20 +24,26 @@ const LoginForm = () => {
     }
   };
 
+
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    }
+  };
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <div className='login-form'>
-      <div className='left-col'>
+    <div className='login-form' id='flex__container--split'>
+      <div className='light_background' />
+      {/* <div id='flex__container--divider'/> */}
+      <div className='left_col flex__container--child login'>
           <h1>Log In</h1>
           <form id='login' onSubmit={onLogin}>
-            <div>
-                {errors.map((error, ind) => (
-                  <div key={ind}>{error}</div>
-                ))}
-            </div>
               <FormInput
                     labelText='Email'
                     id='email'
@@ -61,27 +68,48 @@ const LoginForm = () => {
                             placeholder={``}
                             validationObject={validationObject}
                           setValidationObject={setValidationObject}
-              />
+          />
           </form>
       </div>
-      <div className='right-col'>
-        <div>
-          
-        </div>
-          <ArrowButton
-            type='submit'
-            formId='login'
-            validationObject={validationObject}
-          >
-            Log In
-        </ArrowButton>
+      <div className='right_col flex__container--child login'>
+        <div className='top_group'>
+          <p className='p-1'>
+            {/* <Lorem chars='200' /> */}
+            Log in to answer questions,
+            change your responses, and view your compatibility with
+            other users.
+          <br/>
+          <br/>
+            You may demo the site via <button className='p-1 underline-slide main-color' onClick={demoLogin}>this demo link </button>.
+            If you do not have an account, you can <NavLink to='/signup' className='main-color underline-slide'>sign up here</NavLink>.
 
-          <ArrowButton
-            validationObject={validationObject}
-            onClickFunction={()=>{console.log('demo login')}}
-          >
-            Demo Site
-          </ArrowButton>
+          </p>
+        </div>
+
+        <div className='bottom_group'>
+        <div className="error-area">
+                        {errors && errors.map(error => (
+                          <div className="database-errors">
+                            {error.split(":")[1]}
+                          </div>
+                            ))
+                          }
+                    </div>
+            <ArrowButton
+              type='submit'
+              formId='login'
+              validationObject={validationObject}
+            >
+              Submit
+            </ArrowButton>
+
+            {/* <ArrowButton
+              validationObject={validationObject}
+              onClickFunction={demoLogin}
+            >
+              Demo As Guest
+            </ArrowButton> */}
+          </div>
       </div>
     </div>
   );

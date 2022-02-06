@@ -4,7 +4,7 @@
   color: var(--accent-color-1);
   border: 0px;
   padding: 0px;
-  margin: 0px;
+  margin: 7px 0px;
   display: inline-block;
   position: relative;
   transition: all 0.2s;
@@ -51,9 +51,9 @@
   top: -1px
 }
 
-.arrow-button:hover {
+/* .arrow-button:hover {
   color: var(--accent-color-1);
-}
+} */
 
 .arrow-button:hover .arrow-shaft {
   width: 64px;
@@ -76,17 +76,15 @@
   transform: rotate(-40deg);
 }
 
-.arrow-button:hover > .main {
-  transform: translateX(80px);
-}
-
-.arrow-button > .main {
+.arrow-button > .main-arrow {
   display: flex;
     align-items: center;
     transition: all 0.2s;
 }
 
-
+.arrow-button:hover > .main-arrow{
+  transform: translateX(80px);
+}
 
 
 .arrow-input{

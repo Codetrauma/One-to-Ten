@@ -9,12 +9,12 @@ body {
     overflow: hidden;
 }
 
-form{
+/* form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
- }
+ } */
 
 label{
     position: absolute;
@@ -52,6 +52,9 @@ input, textarea{
      overflow: hidden;
  }
 
+
+
+
  textarea{
      font-size: var(--body-normal);
  }
@@ -79,9 +82,9 @@ input, textarea{
     min-height: 150px;
 }
 
- form button{
+ /* form button{
        padding: 8px;
-   }
+   } */
 
 .form-input input[data-toolong="true"],
 .form-input input[data-toolong="true"] ~ label,
@@ -170,10 +173,10 @@ textarea::placeholder
 .error-area > div
     {
         color: var(--accent-color-4);
-        text-align: center;
+        /* text-align: center; */
         font-size: var(--body-small);
         position: relative;
-        width: 100%;
+        /* width: 100%; */
         word-break: break-all;
         word-wrap: break-word;
     }
@@ -225,3 +228,32 @@ textarea::placeholder
         background-color: inherit !important;
         color: inherit !important;
     }
+
+label.radio-label{
+    color: var(--accent-color-3);
+    margin: 4px 0px;
+    position: relative;
+    top: 0px;
+    font-size: var(--h5-size);
+}
+
+.radio-group{
+    top: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-group span{
+    transition: all 0.2s ease-in-out;
+    /* color: var(--main-color) */
+}
+
+:checked+ span{
+    color: var(--main-color);
+}
+
+input[type='radio']{
+    opacity: 0;
+    height: 0px;
+}

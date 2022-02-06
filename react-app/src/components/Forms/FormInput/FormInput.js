@@ -20,7 +20,8 @@ const FormInput = (
         additionalValidationArr,
         validationObject,
         setValidationObject,
-        restrictSafe
+        restrictSafe,
+        radioOptions
     }
 
 ) => {
@@ -80,8 +81,33 @@ const FormInput = (
                             data-issafe={isSafe}
                         ></textarea>
                     }
+                    {type === 'radiolist' &&
+                    <div className='radio-group'>
+                        {/* {labelText} */}
+                        {
+                            radioOptions.map(optionName => (
 
-                    {type !== 'textarea' &&
+                                    <label
+                                        htmlFor={optionName}
+                                        className='radio-label'
+                                    >
+                                        <input
+                                        type='radio'
+                                        id={optionName}
+                                        name={id}
+                                        value={optionName}
+                                        className='underline-slide'
+                                        />
+                                        <span className='underline-slide'>{optionName}</span>
+                                </label>
+
+                            ))
+                        }
+                        </div>
+                    }
+
+
+                    {type !== 'textarea' && type !== 'radiolist' &&
                         <input
                         id={id}
                         type={type}

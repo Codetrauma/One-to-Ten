@@ -48,7 +48,8 @@ function smartSlide(e) {
         //Check if mouse events exist on users' device
         if (event.clientX) {
             target.distX = event.clientX - target.oldX; // If yes, use mouse input
-        } else { //otherwise use touch
+        } else {
+        //otherwise use touch
             if (event.touches) {
                 target.distX = event.touches[0].clientX - target.oldX; // Otherwise use touch input
             }
@@ -87,7 +88,8 @@ function smartSlide(e) {
 
         //setting listener on document allows for all movement to
         //end regardless of location which is critical for
-        //when the user drags "beyond the 10"
+        //when the user drags "beyond the 10" and the cursor
+        //is no longer with the action div
         document.onmouseup = disableMovement
         document.ontouchend = disableMovement
 }

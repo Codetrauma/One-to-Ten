@@ -1,26 +1,33 @@
-body {
-    background-color: var(--accent-color-2);
-}
-
 h1{
     padding: 0px;
 }
 
 .login-form{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    height: 600px;
+    /* height: 600px; */
 }
 
-.left-col, .right-col{
+.left_col.login, .right_col.login{
     width: fit-content;
-    padding: 50px;
-    height: 200px;
+    padding: 0px;
+    height:100%;
+    max-height: 250px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
-.right-col{
-    justify-content: flex-end;
+.right_col.login .top_group{
+    position: relative;
+    top: 15px;
 }
+
+.top_group, .bottom_group{
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0px;
+}
+
+

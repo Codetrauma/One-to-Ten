@@ -9,7 +9,7 @@
 
     --body-font: neue-haas-unica, sans-serif;
 
-    --body-normal: 16px;
+    --body-normal: 1.1em;
     --body-small: 0.9em;
     --h1-size: 4em;
     --h2-size: 2.2em;
@@ -33,13 +33,13 @@
 *,
 body {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     font-family: var(--body-font);
 }
 
 body {
     font-size: var(--body-normal);
-    font-family: var(--body-font);
     background-color: var(--main-color);
     color: var(--accent-color-1);
     overflow: hidden;
@@ -70,12 +70,45 @@ h5 {
     font-weight: var(--heavy-weight);
 }
 
+button{
+    border: 0;
+    background-color: transparent;
+    text-align: left;
+}
+
 .p-1 {
     letter-spacing: var(--letter-spacing-normal);
+    font-size: var(--body-normal);
+    font-weight: var(--heavy-weight);
 }
 
 .p-2 {
     font-size: var(--body-small);
     letter-spacing: var(--letter-spacing-small);
     font-weight: var(--medium-weight);
+}
+
+.main-color{
+    color: var(--main-color)
+}
+
+/* input::placeholder {
+    color: transparent;
+  } */
+
+.underline-slide{
+    text-decoration: none;
+    background-image: linear-gradient(var(--main-color), var(--main-color));
+    background-size: 0% var(--half-border);
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+}
+
+.underline-slide:focus,
+.underline-slide:hover,
+.underline-slide:active,
+:checked+ .underline-slide{
+    background-size: 100% var(--half-border);
 }

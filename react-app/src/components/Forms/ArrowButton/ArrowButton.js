@@ -9,27 +9,55 @@ const ArrowButton = ({
 }) => {
 
     return (
-        <button
-            type={type}
-            className="arrow-button"
-            disabled={Object.values(validationObject).includes(false)}
-        >
-            {Object.values(validationObject)}
-            {type === 'submit' && !onClickFunction &&
-                <input type='submit' form={formId} className="arrow-input"/>
+        <>
+            {
+
+                (type === 'submit' && formId) ?
+
+                <button
+                    type={type}
+                    className="arrow-button"
+                    disabled={Object.values(validationObject).includes(false)}
+                    form={formId}
+                >
+                    <span className="arrow-left">
+                        <span className="arrow-shaft">
+                        </span>
+                    </span>
+                    <span className="main-arrow">
+
+                             {children}
+
+                    </span>
+                    </button>
+
+                    :
+
+                    <button
+                        type={type}
+                        className="arrow-button"
+                        onClick={onClickFunction}
+                    >
+
+                        <span className="arrow-left">
+                            <span className="arrow-shaft">
+                            </span>
+                        </span>
+                         <span className="main-arrow">
+
+                            {children}
+
+                        </span>
+                    </button>
+
+
+
             }
-            <span className="arrow-left">
-                <span className="arrow-shaft">
-                </span>
-            </span>
-            <span className="main">
-                <span className="text">
-                    {children}
-                </span>
-            </span>
-        </button>
+
+
+        </>
     )
-    
+
 }
 
 export default ArrowButton
