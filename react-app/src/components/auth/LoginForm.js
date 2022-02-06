@@ -77,11 +77,8 @@ const LoginForm = () => {
             {/* <Lorem chars='200' /> */}
             Log in to answer questions,
             change your responses, and view your compatibility with
-            other users.
-          <br/>
-          <br/>
-            You may demo the site via <button className='p-1 underline-slide main-color' onClick={demoLogin}>this demo link </button>.
-            If you do not have an account, you can <NavLink to='/signup' className='main-color underline-slide'>sign up here</NavLink>.
+            other users. You may demo the site via <button className='p-1 underline-slide main-color' onClick={demoLogin}> this link </button>.
+            If you do not have an account, you can <NavLink to='/sign-up' className='main-color underline-slide'>sign up here</NavLink>.
 
           </p>
         </div>

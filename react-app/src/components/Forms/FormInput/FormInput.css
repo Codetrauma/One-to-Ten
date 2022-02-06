@@ -23,7 +23,7 @@ label{
     font-family: var(--body-font);
     font-weight: var(--heavy-weight);
     /* margin-left: 15px; */
-    top: 6px;
+    top: 8px;
     transform: translate3d(0, 0, 0);
     transition: all 0.2s ease-in-out;
  }
@@ -231,7 +231,7 @@ textarea::placeholder
 
 label.radio-label{
     color: var(--accent-color-3);
-    margin: 4px 0px;
+    margin: 1px 0px;
     position: relative;
     top: 0px;
     font-size: var(--h5-size);

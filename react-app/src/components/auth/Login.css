@@ -22,7 +22,9 @@ h1{
 .right_col.login .top_group{
     position: relative;
     top: 15px;
+    margin-bottom: 15px;
 }
+
 
 .top_group, .bottom_group{
     display: flex;
@@ -30,4 +32,6 @@ h1{
     padding: 6px 0px;
 }
 
-
+button.p-1{
+    font-size: inherit;
+}
