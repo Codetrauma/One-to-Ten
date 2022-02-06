@@ -1,0 +1,98 @@
+.arrow-button {
+  font-size: var(--h3-size);
+  font-weight: var(--heavy-weight);
+  color: var(--accent-color-1);
+  border: 0px;
+  padding: 0px;
+  margin: 7px 0px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.arrow-left {
+  width: var(--full-border);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transition: all 0.2s;
+}
+
+
+.arrow-shaft {
+  background-color: var(--accent-color-1);
+  display: block;
+  height: var(--full-border);
+  position: relative;
+  transition: all 0.2s;
+  width: 0px;
+}
+
+.arrow-shaft:before,
+.arrow-shaft:after {
+  background-color: var(--accent-color-1);
+  content: '';
+  display: block;
+  height: var(--full-border);
+  position: absolute;
+  width: 0px;
+  right: -2px;
+  transform: rotate(0);
+  transition: all 0.2s;
+}
+
+.arrow-shaft:before {
+  transform-origin: top right;
+  top: 1px;
+}
+
+.arrow-shaft:after {
+  transform-origin: bottom right;
+  top: -1px
+}
+
+/* .arrow-button:hover {
+  color: var(--accent-color-1);
+} */
+
+.arrow-button:hover .arrow-shaft {
+  width: 64px;
+  transition-delay: 0.05s;
+  background-color: var(--accent-color-1);
+}
+
+.arrow-button:hover .arrow-shaft:before,
+.arrow-button:hover .arrow-shaft:after {
+  width: 16px;
+  transition-delay: 0.05s;
+  background-color: var(--accent-color-1);
+}
+
+.arrow-shaft:before {
+  transform: rotate(40deg);
+}
+
+.arrow-shaft:after {
+  transform: rotate(-40deg);
+}
+
+.arrow-button > .main-arrow {
+  display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.arrow-button:hover > .main-arrow{
+  transform: translateX(80px);
+}
+
+
+.arrow-input{
+  font-size: 0px;
+  display: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  z-index: 200px;
+}

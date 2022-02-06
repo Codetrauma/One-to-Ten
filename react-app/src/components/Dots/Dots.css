@@ -23,6 +23,12 @@
     bottom: var(--distance-x);
 }
 
+
+.main__dots--ml{
+    left: var(--distance-y);
+    top: 50%;
+}
+
 /* dots styling: middle col */
 .main__dots--tc {
     top: var(--distance-x);
@@ -45,4 +51,9 @@
 .main__dots--br {
     right: var(--distance-y);
     bottom: var(--distance-x);
+}
+
+.main__dots--mr{
+    right: var(--distance-y);
+    top: 50%;
 }

@@ -9,6 +9,8 @@ function Dots() {
             <div className="main__dots main__dots--bl"></div>
             <div className="main__dots main__dots--bc"></div>
             <div className="main__dots main__dots--br"></div>
+            <div className="main__dots main__dots--ml"></div>
+            <div className="main__dots main__dots--mr"></div>
         </>
     )
 }
