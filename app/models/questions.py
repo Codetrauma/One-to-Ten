@@ -1,7 +1,4 @@
 from .db import db
-from .surveys import Surveys
-from .question_stats import QuestionStats
-
 
 
 class Questions(db.Model):

@@ -33,6 +33,6 @@ def question_user(id, user_id):
 def question_stats_update(id):
     question = Questions.query.get(id)
     question.question_stats.response_count += 1
-    question.question_stats.average = question.question_stats.response_count / question.question_stats.response_count
+    question.question_stats.average = question.question_stats.average / question.question_stats.response_count
     db.session.commit()
     return question.question_stats.to_dict()
