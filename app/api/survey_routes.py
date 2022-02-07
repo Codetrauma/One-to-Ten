@@ -41,10 +41,16 @@ def survey_user_response(id, user_id):
         db.session.add(new_survey)
     db.session.add(new_survey_response)
     db.session.commit()
+    return {"message": "Success"}
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['PUT'])
 def survey_user_response_update(id, user_id):
-    return
+    form = SurveyForm()
+    question = QuestionResponses.query.get(form.data['question_id'])
+    question.response = form.data['response']
+    db.session.add(question)
+    db.session.commit()
+    return {"message": "Success"}
 
 
 
