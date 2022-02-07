@@ -8,8 +8,8 @@ class SurveyResponses(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, unique=True)
   survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'), nullable=False)
 
-  u_s_responses = db.relationship('User', back_populates='user_survey_responses', cascade='all')
-  s_responses = db.relationship('Surveys', back_populates='survey_responses', cascade='all')
+  u_s_responses = db.relationship('User', back_populates='user_survey_responses')
+  s_responses = db.relationship('Surveys', back_populates='survey_responses')
 
   def to_dict(self):
     return {
