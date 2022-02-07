@@ -1,4 +1,3 @@
-from calendar import c
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.forms import UserForm
