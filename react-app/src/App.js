@@ -11,9 +11,11 @@ import { authenticate } from './store/session';
 import Navigation from './components/Navigation/Navigation';
 import SurveyList from './components/SurveyList/SurveyList';
 import Dots from './components/Dots/Dots';
+import Splash from './components/Splash/Splash';
 import StyleGuide from './components/StyleGuide/StyleGuide';
 
 import './App.css';
+import MatchList from './components/Profiles/MatchList/MatchList';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +38,9 @@ function App() {
       <Navigation />
       <div id="main__content">
         <Switch>
+          <Route path='/' exact={true} >
+            <Splash />
+          </Route>
           <Route path='/login' exact={true}>
             <LoginForm />
           </Route>
@@ -45,15 +50,18 @@ function App() {
           <ProtectedRoute path='/users' exact={true} >
             <UsersList />
           </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/matches' exact={true} >
+            <MatchList />
+          </ProtectedRoute>
           <ProtectedRoute path='/surveys' exact={true} >
             <SurveyList />
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path='/' exact={true} >
+          {/* <ProtectedRoute path='/' exact={true} >
             <h1>Redirect to user profile?</h1>
-          </ProtectedRoute>
+          </ProtectedRoute> */}
         </Switch>
       </div>
       <Dots />

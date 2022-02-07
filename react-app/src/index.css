@@ -70,7 +70,7 @@ h5 {
     font-weight: var(--heavy-weight);
 }
 
-button{
+button {
     border: 0;
     background-color: transparent;
     text-align: left;
@@ -88,15 +88,23 @@ button{
     font-weight: var(--medium-weight);
 }
 
-.main-color{
-    color: var(--main-color)
+.main-color {
+    color: var(--main-color);
+}
+
+.accent-color-1 {
+    color: var(--accent-color-1);
+}
+
+.accent-color-2 {
+    color: var(--accent-color-2);
 }
 
 /* input::placeholder {
     color: transparent;
   } */
 
-.underline-slide{
+.underline-slide {
     text-decoration: none;
     background-image: linear-gradient(var(--main-color), var(--main-color));
     background-size: 0% var(--half-border);
@@ -109,6 +117,6 @@ button{
 .underline-slide:focus,
 .underline-slide:hover,
 .underline-slide:active,
-:checked+ .underline-slide{
+:checked + .underline-slide {
     background-size: 100% var(--half-border);
 }
