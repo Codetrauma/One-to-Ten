@@ -1,8 +1,4 @@
 /* profile section */
-.profile__container {
-    padding: 80px;
-}
-
 .profile__title {
     color: var(--accent-color-2);
 }
@@ -43,6 +39,6 @@
     text-decoration: none;
 }
 
-.profile__navigation--link a:hover {
-    border-bottom: 3px solid var(--accent-color-2);
+.link__light {
+    background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
 }

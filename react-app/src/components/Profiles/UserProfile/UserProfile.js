@@ -4,36 +4,36 @@ import '../Profiles.css';
 function SessionProfile({ sessionUser }) {
     return (
         <>
-            <div id="flex__container--divider"></div>
+            <div id="dark__background"></div>
             <div id="flex__container--split">
-                <div className="flex__container--child profile__container">
-                    <h1 className="profile__title">
-                        Hello Amy.
+                <div className="flex__container--child flex__container--padded">
+                    <h1 className="accent-color-2">
+                        Hello {sessionUser.first_name}
                     </h1>
                     <div className="profile__navigation">
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/matches`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
                                 View Matches
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to="/surveys">
+                            <Link className="underline-slide link__light" to="/surveys">
                                 Answer Questions
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/responses`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/responses`}>
                                 My Responses
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </Link>
                         </p>
                     </div>
                 </div>
-                <div className="flex__container--child profile__container">
+                <div className="flex__container--child flex__container--padded">
                     <div className="profile__stats">
                         <div className="profile__stats--section">
                             <div className="profile__stats--num">212</div>

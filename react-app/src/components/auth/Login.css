@@ -1,37 +1,39 @@
-h1{
+h1 {
     padding: 0px;
 }
 
-.login-form{
+.login-form {
     display: flex;
     align-items: center;
     justify-content: center;
     /* height: 600px; */
 }
 
-.left_col.login, .right_col.login{
-    width: fit-content;
+.left_col.login,
+.right_col.login {
+    width: 550px;
     padding: 0px;
-    height:100%;
-    max-height: 250px;
+    height: 100%;
+    max-height: 470px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    grid-gap: 30px;
 }
 
-.right_col.login .top_group{
+/* .right_col.login .top_group {
     position: relative;
     top: 15px;
     margin-bottom: 15px;
-}
+} */
 
-
-.top_group, .bottom_group{
+/* .top_group,
+.bottom_group {
     display: flex;
     flex-direction: column;
     padding: 6px 0px;
-}
+} */
 
-button.p-1{
+button.p-1 {
     font-size: inherit;
 }
