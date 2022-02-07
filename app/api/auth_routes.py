@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import UserForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -59,13 +59,25 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
-    form = SignUpForm()
+    form = UserForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
-            username=form.data['username'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            gender=form.data['gender'],
+            dob=form.data['dob'],
+            city=form.data['city'],
+            state_abbreviation=form.data['state_abbreviation'],
+            biography=form.data['biography'],
+            facebook=form.data['facebook'],
+            instagram=form.data['instagram'],
+            twitter=form.data['twitter'],
+            snapchat=form.data['snapchat'],
+            tiktok=form.data['tiktok'],
+            github=form.data['github']
         )
         db.session.add(user)
         db.session.commit()

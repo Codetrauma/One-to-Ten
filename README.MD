@@ -28,12 +28,13 @@
 
 2. Install Dependencies
 
-Flask:
+* Flask:
 
-``` pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt ```
+    * ``` pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt ```
 
-React-App:
-```npm install```
+* React-App:
+
+    * ```npm install```
 
 3. Create a .env file base on the .env.example given
 
@@ -48,6 +49,7 @@ React-App:
 6. You can start the app using
 
     * ```flask run```
+
 
 7. You can use the Demo user or create an account.
 

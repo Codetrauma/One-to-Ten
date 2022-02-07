@@ -1,0 +1,35 @@
+.left_col.signup, .right_col.signup{
+    width: 550px;
+    padding: 0px;
+    height:100%;
+    max-height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right_col.signup{
+    padding-top: 14px;
+    margin-bottom: -15px;
+}
+
+.signup-form{
+    align-items: center;
+    justify-content: center;
+    /* height: 600px; */
+}
+
+/* .signup-form h1{
+    margin-bottom: 80px;
+} */
+
+#signup{
+    display: flex;
+    flex-direction: row;
+}
+
+.top_group, .bottom_group{
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0px;
+}
