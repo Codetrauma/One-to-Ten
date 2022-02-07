@@ -80,7 +80,9 @@ export const removeQuestionResponses = (surveyId, userId) => async dispatch => {
 
 
 //reducers
-const questionResponsesReducer = () => {
+const initialState = { }
+
+const questionResponsesReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case LOAD_QUESTION_RESPONSES: {
