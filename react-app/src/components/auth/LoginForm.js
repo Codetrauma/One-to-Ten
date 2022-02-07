@@ -34,7 +34,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to={`/users/${user.id}`} />;
   }
 
   return (
@@ -42,34 +42,34 @@ const LoginForm = () => {
       <div className='light_background' />
       {/* <div id='flex__container--divider'/> */}
       <div className='left_col flex__container--child login'>
-          <h1>Log In</h1>
-          <form id='login' onSubmit={onLogin}>
-              <FormInput
-                    labelText='Email'
-                    id='email'
-                    type='text'
-                    stateVar={email}
-                    setStateVar={setEmail}
-                    maxLength={60}
-                    required={true}
-                    restrictSafe={true}
-                    placeholder={``}
-                    validationObject={validationObject}
-                    setValidationObject={setValidationObject}
-              />
-              <FormInput
-                            labelText='Password'
-                            id='password'
-                            type='password'
-                            stateVar={password}
-                            setStateVar={setPassword}
-                            required={true}
-                            restrictSafe={false}
-                            placeholder={``}
-                            validationObject={validationObject}
-                          setValidationObject={setValidationObject}
+        <h1>Log In</h1>
+        <form id='login' onSubmit={onLogin}>
+          <FormInput
+            labelText='Email'
+            id='email'
+            type='text'
+            stateVar={email}
+            setStateVar={setEmail}
+            maxLength={60}
+            required={true}
+            restrictSafe={true}
+            placeholder={``}
+            validationObject={validationObject}
+            setValidationObject={setValidationObject}
           />
-          </form>
+          <FormInput
+            labelText='Password'
+            id='password'
+            type='password'
+            stateVar={password}
+            setStateVar={setPassword}
+            required={true}
+            restrictSafe={false}
+            placeholder={``}
+            validationObject={validationObject}
+            setValidationObject={setValidationObject}
+          />
+        </form>
       </div>
       <div className='right_col flex__container--child login'>
         <div className='top_group'>
@@ -84,29 +84,29 @@ const LoginForm = () => {
         </div>
 
         <div className='bottom_group'>
-        <div className="error-area">
-                        {errors && errors.map(error => (
-                          <div className="database-errors">
-                            {error.split(":")[1]}
-                          </div>
-                            ))
-                          }
-                    </div>
-            <ArrowButton
-              type='submit'
-              formId='login'
-              validationObject={validationObject}
-            >
-              Submit
-            </ArrowButton>
+          <div className="error-area">
+            {errors && errors.map(error => (
+              <div className="database-errors">
+                {error.split(":")[1]}
+              </div>
+            ))
+            }
+          </div>
+          <ArrowButton
+            type='submit'
+            formId='login'
+            validationObject={validationObject}
+          >
+            Submit
+          </ArrowButton>
 
-            {/* <ArrowButton
+          {/* <ArrowButton
               validationObject={validationObject}
               onClickFunction={demoLogin}
             >
               Demo As Guest
             </ArrowButton> */}
-          </div>
+        </div>
       </div>
     </div>
   );

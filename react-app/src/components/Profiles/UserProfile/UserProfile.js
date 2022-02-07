@@ -4,7 +4,7 @@ import '../Profiles.css';
 function SessionProfile({ sessionUser }) {
     return (
         <>
-            <div id="flex__container--divider"></div>
+            <div id="dark__background"></div>
             <div id="flex__container--split">
                 <div className="flex__container--child profile__container">
                     <h1 className="profile__title">

@@ -1,0 +1,43 @@
+.splash__container {
+    justify-content: space-around;
+}
+
+#splash__circle {
+    position: relative;
+    margin: 0 auto;
+    width: 33vw;
+    height: 33vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: var(--accent-color-2);
+}
+
+#splash__title {
+    margin-left: min(5vw, 15%);
+    color: var(--main-color);
+    font-size: var(--h1-size);
+    font-weight: var(--heavy-weight);
+}
+
+.splash__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+
+/* splash links and styling */
+.splash__link span {
+    font-size: var(--h4-size);
+    box-sizing: content-box;
+    color: var(--accent-color-2) !important;
+    text-decoration: none;
+}
+
+.splash__link .arrow-shaft:before,
+.splash__link .arrow-shaft:after,
+.splash__link .arrow-shaft {
+    background-color: var(--accent-color-2) !important;
+}
