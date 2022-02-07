@@ -1,6 +1,6 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -32,13 +32,42 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
-            'email': self.email
-        }
+    def to_dict(self, *args):
+        if args:
+            current_user_id = args[0].id
+
+        if args and self.id == current_user_id:
+            return {
+                'id': self.id,
+                'first_name': self.first_name,
+                'last_name': self.last_name,
+                'email': self.email,
+                'gender': self.gender,
+                'dob': self.dob,
+                'state_abbreviation': self.state_abbreviation,
+                'biography': self.biography,
+                'facebook': self.facebook,
+                'instagram': self.instagram,
+                'snapchat': self.snapchat,
+                'tiktok': self.tiktok,
+                'twitter': self.twitter,
+                'github': self.github,
+            }
+        else:
+            return {
+                'id': self.id,
+                'first_name': self.first_name,
+                'last_name': self.last_name,
+                'gender': self.gender,
+                'state_abbreviation': self.state_abbreviation,
+                'biography': self.biography,
+                'facebook': self.facebook,
+                'instagram': self.instagram,
+                'snapchat': self.snapchat,
+                'tiktok': self.tiktok,
+                'twitter': self.twitter,
+                'github': self.github,
+            }
 
 
     # user_locations = db.relationship('UserLocations', back_populates='locations', uselist=False, cascade='all, delete-orphan')
