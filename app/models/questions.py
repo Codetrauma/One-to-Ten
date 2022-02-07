@@ -12,7 +12,7 @@ class Questions(db.Model):
   ten_label = db.Column(db.String, nullable=False)
   survey_id = db.Column(db.Integer, db.ForeignKey('surveys.id'), nullable=False)
 
-  question = db.relationship('Surveys', back_populates='survey', cascade='all')
+  question = db.relationship('Surveys', back_populates='survey')
   question_stats = db.relationship('QuestionStats', back_populates='stats', uselist=False, cascade='all, delete-orphan')
   question_responses = db.relationship('QuestionResponses', back_populates='q_responses', cascade='all, delete-orphan')
 
