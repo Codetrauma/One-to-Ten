@@ -6,7 +6,7 @@ class QuestionResponses(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   response = db.Column(db.Numeric, nullable=False)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False, unique=True)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
   u_q_responses = db.relationship('User', back_populates='user_question_responses')

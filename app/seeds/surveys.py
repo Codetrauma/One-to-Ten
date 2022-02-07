@@ -6,10 +6,18 @@ def seed_surveys():
   demo_survey = Surveys(name='Demo Survey')
   new_survey = Surveys(name='New Survey')
   new_survey_2 = Surveys(name='New Survey 2')
+  new_survey_3 = Surveys(name='New Survey 3')
+  new_survey_4 = Surveys(name='New Survey 4')
+  new_survey_5 = Surveys(name='New Survey 5')
+
 
   db.session.add(demo_survey)
   db.session.add(new_survey)
   db.session.add(new_survey_2)
+  db.session.add(new_survey_3)
+  db.session.add(new_survey_4)
+  db.session.add(new_survey_5)
+  
   db.session.commit()
 
 
