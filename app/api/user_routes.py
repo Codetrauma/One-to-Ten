@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
+from app.api.survey_routes import survey
 from app.forms import UserForm
-from app.models import db, User
+from app.models import db, User, SurveyResponses
 
 user_routes = Blueprint('users', __name__)
 
@@ -73,8 +74,12 @@ def user_update(id):
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': ['Unauthorized']}, 401
 
+@user_routes.route('/<int:id>/surveys', methods=['GET'])
+@login_required
+def user_survey_responses(id):
+    """
+    Get all survey response records for a user.
+    """
+    survey_responses = SurveyResponses.query.filter(SurveyResponses.user_id == id).all()
 
-
-    #users/userId/surveys
-        #query survey_responses where userId = userId from pathname
-        #return array of surveys where surveyId matches surveyId in survey_responses
+    return { 'survey_responses': [survey_response.to_dict() for survey_response in survey_responses]}
