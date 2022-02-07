@@ -23,13 +23,14 @@ def survey_questions(id):
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses')
 def survey_user(id, user_id):
     questions = Questions.query.filter(Questions.survey_id == id).all()
-    
-
-
-
-
-    # survey = Surveys.query.get(id)
-    # return {'user': [user.to_dict() for user in survey.survey_responses if user.user_id == user_id]}
+    for question in questions:
+        question_responses = QuestionResponses.query.filter(QuestionResponses.question_id == question.id).all()
+        for response in question_responses:
+            if response.user_id == user_id:
+                print("RESPONSE!!!!!!!!!!!!!!!!!!", response.to_dict())
+                return response.to_dict()
+            else:
+                return {"message": "No responses for this user"}
 
 
 @survey_routes.route('/<int:id>/users/<int:userId>', methods=['DELETE'])
