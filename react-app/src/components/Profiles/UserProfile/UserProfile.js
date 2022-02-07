@@ -7,7 +7,7 @@ function SessionProfile({ sessionUser }) {
             <div id="dark__background"></div>
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
-                    <h1 className="profile__title">
+                    <h1 className="accent-color-2">
                         Hello {sessionUser.first_name}
                     </h1>
                     <div className="profile__navigation">

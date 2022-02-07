@@ -17,15 +17,14 @@ const matches = [
 function MatchList() {
     return (
         <>
-            <div id="dark__background"></div>
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
-                    <h1 className="profile__title">
+                    <h1 className="accent-color-1">
                         Top Matches
                     </h1>
 
-                    <p className="p-1">
-                        The people that answered most similarly to you across surveys.
+                    <p className="p-1 accent-co">
+                        We crunched the numbers, and it turns out that these are the users whose dispositions are the most similar to you. The more questions you answer, the more accurate your match results.
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
