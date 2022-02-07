@@ -53,9 +53,9 @@ function App() {
           <ProtectedRoute path='/users/:userId/matches' exact={true} >
             <MatchList />
           </ProtectedRoute>
-          <ProtectedRoute path='/surveys' exact={true} >
+          <Route path='/surveys' exact={true} >
             <SurveyList />
-          </ProtectedRoute>
+          </Route>
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
