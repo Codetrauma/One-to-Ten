@@ -14,7 +14,7 @@ function Splash() {
     return (
         <>
             <div id="dark__background"></div>
-            <div id="flex__container--split">
+            <div id="flex__container--split" className="splash__container">
                 <div className="flex__container--child">
                     <div id="splash__circle">
                         <div id="splash__title">
@@ -22,18 +22,18 @@ function Splash() {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="flex__container--child profile__container">
-                <Link className="splash__link" to="/sign-up">
-                    <ArrowButton>
-                        Get Started
-                    </ArrowButton>
-                </Link>
-                <Link className="splash__link" to="/about">
-                    <ArrowButton>
-                        Learn More
-                    </ArrowButton>
-                </Link>
+                <div className="flex__container--child splash__links">
+                    <Link className="splash__link" to="/sign-up">
+                        <ArrowButton>
+                            Get Started
+                        </ArrowButton>
+                    </Link>
+                    <Link className="splash__link" to="/about">
+                        <ArrowButton>
+                            Learn More
+                        </ArrowButton>
+                    </Link>
+                </div>
             </div>
         </>
     )

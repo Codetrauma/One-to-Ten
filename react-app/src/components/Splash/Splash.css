@@ -1,6 +1,12 @@
+.splash__container {
+    justify-content: space-around;
+}
+
 #splash__circle {
-    width: 70vh;
-    height: 70vh;
+    position: relative;
+    margin: 0 auto;
+    width: 33vw;
+    height: 33vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,10 +15,18 @@
 }
 
 #splash__title {
-    margin-left: 18%;
+    margin-left: 16%;
+    margin-right: 10%;
     color: var(--main-color);
-    font-size: 4.5em;
+    font-size: var(--h1-size);
     font-weight: var(--heavy-weight);
+}
+
+.splash__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
 }
 
 /* splash links and styling */
