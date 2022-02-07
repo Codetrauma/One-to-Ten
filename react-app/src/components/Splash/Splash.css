@@ -15,8 +15,7 @@
 }
 
 #splash__title {
-    margin-left: 16%;
-    margin-right: 10%;
+    margin-left: min(5vw, 15%);
     color: var(--main-color);
     font-size: var(--h1-size);
     font-weight: var(--heavy-weight);
