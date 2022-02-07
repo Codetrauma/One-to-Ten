@@ -1,8 +1,8 @@
-"""new tables
+"""Changed user table
 
-Revision ID: 254ac0dbf9a1
-Revises: 08583a609139
-Create Date: 2022-02-04 13:25:10.372295
+Revision ID: 55926aaafe06
+Revises: 
+Create Date: 2022-02-06 21:07:22.004421
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '254ac0dbf9a1'
-down_revision = '08583a609139'
+revision = '55926aaafe06'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -32,8 +32,6 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('gender', sa.String(), nullable=False),
     sa.Column('dob', sa.Date(), nullable=False),
-    sa.Column('city', sa.String(), nullable=False),
-    sa.Column('state_abbreviation', sa.String(), nullable=False),
     sa.Column('biography', sa.String(), nullable=True),
     sa.Column('facebook', sa.String(), nullable=True),
     sa.Column('instagram', sa.String(), nullable=True),
@@ -42,8 +40,7 @@ def upgrade():
     sa.Column('twitter', sa.String(), nullable=True),
     sa.Column('github', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('first_name')
+    sa.UniqueConstraint('email')
     )
     op.create_table('matches',
     sa.Column('id', sa.Integer(), nullable=False),
