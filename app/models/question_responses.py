@@ -1,5 +1,4 @@
 from .db import db
-from .questions import Questions
 
 
 class QuestionResponses(db.Model):
