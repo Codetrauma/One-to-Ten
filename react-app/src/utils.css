@@ -1,9 +1,10 @@
 /* split containers styling */
 #flex__container--split {
     height: 100%;
-    width: 100%;
+    width: 80%;
     margin: 20px 0;
     display: flex;
+    justify-content: space-evenly;
     gap: 120px;
 }
 
@@ -18,6 +19,11 @@
     height: 100%;
     border-right: 4px solid var(--accent-color-1);
     z-index: -1;
+}
+
+.flex__container--padded {
+    width: 540px;
+    padding: 80px;
 }
 
 /* background color changes */

@@ -6,7 +6,7 @@ function SessionProfile({ sessionUser }) {
         <>
             <div id="dark__background"></div>
             <div id="flex__container--split">
-                <div className="flex__container--child profile__container">
+                <div className="flex__container--child flex__container--padded">
                     <h1 className="profile__title">
                         Hello Amy.
                     </h1>
@@ -33,7 +33,7 @@ function SessionProfile({ sessionUser }) {
                         </p>
                     </div>
                 </div>
-                <div className="flex__container--child profile__container">
+                <div className="flex__container--child flex__container--padded">
                     <div className="profile__stats">
                         <div className="profile__stats--section">
                             <div className="profile__stats--num">212</div>
