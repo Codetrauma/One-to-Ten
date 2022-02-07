@@ -9,6 +9,9 @@ def seed_question_responses():
   new_question_response_3 = QuestionResponses(response=5, user_id=3, question_id=5)
   new_question_response_4 = QuestionResponses(response=4, user_id=2, question_id=5)
   new_question_response_5 = QuestionResponses(response=3, user_id=1, question_id=6)
+  new_question_response_6 = QuestionResponses(response=1, user_id=3, question_id=6)
+  new_question_response_6 = QuestionResponses(response=1, user_id=1, question_id=6)
+  new_question_response_7 = QuestionResponses(response=5, user_id=2, question_id=4)
 
   db.session.add(demo_question_response)
   db.session.add(new_question_response_1)
@@ -16,6 +19,8 @@ def seed_question_responses():
   db.session.add(new_question_response_3)
   db.session.add(new_question_response_4)
   db.session.add(new_question_response_5)
+  db.session.add(new_question_response_6)
+  db.session.add(new_question_response_7)
   db.session.commit()
 
 def undo_question_responses():

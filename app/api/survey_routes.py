@@ -24,13 +24,20 @@ def survey_questions(id):
 def survey_user(id, user_id):
     questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
-        question_responses = QuestionResponses.query.filter(QuestionResponses.question_id == question.id).all()
-        for response in question_responses:
-            if response.user_id == user_id:
-                print("RESPONSE!!!!!!!!!!!!!!!!!!", response.to_dict())
-                return response.to_dict()
-            else:
-                return {"message": "No responses for this user"}
+        question_responses = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == user_id).all()
+        for questions in question_responses:
+            return questions.to_dict()
+    return {'message': 'No responses found'}
+
+@survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
+def survey_user_response(id, user_id):
+    new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
+    db.session.add(new_survey_response)
+    db.session.commit()
+
+@survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['PUT'])
+def survey_user_response_update(id, user_id):
+
 
 
 @survey_routes.route('/<int:id>/users/<int:userId>', methods=['DELETE'])
