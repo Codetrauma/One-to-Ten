@@ -1,0 +1,30 @@
+#splash__circle {
+    width: 70vh;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: var(--accent-color-2);
+}
+
+#splash__title {
+    margin-left: 18%;
+    color: var(--main-color);
+    font-size: 4.5em;
+    font-weight: var(--heavy-weight);
+}
+
+/* splash links and styling */
+.splash__link span {
+    font-size: var(--h4-size);
+    box-sizing: content-box;
+    color: var(--accent-color-2) !important;
+    text-decoration: none;
+}
+
+.splash__link .arrow-shaft:before,
+.splash__link .arrow-shaft:after,
+.splash__link .arrow-shaft {
+    background-color: var(--accent-color-2) !important;
+}
