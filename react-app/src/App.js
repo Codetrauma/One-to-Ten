@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/Profiles/Profiles';
+import Survey from './components/Surveys/Survey/Survey'
 import { authenticate } from './store/session';
 
 import Navigation from './components/Navigation/Navigation';
@@ -52,6 +53,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId/matches' exact={true} >
             <MatchList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/surveys/:surveyId' exact={true} >
+            <Survey />
           </ProtectedRoute>
           <ProtectedRoute path='/surveys' exact={true} >
             <SurveyList />

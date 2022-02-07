@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getSurveyResponses } from '../../store/surveyResponses';
@@ -7,32 +7,78 @@ import SurveyButton from './SurveyButton/SurveyButton';
 
 import './SurveyList.css';
 
-// const surveys = [
-//     'Privacy',
-//     'Religion',
-//     'Habits',
-//     'Humor',
-//     'Body',
-//     'Fear',
-//     'Planning',
-//     'Parents',
-//     'Hygiene',
-//     'Fitness',
-//     'Sleep',
-//     'Conflict',
-//     'Privacy',
-//     'Culture',
-//     'Fear',
-//     'Style',
-//     'Parents',
-//     'Children',
-//     'Privacy',
-//     'Religion',
-//     'Habits',
-//     'Humor',
-//     'Body',
-//     'Fear',
-// ]
+const surveys = [
+    {
+        id: 1,
+        name: 'Privacy'
+    },
+    {
+        id: 2,
+        name: 'Education'
+    },
+    {
+        id: 3,
+        name: 'Money'
+    },
+    {
+        id: 4,
+        name: 'Pop Culture'
+    },
+    {
+        id: 5,
+        name: 'Animals'
+    },
+    {
+        id: 6,
+        name: 'Travel'
+    },
+    {
+        id: 7,
+        name: 'Sleep'
+    },
+    {
+        id: 8,
+        name: 'Food'
+    },
+    {
+        id: 9,
+        name: 'Fitness'
+    },
+    {
+        id: 10,
+        name: 'Parents'
+    },
+    {
+        id: 11,
+        name: 'Fear'
+    },
+    {
+        id: 12,
+        name: 'Music'
+    }
+]
+const surveyResponses = [
+    {
+    surveyId: 1,
+    userId: 2
+    },
+    {
+    surveyId: 4,
+    userId: 2
+    },
+    {
+    surveyId: 5,
+    userId: 2
+    },
+        {
+    surveyId: 9,
+    userId: 2
+    },
+    {
+    surveyId: 11,
+    userId: 2
+    }
+]
 
 function SurveyList() {
     const sessionUser = useSelector(state => state.session.user);
@@ -51,27 +97,53 @@ function SurveyList() {
         dispatch(getSurveyResponses(sessionUser.id));
     }, [dispatch])
 
+
+    const [deleteResponseMode, setDeleteResponseMode] = useState(false)
+
+    const toggleDeleteResponse = () => {
+        setDeleteResponseMode(!deleteResponseMode)
+    }
+
     return (
-        <>
-            <div id="surveys__container">
+        <div className='survey-page__container'>
+
+        <div id="surveys__container">
                 {/* {surveys.map(survey => (
                     <SurveyButton survey={survey} />
                 ))} */}
                 {/* objects can't be react childs? so if use component directly works i think.. */}
-                {surveyList.map(survey => (
+                {surveys.map(survey => {
+                    let completed = surveyResponses.map(response => response.surveyId).includes(survey.id)
+                    return (
+                        <SurveyButton
+                            key={survey.id}
+                            name={survey.name}
+                            id={survey.id}
+                            completed={completed}
+                            deleteResponseMode={deleteResponseMode}
+                        />
+                    )
+                }
+                )}
+                {/* (
+
                     <div key={survey.id} className="survey__button--container">
                         <div className="survey__button--link">
-
                         </div>
                         <h5 className="survey__button--title">
                             {survey.name}
                         </h5>
                     </div>
-                ))}
+                ) */}
             </div>
-            <div id="light__background"></div>
-        </>
-    )
-}
+            <h5
+                    className={`edit-toggle underline-slide activated-${deleteResponseMode}`}
+                onClick={toggleDeleteResponse}>
+                Toggle Edit Mode
+            </h5>
+            </div>
+            )
+                }
+
 
 export default SurveyList;
