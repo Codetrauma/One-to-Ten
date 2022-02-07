@@ -32,8 +32,8 @@ def question_user(id, user_id):
 @question_routes.route('/<int:id>/stats', methods=['UPDATE'])
 def question_stats_update(id):
     question = Questions.query.get(id)
-    question.question_stats.response_count += 1
-    all_questions = len(Questions.query.all())
-    question.question_stats.average = question.question_stats.response_count / all_questions
+    new_response_count = question.question_stats.response_count + 1
+    question.question_stats.average = (question.question_stats.response_count * question.question_stats.average) / new_response_count
+    question.question_stats.response_count = new_response_count
     db.session.commit()
     return question.question_stats.to_dict()
