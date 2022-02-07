@@ -1,8 +1,8 @@
-"""Changed user table
+"""Fixed survey response table
 
-Revision ID: 55926aaafe06
+Revision ID: 4b960e4de256
 Revises: 
-Create Date: 2022-02-06 21:07:22.004421
+Create Date: 2022-02-07 09:50:52.373743
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '55926aaafe06'
+revision = '4b960e4de256'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -68,8 +68,7 @@ def upgrade():
     sa.Column('survey_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['survey_id'], ['surveys.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('user_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('question_responses',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -78,8 +77,7 @@ def upgrade():
     sa.Column('question_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['question_id'], ['questions.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('user_id')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('question_stats',
     sa.Column('id', sa.Integer(), nullable=False),
