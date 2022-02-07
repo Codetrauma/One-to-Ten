@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { getQuestions } from '../../../store/questions';
 import Slider from './Slider/Slider'
 
 const Survey = ({questions}) => {
 
-    // const userId = session.user.id
+    const userId = session.user.id
 
     questions = [{
         id:1,
@@ -10,6 +13,13 @@ const Survey = ({questions}) => {
         ten_label: 'Agree',
         text: `This is my first time using a computer and hoo boy is it scary.`
     }]
+
+    // const dispatch = useDispatch();
+    // const questions = useSelector(state => state.questions);
+
+    // useEffect(() => {
+    //     dispatch(getQuestions(2));
+    // }, [dispatch])
 
     return (
         <div className='survey'>

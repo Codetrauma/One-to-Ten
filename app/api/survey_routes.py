@@ -17,17 +17,16 @@ def survey(id):
 @survey_routes.route('/<int:id>/questions')
 def survey_questions(id):
     survey = Surveys.query.get(id)
-    return {'questions': [question.to_dict() for question in survey.questions]}
+    return {'questions': [question.to_dict() for question in survey.survey]}
 
 @survey_routes.route('/<int:id>/users/<int:user_id>')
 def survey_user(id, user_id):
     survey = Surveys.query.get(id)
     return {'user': [user.to_dict() for user in survey.survey_responses if user.user_id == user_id]}
 
-@survey_routes.route('/<int:id>/users/<int:user_id>', methods=['DELETE'])
-def survey_user_delete(id, user_id):
-    survey = Surveys.query.get(id)
-    user = SurveyResponses.query.get(user_id)
-    db.session.delete(user)
+@survey_routes.route('/<int:id>/users/<int:userId>', methods=['DELETE'])
+def survey_user_delete(id, userId):
+    survey = SurveyResponses.query.filter(SurveyResponses.survey_id == id, SurveyResponses.user_id == userId).first()
+    db.session.delete(survey)
     db.session.commit()
-    
+    return {"message": "Survey Response deleted"}

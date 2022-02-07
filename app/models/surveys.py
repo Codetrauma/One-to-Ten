@@ -1,5 +1,4 @@
 from .db import db
-from .survey_responses import SurveyResponses
 
 
 class Surveys(db.Model):
