@@ -2,7 +2,6 @@
 
 //action types
 const LOAD_USERS = 'user/LOAD';
-const LOAD_ONE_USER = 'user/LOAD_ONE_USER';
 const UPDATE_USER = 'user/UPDATE';
 
 //action creators
@@ -25,7 +24,7 @@ export const getUsers = () => async dispatch => {
     if (response.ok) {
         const users = await response.json();
 
-        dispatch(loadUsers(users))
+        dispatch(loadUsers([users]))
     }
 }
 
@@ -64,7 +63,7 @@ const userReducer = (state = initialState, action) => {
         case LOAD_USERS: {
             newState = { ...state };
             newState.users = action.users.reduce((users, user) => {
-                console.log(user)
+                // console.log(user)
                 users[user.id] = user;
                 return users
             }, {});
@@ -73,7 +72,10 @@ const userReducer = (state = initialState, action) => {
         }
 
         case UPDATE_USER: {
+            newState = { ...state }
+            newState.users.userId = action.user
 
+            return newState;
         }
         default:
             return state;

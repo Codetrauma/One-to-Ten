@@ -13,7 +13,8 @@ function User() {
 
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.users?.userId);
+  const user = useSelector(state => state.user.users[parseInt(userId, 10)]);
+  console.log(`!!!!!!~#@!$@!$`, user)
 
   // useEffect(() => {
   //   if (!userId) {
@@ -41,13 +42,13 @@ function User() {
       {sessionUser.id === parseInt(userId, 10) ? <UserProfile sessionUser={sessionUser} /> : (
         <ul>
           <li>
-            <strong>User Id</strong> {userId}
+            <strong>User Id</strong> {user.id}
           </li>
           <li>
-            <strong>Username</strong> {user.username}
+            <strong>Name</strong> {user.first_name}
           </li>
           <li>
-            <strong>Email</strong> {user.email}
+            <strong>Biography</strong> {user.biography}
           </li>
         </ul>
       )}
