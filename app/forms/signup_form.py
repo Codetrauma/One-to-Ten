@@ -27,8 +27,6 @@ class SignUpForm(FlaskForm):
     password = StringField('password', validators=[DataRequired()])
     gender = SelectField('Gender', choices=[('Male', 'Male'), ('Female', 'Female'), ('Non-binary', 'Non-binary')])
     dob = DateField('Date of Birth', format='%Y-%m-%d', validators=[DataRequired()])
-    city = StringField('City', validators=[DataRequired()])
-    state_abbreviation = StringField('State Abbreviation', validators=[DataRequired()])
     biography = TextAreaField('Biography')
     facebook = StringField('Facebook')
     instagram = StringField('Instagram')
