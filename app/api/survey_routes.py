@@ -1,7 +1,7 @@
 from flask import Blueprint
 from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
 from app.models.question_responses import QuestionResponses
-
+from app.forms import SurveyForm
 
 survey_routes = Blueprint('surveys', __name__)
 
@@ -32,11 +32,19 @@ def survey_user(id, user_id):
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
     new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
+    form = SurveyForm()
+    if form.validate_on_submit():
+        data = form.data
+        new_survey = QuestionResponses(response=data['response'],
+                                       user_id=user_id,
+                                       question_id=data['question_id'])
+        db.session.add(new_survey)
     db.session.add(new_survey_response)
     db.session.commit()
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['PUT'])
 def survey_user_response_update(id, user_id):
+    return
 
 
 
