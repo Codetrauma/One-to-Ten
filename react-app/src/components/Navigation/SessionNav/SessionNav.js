@@ -10,7 +10,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-left">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 to={`/users/${sessionUser.id}/matches`} >
                                 View Matches
                             </NavLink>
@@ -18,7 +18,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-right">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </NavLink>
@@ -26,7 +26,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-left">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 to={`/surveys`}>
                                 Answer Questions
                             </NavLink>
@@ -34,7 +34,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-right">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 to={`/responses`}>
                                 My Responses
                             </NavLink>
@@ -52,7 +52,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-right">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 to="/about">
                                 About Us
                             </NavLink>
@@ -68,7 +68,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-right">
                             <a
                                 activeClassName='nav__bar--link-active'
-                                className="nav__bar--link"
+                                className="underline-slide link__light"
                                 href="https://github.com/JTannerShaw/One-to-Ten"
                                 target="_blank" rel="noreferrer noopener">
                                 Github

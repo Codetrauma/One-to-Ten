@@ -12,22 +12,22 @@ function SessionProfile({ sessionUser }) {
                     </h1>
                     <div className="profile__navigation">
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/matches`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
                                 View Matches
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to="/surveys">
+                            <Link className="underline-slide link__light" to="/surveys">
                                 Answer Questions
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/responses`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/responses`}>
                                 My Responses
                             </Link>
                         </p>
                         <p className="profile__navigation--link">
-                            <Link to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </Link>
                         </p>

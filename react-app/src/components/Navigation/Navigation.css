@@ -65,11 +65,6 @@
     text-decoration: none;
 }
 
-.nav__bar--link:hover,
-.nav__bar--link-active {
-    border-bottom: var(--half-border) solid var(--accent-color-2);
-}
-
 .nav__bar--logout {
     border: none;
     all: unset;
