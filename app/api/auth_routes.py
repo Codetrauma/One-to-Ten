@@ -69,8 +69,6 @@ def sign_up():
             password=form.data['password'],
             gender=form.data['gender'],
             dob=form.data['dob'],
-            city=form.data['city'],
-            state_abbreviation=form.data['state_abbreviation'],
             biography=form.data['biography'],
             facebook=form.data['facebook'],
             instagram=form.data['instagram'],

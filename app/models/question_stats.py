@@ -9,7 +9,7 @@ class QuestionStats(db.Model):
   average = db.Column(db.Numeric, nullable=False)
   question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
 
-  stats = db.relationship('Questions', back_populates='question_stats', cascade='all')
+  stats = db.relationship('Questions', back_populates='question_stats')
 
   def to_dict(self):
     return {
