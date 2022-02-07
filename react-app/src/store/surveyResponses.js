@@ -42,11 +42,11 @@ export const removeSurveyResponse = (surveyId, userId) => async dispatch => {
     }
 };
 
-export const createSurveyResponse = (surveyId, userId, payload) => async dispatch =>{
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}`, {
+export const createSurveyResponse = (surveyResponse) => async dispatch =>{
+    const res = await fetch(`/api/surveys/${surveyResponse.surveyId}/users/${surveyResponse.userId}`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(surveyResponse)
     })
 
     if (res.ok) {
@@ -67,11 +67,9 @@ const surveyResponseReducer = (state = initialState, action) => {
         case LOAD_SURVEY_RESPONSES: {
             newState = { ...state }
 
-            newState.surveyResponses = action.surveyResponses.reduce((surveyResponses, surveyResponse) => {
-                surveyResponses[surveyResponse.id] = surveyResponse;
-                //??
-                return surveyResponses;
-            }, {});
+            newState.surveyResponses = action.surveyResponses.survey_responses.map(surveyResponse => {
+                return surveyResponse
+            })
 
             return newState;
         }
@@ -79,6 +77,11 @@ const surveyResponseReducer = (state = initialState, action) => {
 
         }
         case ADD_SURVEY_RESPONSE: {
+            newState = { ...state,  }
+
+
+
+            console.log("NEWSTATEEEEEEEE", newState)
 
         }
         default:
