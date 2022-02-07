@@ -39,6 +39,8 @@ def survey_user_response(id, user_id):
                                        user_id=user_id,
                                        question_id=data['question_id'])
         db.session.add(new_survey)
+    question_stats = QuestionStats.query.filter(QuestionStats.question_id == form.data['question_id']).first()
+    question_stats.response_count += 1
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}
