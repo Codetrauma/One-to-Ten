@@ -8,7 +8,7 @@ function SessionProfile({ sessionUser }) {
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
                     <h1 className="profile__title">
-                        Hello Amy.
+                        Hello {sessionUser.first_name}
                     </h1>
                     <div className="profile__navigation">
                         <p className="profile__navigation--link">

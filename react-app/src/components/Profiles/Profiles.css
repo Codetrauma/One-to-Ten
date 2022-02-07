@@ -1,8 +1,4 @@
 /* profile section */
-.profile__container {
-    padding: 80px;
-}
-
 .profile__title {
     color: var(--accent-color-2);
 }

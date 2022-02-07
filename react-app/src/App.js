@@ -15,6 +15,7 @@ import Splash from './components/Splash/Splash';
 import StyleGuide from './components/StyleGuide/StyleGuide';
 
 import './App.css';
+import MatchList from './components/Profiles/MatchList/MatchList';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <ProtectedRoute path='/users' exact={true} >
             <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/matches' exact={true} >
+            <MatchList />
           </ProtectedRoute>
           <ProtectedRoute path='/surveys' exact={true} >
             <SurveyList />
