@@ -72,3 +72,9 @@ def user_update(id):
         else:
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': ['Unauthorized']}, 401
+
+
+
+    #users/userId/surveys
+        #query survey_responses where userId = userId from pathname
+        #return array of surveys where surveyId matches surveyId in survey_responses

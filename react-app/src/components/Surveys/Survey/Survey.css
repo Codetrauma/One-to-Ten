@@ -1,3 +1,25 @@
-.survey{
-    width: 800px;
+.survey h1{
+    color: var(--accent-color-2);
+    margin-bottom: 50px;
+}
+
+.survey .right-col{
+    max-width: 520px;
+}
+
+.survey .button-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.survey .arrow-button{
+    color: var(--accent-color-2);
+    margin: 0px 0px;
+}
+
+.survey .arrow-shaft:before,
+.survey .arrow-shaft:after,
+.survey .arrow-shaft
+{
+    background-color: var(--accent-color-2) !important;
 }

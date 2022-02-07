@@ -14,10 +14,13 @@
 .survey__button--link {
     height: 12vh;
     width: 12vh;
+    position: relative;
     margin: 0 auto;
     background-color: var(--accent-color-2);
-    border: 3px solid var(--accent-color-3);
+    border: var(--full-border) solid var(--accent-color-3);
     border-radius: 100%;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
 
 .survey__button--title {
@@ -25,9 +28,90 @@
     margin-top: 7px;
     text-transform: capitalize;
     font-weight: 500;
+    transition: all 0.2s ease-in-out;
 }
 
 .survey__button--link:hover {
+    /* background-color: var(--main-color); */
+    border: var(--full-border)solid var(--accent-color-1);
+    cursor: pointer;
+}
+
+.survey__button--link:hover ~ h5{
+    color: var(--accent-color-1);
+    cursor: pointer;
+}
+
+
+.completed-true > div{
     background-color: var(--main-color);
-    border: 3px solid var(--accent-color-1);
+    border-color: var(--main-color);
+}
+
+.completed-true:hover > div{
+    background-color: var(--accent-color-1);
+    border-color: var(--accent-color-1);
+    cursor: pointer;
+}
+
+.completed-true > h5{
+    color: var(--main-color);
+}
+
+.completed-true:hover > h5{
+    color: var(--accent-color-1);
+    cursor: pointer;
+}
+
+.survey__navlink{
+    position: relative;
+}
+
+.survey__delete-resposnes{
+    position: absolute;
+    z-index: 3;
+    right: 2px;
+    top: 2px;
+    background-color: var(--accent-color-2);
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    border: var(--full-border) solid var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s all ease-in-out;
+}
+
+.survey__delete-resposnes > span {
+    color: var(--main-color);
+    font-weight: var(--heavy-weight);
+    font-size: var(--h5-size);
+    text-align: center;
+    transition: 0.2s all ease-in-out;
+}
+
+.survey__delete-resposnes:hover,
+.survey__delete-resposnes:hover > span{
+    color: var(--accent-color-4);
+    border-color: var(--accent-color-4);
+}
+
+
+h4.activated-true{
+    color: var(--main-color)
+}
+
+
+h4.edit-toggle{
+    width: fit-content;
+    position: absolute;
+    top: 80px;
+    right: calc(50% - 70px);
+    text-align: center;
+}
+
+h4.edit-toggle:hover{
+    cursor: pointer;
+    color: var(--main-color);
 }

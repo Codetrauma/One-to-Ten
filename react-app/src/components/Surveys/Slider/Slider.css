@@ -1,17 +1,21 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .slider{
     width: 500px;
     position: relative;
     text-align: left;
+    margin: 100px;
+}
+
+.slider-track{
+    height: var(--full-border);
+    background-color: var(--accent-color-2);
+    width: 100%;
+    position: relative;
+    z-index: -2;
 }
 
 .slider-track{
     padding: 0px;
+    background-color: var(--accent-color-2);
     width: calc(100%-40px);
 }
 
@@ -20,7 +24,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    margin: 50px 0px 50px;
+    margin: 36px 0px;
+    position: relative;
 }
 
 
@@ -28,53 +33,58 @@
     height: 50px;
     width: 50px;
     border-radius: 30px;
-    border: 6px solid #f1ede9;
+    border: var(--full-border) solid var(--accent-color-2);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: var(--h3-size);
+    color: var(--accent-color-2);
     letter-spacing: -2px;
     font-weight: 700;
     position: absolute;
-    left: calc(50%px);
+    left: calc(50% - 25px);
 }
 
 .score-span{
     position: absolute;
+    left: -4px;
     z-index: -1
 }
 
-.slider-track{
-    height: 6px;
-    background-color: #f1ede9;
-    width: 100%;
-    position: relative;
-    z-index: -2;
-}
+
 
 .question-labels{
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: var(--h5-size);
+    font-weight: var(--heavy-weight);
     letter-spacing: 0.2px;
     line-height: 8px;
+    color: var(--accent-color-2);
 }
 
-/* .question-text{
-    font-size: 20px;
-    font-weight: 600;
+.question-text{
+    font-size: var(--h5-size);
+    font-weight: var(--heavy-weight);
+    color: var(--accent-color-2);
     letter-spacing: 0.2px;
-    line-height: 23px;
-} */
+    line-height: 30px;
+}
 
-.score-input{
+input.score-input{
     background-color: transparent;
     border: 0px;
     width: 0px;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .score-span{
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    z-index: -1;
     background-color: #6868ac;
     text-align: center;
     width: 50px;
