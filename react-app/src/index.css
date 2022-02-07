@@ -36,6 +36,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: var(--body-font);
+    text-decoration: none;
 }
 
 body {
@@ -117,6 +118,7 @@ button {
 .underline-slide:focus,
 .underline-slide:hover,
 .underline-slide:active,
+.underline-slide.activated-true,
 :checked + .underline-slide {
     background-size: 100% var(--half-border);
 }
