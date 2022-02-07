@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { getQuestions } from '../../../store/questions';
 import Slider from '../Slider/Slider'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
@@ -10,6 +10,7 @@ const Survey = () => {
 
     // const userId = session.user.id
     const params = useParams();
+    const history = useHistory()
     // let surveyId = 4;
     console.log({ params })
 
@@ -122,6 +123,7 @@ const Survey = () => {
 
     const handleCancel = (e) => {
         console.log('handleCancel')
+        history.push('/surveys')
     }
 
     return (

@@ -99,7 +99,7 @@ function SurveyList() {
     }
 
     return (
-        <>
+        <div className='survey-page__container'>
 
         <div id="surveys__container">
                 {/* {surveys.map(survey => (
@@ -130,12 +130,12 @@ function SurveyList() {
                     </div>
                 ) */}
             </div>
-            <h4
+            <h5
                     className={`edit-toggle underline-slide activated-${deleteResponseMode}`}
                 onClick={toggleDeleteResponse}>
-                Edit Mode
-            </h4>
-            </>
+                Toggle Edit Mode
+            </h5>
+            </div>
             )
                 }
 
