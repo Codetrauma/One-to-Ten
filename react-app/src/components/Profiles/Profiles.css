@@ -56,8 +56,9 @@
     font-weight: var(--medium-weight);
 }
 
-.match__delete {
+.match__delete--button {
     color: var(--accent-color-4);
     font-size: var(--body-small);
     font-weight: var(--medium-weight);
+    background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
 }

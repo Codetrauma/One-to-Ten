@@ -75,7 +75,7 @@ function MatchProfile({ user }) {
                         {user.biography && (
                             <div className="match__bio">
                                 <h4>About {user.first_name}</h4>
-                                <p className="p-1 accent-color-1">
+                                <p className="p-1 accent-color-3">
                                     {user.biography}
                                 </p>
                             </div>
@@ -89,7 +89,9 @@ function MatchProfile({ user }) {
                             )}
                         </div>
                         <div className="match__delete">
-                            Block {user.first_name}
+                            <button className="match__delete--button underline-slide accent-color-4">
+                                Block {user.first_name}
+                            </button>
                         </div>
 
                     </div>
