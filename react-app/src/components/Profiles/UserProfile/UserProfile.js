@@ -1,14 +1,18 @@
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../Profiles.css';
 import './UserProfile.css';
 
 function SessionProfile({ sessionUser }) {
 
-    let isActive = sessionUser.isActive
-    if (isActive === undefined) isActive = true
+    const [isActive, setIsActive] = useState(sessionUser.isActive || true)
+
+    // let isActive = sessionUser.isActive
+    // if (isActive === undefined) isActive = true
 
     const handleDeactivate = () => {
         console.log('handle deactivate')
+        setIsActive(false)
     }
 
     return (
