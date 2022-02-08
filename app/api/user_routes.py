@@ -69,7 +69,7 @@ def user_update(id):
 
             db.session.commit()
 
-            return user.to_dict(current_user)
+            return {'user': user.to_dict(current_user)}
         else:
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': ['Unauthorized']}, 401
