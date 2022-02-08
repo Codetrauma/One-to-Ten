@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request, jsonify
 from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
 from app.models.question_responses import QuestionResponses
 from app.forms import SurveyForm
@@ -31,16 +31,22 @@ def survey_user(id, user_id):
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
+    request_body_list = request.json['question_responses']
     new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
-    form = SurveyForm()
-    if form.validate_on_submit():
-        data = form.data
-        new_survey = QuestionResponses(response=data['response'],
-                                       user_id=user_id,
-                                       question_id=data['question_id'])
-        db.session.add(new_survey)
-    question_stats = QuestionStats.query.filter(QuestionStats.question_id == form.data['question_id']).first()
-    question_stats.response_count += 1
+    for responses in request_body_list:
+        question_id = responses['question_id']
+        response = responses['value']
+        print('questions', question_id, 'response', response)
+        validate = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).all()
+        for something in validate:
+            db.session.delete(something)
+
+        new_question_response = QuestionResponses(response=response,
+                               user_id=user_id,
+                               question_id=question_id)
+        db.session.add(new_question_response)
+        question_stats = QuestionStats.query.filter(QuestionStats.question_id == question_id).first()
+        question_stats.response_count += 1
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}
