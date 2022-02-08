@@ -44,9 +44,12 @@ def survey_user_response(id, user_id):
         new_question_response = QuestionResponses(response=response,
                                user_id=user_id,
                                question_id=question_id)
-        db.session.add(new_question_response)
         question_stats = QuestionStats.query.filter(QuestionStats.question_id == question_id).first()
+        question = Questions.query.get(question_id)
+        new_response_count = question.question_stats.response_count + 1
+        question.question_stats.average = (question.question_stats.response_count * question.question_stats.average) / new_response_count
         question_stats.response_count += 1
+        db.session.add(new_question_response)
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}
