@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Redirect, useHistory, useParams } from "react-router-dom"
 import FormInput from '../../Forms/FormInput/FormInput'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
-
+import './EditProfile.css'
 
 const EditProfile = () => {
     let params = useParams()
@@ -57,7 +57,7 @@ const EditProfile = () => {
             <>
 
                 <div className="color-background" id="light__background"></div>
-                <div className="flex__container--child flex__container--padded">
+                <div className="flex__container--child flex__container--padded edit-profile">
                     <h1 className="accent-color-1">
                         Your Profile
                     </h1>
@@ -146,7 +146,7 @@ const EditProfile = () => {
                 id='biography'
                 required={true}
                 type='textarea'
-                maxLength={1500}
+                maxLength={220}
                 stateVar={biography}
                 setStateVar={setBiography}
                 placeholder={``}
