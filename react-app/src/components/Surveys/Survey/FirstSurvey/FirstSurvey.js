@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import Slider from '../Surveys/Slider/Slider'
-import ArrowButton from '../Forms/ArrowButton/ArrowButton';
+import Slider from '../../Slider/Slider';
+import ArrowButton from '../../../Forms/ArrowButton/ArrowButton';
 import './FirstSurvey.css'
 
 
@@ -10,6 +10,8 @@ const FirstSurvey = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [value, setValue] = useState('')
+  const [questionId, setQuestionId] = useState()
+
 
 
   const handleSubmit = async (e) => {
@@ -63,9 +65,6 @@ const FirstSurvey = () => {
                 <div className='button-container'>
 
                 <ArrowButton
-                    // type='submit'
-                    // formId='survey-form'
-                    // validationObject={{}}
                         onClickFunction={handleSubmit}
                 >
                     Submit
@@ -89,7 +88,9 @@ const FirstSurvey = () => {
                     tenLabel={question.ten_label}
                     text={question.text}
                     questionId={question.id}
+                    setQuestionId={question.id}
                     initialValue={question.initial_value}
+                    onChange={(e) => setValue(e.target.value)}
                 />
                 ))
             }
