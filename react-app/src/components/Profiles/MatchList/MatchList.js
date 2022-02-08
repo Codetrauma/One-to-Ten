@@ -23,8 +23,8 @@ function MatchList() {
                         Top Matches
                     </h1>
 
-                    <p className="p-1 accent-co">
-                        We crunched the numbers, and it turns out that these are the users whose dispositions are the most similar to you. The more questions you answer, the more accurate your match results.
+                    <p className="p-1 main-color">
+                        These are the users whose outlooks in life are the most similar to you. The more questions you answer, the more accurate your match results.
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
