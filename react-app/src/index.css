@@ -101,6 +101,10 @@ button {
     color: var(--accent-color-2);
 }
 
+.accent-color-3 {
+    color: var(--accent-color-3);
+}
+
 /* input::placeholder {
     color: transparent;
   } */

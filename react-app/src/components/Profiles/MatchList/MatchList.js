@@ -1,17 +1,23 @@
 import { Link } from 'react-router-dom';
-import '../Profiles.css';
+
+import './MatchList.css';
 
 const matches = [
-    'Name 2',
-    'Name 2',
-    'Name 3',
-    'Name 4',
-    'Name 5',
-    'Name 6',
-    'Name 7',
-    'Name 8',
-    'Name 9',
-    'Name 10',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
+    'Name N.',
 ]
 
 function MatchList() {
@@ -23,16 +29,29 @@ function MatchList() {
                         Top Matches
                     </h1>
 
-                    <p className="p-1 accent-co">
-                        We crunched the numbers, and it turns out that these are the users whose dispositions are the most similar to you. The more questions you answer, the more accurate your match results.
+                    <p className="p-1 main-color">
+                        These are the users whose outlooks in life are the most similar to yours. The more questions you answer, the more accurate your match results.
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
-                    <ul>
-                        {matches.map(match => {
-                            return (<li key={match}>Test{match}</li>)
-                        })}
-                    </ul>
+                    <table id="match__table">
+                        <tbody>
+                            {matches.map(match => {
+                                return (
+                                    <tr>
+                                        <td className="match__name">
+                                            <Link to="/users/2" className="underline-slide">
+                                                {match}
+                                            </Link>
+                                        </td>
+                                        <td className="match__percentage">
+                                            99.0
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>
