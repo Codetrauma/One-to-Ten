@@ -55,3 +55,9 @@
     color: var(--main-color);
     font-weight: var(--medium-weight);
 }
+
+.match__delete {
+    color: var(--accent-color-4);
+    font-size: var(--body-small);
+    font-weight: var(--medium-weight);
+}
