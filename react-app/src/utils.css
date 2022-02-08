@@ -42,3 +42,8 @@
     background-color: var(--main-color);
     z-index: -5;
 }
+
+
+.margin-bottom-30{
+    margin-bottom: 30px;
+}

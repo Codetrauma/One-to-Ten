@@ -1,3 +1,13 @@
 .arrow-button {
     margin: -2px 0px;
 }
+
+.edit-toggle{
+    margin: 0px 0px 20px;
+    width: fit-content;
+}
+
+
+.edit-toggle:hover{
+        color: var(--main-color)
+}

@@ -67,6 +67,9 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/inactive' exact={true} >
+            <User />
+          </ProtectedRoute>
           {/* <ProtectedRoute path='/' exact={true} >
             <h1>Redirect to user profile?</h1>
           </ProtectedRoute> */}

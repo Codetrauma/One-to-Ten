@@ -1,0 +1,43 @@
+.icebreaker-circle{
+    height:250px;
+    width: 250px;
+    border: 12px solid var(--accent-color-2);
+    border-radius: 125px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: 0.2s all ease-in-out;
+}
+
+.icebreaker-label{
+    margin-top: 20px;
+    color: var(--accent-color-2)
+}
+
+.icebreaker-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icebreaker-container:hover .icebreaker-circle{
+    background-color: var(--accent-color-2);
+}
+
+
+/* .expanding-circle{
+    height: 0px;
+    width: 0px;
+    border-radius: 125px;
+    transition: 0.3s all ease-in-out;
+    background-color: var(--accent-color-2);
+}
+
+
+
+.icebreaker-container:hover .expanding-circle{
+    height: 300px;
+    width: 300px;
+} */

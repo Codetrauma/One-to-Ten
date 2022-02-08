@@ -65,18 +65,19 @@ function MatchProfile({ user, children, previewMode }) {
         <>
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
-                        {!previewMode ?
+
                             <h1 className="main-color">
                                     { user.first_name } {user.last_name.slice(0, 1) + '.'}
                             </h1>
+                    {previewMode ?
+                        <p className="p-1 accent-color-1">
+                            Complete more surveys to view your compatibility.
+                        </p>
                         :
-                        <h1>
-                            Preview Mode
-                        </h1>
-                        }
-                    <p className="p-1 accent-color-1">
-                        Your Match Compatibility: 0%
-                    </p>
+                        <p className="p-1 accent-color-1">
+                            Your Match Compatibility: 0
+                        </p>
+                    }
                     {previewMode && children}
                 </div>
                 <div className="flex__container--child flex__container--padded match__profile--info">
@@ -92,8 +93,14 @@ function MatchProfile({ user, children, previewMode }) {
                         <div className="match__socials">
                             <h5>Get Connected</h5>
                             {truthyExists ? socialLinks : (
+                                 previewMode ?
+                                 <>
+                                     You have not added any social links yet.
+                                 </>
+                                 :
+
                                 <>
-                                    We have no way to help you get in touch with {user.first_name} :(
+                                    We have no way to help you get in touch with {user.first_name} {`:(`}
                                 </>
                             )}
                         </div>

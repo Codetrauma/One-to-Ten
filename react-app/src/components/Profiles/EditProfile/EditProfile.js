@@ -5,25 +5,30 @@ import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
 import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 
-const EditProfile = () => {
+const EditProfile = ({sessionUser, initialPreviewMode}) => {
     let params = useParams()
     let history = useHistory()
     let urlUserId = params.userId
 
-    const [previewMode, setPreviewMode] = useState(false)
-    const [biography, setBiography] = useState()
-    const [facebook, setFacebook] = useState()
-    const [instagram, setInstagram] = useState()
-    const [snapchat, setSnapchat] = useState()
-    const [twitter, setTwitter] = useState()
-    const [tiktok, setTikTok] = useState()
-    const [github, setGithub] = useState()
+    sessionUser = {
+        first_name: 'Sample',
+        last_name: 'User'
+    }
+
+    const [previewMode, setPreviewMode] = useState(initialPreviewMode || false)
+    const [biography, setBiography] = useState(sessionUser.biography || '')
+    const [facebook, setFacebook] = useState(sessionUser.facebook || '')
+    const [instagram, setInstagram] = useState(sessionUser.instagram || '')
+    const [snapchat, setSnapchat] = useState(sessionUser.snapchat || '')
+    const [twitter, setTwitter] = useState(sessionUser.twitter || '')
+    const [tiktok, setTikTok] = useState(sessionUser.tiktok || '')
+    const [github, setGithub] = useState(sessionUser.github || '')
     const [errors, setErrors] = useState()
     const [validationObject, setValidationObject] = useState({ true: true })
 
     let previewUser = {
-        first_name: '',
-        last_name: 'Preview',
+        first_name: sessionUser.first_name,
+        last_name: sessionUser.last_name,
         facebook,
         instagram,
         snapchat,
@@ -69,23 +74,25 @@ const EditProfile = () => {
                         :
             <>
 
-                <div className="color-background" id="light__background"></div>
-                <div className="flex__container--child flex__container--padded edit-profile">
+            <div className="color-background" id="light__background"></div>
+            <div id="flex__container--split" className="flex__container--padded">
+                <div className="flex__container--child edit-profile">
                     <h1 className="accent-color-1">
                         Edit Profile
                     </h1>
 
-                    <p className="p-1 accent-co">
+                    <p className="p-1 accent-color-1 margin-bottom-30">
                         This information will be visible to users with whom you have a high degree of compatibility
                     </p>
-                <h5
-                    className={`edit-toggle underline-slide activated-${togglePreviewMode}`}
-                    onClick={togglePreviewMode}>
-                    Switch To Preview Mode
-                </h5>
+                    <p
+                        className={`p-1 edit-toggle underline-slide activated-${togglePreviewMode}`}
+                        onClick={togglePreviewMode}>
+                        Switch To Preview Mode
+                    </p>
+
 
                 </div>
-                <div className="flex__container--child flex__container--padded">
+                <div className="flex__container--child">
           <div className='top_group'>
             <form id='editProfile' onSubmit={onProfileUpdate}>
             <FormInput
@@ -188,23 +195,17 @@ const EditProfile = () => {
             >
               Submit
             </ArrowButton>
-
             <ArrowButton
-                        onClickFunction={handleCancel}
+                                        onClickFunction={handleCancel}
                     >
                         Cancel
             </ArrowButton>
 
 
-            {/* <ArrowButton
-              validationObject={validationObject}
-              onClickFunction={demoLogin}
-            >
-              Demo As Guest
-            </ArrowButton> */}
 
              </div>
-            </div>
+                                </div>
+                                </div>
             </>
                 )
             }
