@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
+from app.models import db, Surveys, SurveyResponses, Questions, Matches, QuestionStats, User
 from app.models.question_responses import QuestionResponses
 from app.forms import SurveyForm
 
@@ -33,13 +33,29 @@ def survey_user(id, user_id):
 def survey_user_response(id, user_id):
     new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
     form = SurveyForm()
-    if form.validate_on_submit():
-        data = form.data
-        new_survey = QuestionResponses(response=data['response'],
-                                       user_id=user_id,
-                                       question_id=data['question_id'])
-        db.session.add(new_survey)
+    # if form.validate_on_submit():
+    data = form.data
+    new_survey = QuestionResponses(response=data['response'],
+                                   user_id=user_id,
+                                   question_id=data['question_id'])
+    db.session.add(new_survey)
+    db.session.commit()
+    all_users = User.query.filter(User.id != user_id).all()
+    for user in all_users:
+        print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', data['question_id'])
+        current_user = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == data['question_id']).first().response
+        second_user = QuestionResponses.query.filter(QuestionResponses.user_id == user.id, QuestionResponses.question_id == data['question_id']).first().response
+        print('????????????????????????????????????????????????', second_user)
+        average = QuestionStats.query.filter(QuestionStats.question_id == form.data['question_id']).first().average
+        if second_user:
+            new_match = Matches(user_1_id=user_id, user_2_id=user.id, compatibility_score=(current_user - average) * (second_user - average))
+        # new_match = Matches(user_1_id=user_id, user_2_id=user.id,
+        #                     compatibility_score=(QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == data['question_id']).first().response - QuestionStats.query.filter(QuestionStats.question_id == data['question_id']).first().average) * (QuestionResponses.query.filter(QuestionResponses.user_id == user.id, QuestionResponses.question_id == data['question_id']).first().response - QuestionStats.query.filter(QuestionStats.question_id == data['question_id']).first().average))
+            db.session.add(new_match)
+        else:
+            return {'message': 'No second user found'}
     question_stats = QuestionStats.query.filter(QuestionStats.question_id == form.data['question_id']).first()
+
     question_stats.response_count += 1
     db.session.add(new_survey_response)
     db.session.commit()
