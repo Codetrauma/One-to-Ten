@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
+from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats, Matches, User
 from app.models.question_responses import QuestionResponses
 from app.forms import SurveyForm
 
@@ -50,6 +50,7 @@ def survey_user_response(id, user_id):
         question.question_stats.average = (question.question_stats.response_count * question.question_stats.average) / new_response_count
         question_stats.response_count += 1
         db.session.add(new_question_response)
+        
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}
@@ -71,10 +72,13 @@ def survey_user_delete(id, userId):
     questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
         question_response = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == userId).first()
+        if question_response:
+            db.session.delete(question_response)
+        else:
+            return {"message": "No response found"}
         question_stats = QuestionStats.query.filter(QuestionStats.question_id == question.id)
         for question_stat in question_stats:
             question_stat.response_count -= 1
-        db.session.delete(question_response)
     db.session.delete(survey)
     db.session.commit()
     return {"message": "Survey Response deleted"}
