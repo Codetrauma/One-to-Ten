@@ -20,14 +20,15 @@ def survey_questions(id):
     survey = Surveys.query.get(id)
     return {'questions': [question.to_dict() for question in survey.survey]}
 
+
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses')
 def survey_user(id, user_id):
+    all_questions_dict = {}
     questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
-        question_responses = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == user_id).all()
-        for questions in question_responses:
-            return questions.to_dict()
-    return {'message': 'No responses found'}
+        question_responses = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question.id).all()
+        all_questions_dict[question.id] = [response.to_dict() for response in question_responses]
+    return {'questions': all_questions_dict}
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
