@@ -1,3 +1,5 @@
+import './MatchProfile.css';
+
 function MatchProfile({ user }) {
     const socials = {
         facebook: user.facebook,

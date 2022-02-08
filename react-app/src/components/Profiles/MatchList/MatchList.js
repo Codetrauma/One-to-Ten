@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import '../Profiles.css';
 
 const matches = [
-    'Name 2',
+    'Name 1',
     'Name 2',
     'Name 3',
     'Name 4',
@@ -12,6 +11,11 @@ const matches = [
     'Name 8',
     'Name 9',
     'Name 10',
+    'Name 11',
+    'Name 12',
+    'Name 13',
+    'Name 14',
+    'Name 15',
 ]
 
 function MatchList() {
@@ -28,11 +32,22 @@ function MatchList() {
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
-                    <ul>
-                        {matches.map(match => {
-                            return (<li key={match}>Test{match}</li>)
-                        })}
-                    </ul>
+                    <table id="match__table">
+                        <tbody>
+                            {matches.map(match => {
+                                return (
+                                    <tr>
+                                        <td>
+                                            {match}
+                                        </td>
+                                        <td>
+                                            99%
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>

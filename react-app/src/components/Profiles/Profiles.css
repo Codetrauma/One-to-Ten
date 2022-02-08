@@ -1,4 +1,4 @@
-/* profile section */
+/* profile menu section */
 .profile__title {
     color: var(--accent-color-2);
 }
@@ -14,7 +14,7 @@
     margin: 10px 0;
 }
 
-/* stats section */
+/* profile stats section */
 .profile__stats {
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     font-weight: 600;
 }
 
-/* link styling */
+/* profile menu link styling */
 .profile__navigation--link a {
     box-sizing: content-box;
     color: var(--accent-color-2);
@@ -41,24 +41,4 @@
 
 .link__light {
     background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
-}
-
-/* match profiles */
-.match__profile--info {
-    display: flex;
-    flex-direction: column;
-    grid-gap: 30px;
-}
-
-.match__social--links {
-    margin-right: 20px;
-    color: var(--main-color);
-    font-weight: var(--medium-weight);
-}
-
-.match__delete--button {
-    color: var(--accent-color-4);
-    font-size: var(--body-small);
-    font-weight: var(--medium-weight);
-    background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
 }
