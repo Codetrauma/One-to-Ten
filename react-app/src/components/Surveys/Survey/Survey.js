@@ -29,13 +29,7 @@ const Survey = () => {
 
     const dispatch = useDispatch();
     const questions = useSelector(state => state.questions.byId);
-    const questionsArr = Object.values(questions);
-    const questionIds = Object.keys(questions);
-    console.log(questionIds, `>>>>>>>>>>`)
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        
-    }
+    const questionsList = Object.values(questions)
 
     const questionResponses = useSelector(state => state.questionResponses.bySurveyId);
 
@@ -43,7 +37,7 @@ const Survey = () => {
     useEffect(() => {
         dispatch(getSurveys());
         dispatch(getQuestions(params.surveyId));
-        // dispatch(getQuestionResponses(params.surveyId, sessionUser.id))
+        dispatch(getQuestionResponses(params.surveyId, sessionUser.id));
     }, [dispatch])
 
     if (!questions) return null;
@@ -102,7 +96,7 @@ const Survey = () => {
             <div className='right-col flex__container--child'>
 
             <form id='survey-form' onSubmit={handleSubmit}>
-                {questionsArr.map(question => (
+                {questionsList.map(question => (
                     <Slider
                         key={question.id}
                         oneLabel={question.one_label}

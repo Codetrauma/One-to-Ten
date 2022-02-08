@@ -29,12 +29,12 @@ const deleteQuestionResponses = (surveyId) => ({
 })
 
 //thunks
-export const getQuestionResponses = (surveyId, questionId, userId) => async dispatch => {
-    const res = await fetch(`/api/questions/${questionId}/users/${userId}`);
+export const getQuestionResponses = (surveyId, userId) => async dispatch => {
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`);
 
     if (res.ok) {
         const questionResponses = await res.json();
-        // console.log(`THUNKKKKKKKK`, surveyId)
+        // console.log(`THUNKKKKKKKK`, surveyId, questionResponses)
 
         dispatch(loadQuestionsResponses(questionResponses, surveyId))
     }
@@ -55,7 +55,7 @@ export const createQuestionResponses = (surveyId, userId, payload) => async disp
 };
 
 export const editQuestionResponses = (surveyId, userId, payload) => async dispatch => {
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}`, {
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
