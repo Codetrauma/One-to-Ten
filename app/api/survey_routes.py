@@ -40,7 +40,6 @@ def survey_user_response(id, user_id):
         validate = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).all()
         for something in validate:
             db.session.delete(something)
-
         new_question_response = QuestionResponses(response=response,
                                user_id=user_id,
                                question_id=question_id)
@@ -50,7 +49,33 @@ def survey_user_response(id, user_id):
         question.question_stats.average = (question.question_stats.response_count * question.question_stats.average) / new_response_count
         question_stats.response_count += 1
         db.session.add(new_question_response)
-        
+    user_to_match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    for match in user_to_match:
+        previous_compatibility_score = match.compatibility_score
+        compatibility_modification = 0
+        for questions in request_body_list:
+            question_id = questions['question_id']
+            current_user_response = questions['value']
+            second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_2_id, QuestionResponses.question_id == question_id).first()
+            average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+
+            if second_user and second_user.response:
+                question_compatibility = (current_user_response - average) * (second_user.response - average)
+                compatibility_modification += question_compatibility
+        match.compatibility_score = compatibility_modification + previous_compatibility_score
+    second_user_to_match = Matches.query.filter(Matches.user_2_id == user_id).all()
+    for match in second_user_to_match:
+        previous_compatibility_score = match.compatibility_score
+        compatibility_modification = 0
+        for questions in request_body_list:
+            question_id = questions['question_id']
+            current_user_response = questions['value']
+            second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_1_id, QuestionResponses.question_id == question_id).first()
+            average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+            if second_user and second_user.response:
+                question_compatibility = (current_user_response - average) * (second_user.response - average)
+                compatibility_modification += question_compatibility
+        match.compatibility_score = compatibility_modification + previous_compatibility_score
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}

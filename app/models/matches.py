@@ -11,8 +11,8 @@ class Matches(db.Model):
   user_1_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   user_2_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-  user1 = db.relationship('User', foreign_keys=[user_1_id], cascade='all, delete')
-  user2 = db.relationship('User', foreign_keys=[user_2_id], cascade='all, delete')
+  user1 = db.relationship('User', foreign_keys=[user_1_id])
+  user2 = db.relationship('User', foreign_keys=[user_2_id])
 
 
   def to_dict(self):
