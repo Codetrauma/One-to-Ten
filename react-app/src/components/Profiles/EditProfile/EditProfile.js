@@ -3,6 +3,7 @@ import { Redirect, useHistory, useParams } from "react-router-dom"
 import FormInput from '../../Forms/FormInput/FormInput'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
 import './EditProfile.css'
+import MatchProfile from "../MatchProfile/MatchProfile"
 
 const EditProfile = () => {
     let params = useParams()
@@ -18,7 +19,18 @@ const EditProfile = () => {
     const [tiktok, setTikTok] = useState()
     const [github, setGithub] = useState()
     const [errors, setErrors] = useState()
-    const [validationObject, setValidationObject] = useState({true: true})
+    const [validationObject, setValidationObject] = useState({ true: true })
+
+    let previewUser = {
+        first_name: '',
+        last_name: 'Preview',
+        facebook,
+        instagram,
+        snapchat,
+        twitter,
+        tiktok,
+        github
+    }
 
     const togglePreviewMode = () => {
         setPreviewMode(!previewMode)
@@ -46,12 +58,13 @@ const EditProfile = () => {
                     :
                     (previewMode ?
                         < >
-                            <h1>Welcome to previewMode</h1>
+                            <MatchProfile user={previewUser} previewMode={previewMode}>
                             <h5
                     className={`edit-toggle underline-slide activated-${togglePreviewMode}`}
                     onClick={togglePreviewMode}>
-                    Edit Mode
-                </h5>
+                    Switch To Edit Mode
+                                </h5>
+                                </MatchProfile>
                             </>
                         :
             <>
@@ -59,7 +72,7 @@ const EditProfile = () => {
                 <div className="color-background" id="light__background"></div>
                 <div className="flex__container--child flex__container--padded edit-profile">
                     <h1 className="accent-color-1">
-                        Your Profile
+                        Edit Profile
                     </h1>
 
                     <p className="p-1 accent-co">
@@ -68,7 +81,7 @@ const EditProfile = () => {
                 <h5
                     className={`edit-toggle underline-slide activated-${togglePreviewMode}`}
                     onClick={togglePreviewMode}>
-                    Preview Mode
+                    Switch To Preview Mode
                 </h5>
 
                 </div>
