@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import Slider from '../Surveys/Slider/Slider'
+import ArrowButton from '../Forms/ArrowButton/ArrowButton';
 import './FirstSurvey.css'
 
 
 const FirstSurvey = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [value, setValue] = useState('')
 
 
@@ -13,6 +16,12 @@ const FirstSurvey = () => {
     e.preventDefault();
     const matches = await dispatch()
   }
+
+  const handleCancel = async (e) => {
+    console.log('handleCancel')
+    history.push('/surveys')
+  }
+
 
   const surveyQuestions = [
     {
@@ -44,25 +53,51 @@ const FirstSurvey = () => {
       initial_value:5
     }
   ]
-  
+
   return (
-    <div className='first-survey-main'>
-      <form className='first-survey-form' onSubmit={handleSubmit}>
-        <h1>My First Survey</h1>
-        {surveyQuestions.map(question => (
-          <Slider
-            key={question.id}
-            oneLabel={question.one_label}
-            tenLabel={question.ten_label}
-            text={question.text}
-            questionId={question.id}
-            initialValue={question.initial_value}
-            />
-        ))}
-        <button type='submit'>Submit</button>
-      </form>
+    <>
+    <div className='survey-background' id='dark__background'/>
+    <div className='survey' id="flex__container--split">
+        <div className='left-col flex__container--child'>
+                <h1>My First Survey</h1>
+                <div className='button-container'>
+
+                <ArrowButton
+                    // type='submit'
+                    // formId='survey-form'
+                    // validationObject={{}}
+                        onClickFunction={handleSubmit}
+                >
+                    Submit
+
+                </ArrowButton>
+                <ArrowButton
+                    onClickFunction={handleCancel}
+                >
+                    Cancel
+                    </ArrowButton>
+                </div>
     </div>
-  )
+    <div id='flex__container--divider'></div>
+        <div className='right-col flex__container--child'>
+
+        <form id='survey-form' onSubmit={handleSubmit}>
+            {surveyQuestions.map(question => (
+                <Slider
+                    key={question.id}
+                    oneLabel={question.one_label}
+                    tenLabel={question.ten_label}
+                    text={question.text}
+                    questionId={question.id}
+                    initialValue={question.initial_value}
+                />
+                ))
+            }
+        </form>
+        </div>
+        </div>
+</>
+)
 }
 
 
