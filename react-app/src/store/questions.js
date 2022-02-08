@@ -19,7 +19,7 @@ export const getQuestions = (surveyId) => async dispatch => {
 }
 
 //reducer
-const initialState = { questions: [] }
+const initialState = { byId: {} }
 
 const questionReducer = (state = initialState, action) => {
     let newState;
@@ -30,10 +30,14 @@ const questionReducer = (state = initialState, action) => {
 
             // console.log(`ACTION ACTION ACTION`, action)
 
-            newState.questions = action.questions.questions.map(question => question)
+            //newState.questions = action.questions.questions.map(question => question)
 
             // newState.questions = action.questions.questions
             // console.log(`nsnsnsnsnsnsnsnsnsns`, newState)
+            newState.byId = action.questions.questions.reduce((questions, question) => {
+                questions[question.id] = question;
+                return questions;
+            }, {})
 
             return newState;
         }

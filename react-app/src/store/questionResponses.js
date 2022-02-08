@@ -29,12 +29,12 @@ const deleteQuestionResponses = (surveyId) => ({
 })
 
 //thunks
-export const getQuestionResponses = (surveyId, userId) => async dispatch => {
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`);
+export const getQuestionResponses = (surveyId, questionId, userId) => async dispatch => {
+    const res = await fetch(`/api/questions/${questionId}/users/${userId}`);
 
     if (res.ok) {
         const questionResponses = await res.json();
-        console.log(`THUNKKKKKKKK`, surveyId)
+        // console.log(`THUNKKKKKKKK`, surveyId)
 
         dispatch(loadQuestionsResponses(questionResponses, surveyId))
     }
@@ -91,6 +91,8 @@ const questionResponsesReducer = (state = initialState, action) => {
         case LOAD_QUESTION_RESPONSES: {
             newState = { ...state }
 
+            console.log(`BABABABABAA`, action.questionResponses)
+
             newState.bySurveyId[action.surveyId] = action.questionResponses
 
             // action.questionResponses.reduce((questionResponses, response) => {
@@ -112,7 +114,7 @@ const questionResponsesReducer = (state = initialState, action) => {
 
             delete newState.bySurveyId[action.surveyId]
 
-            return newState; 
+            return newState;
         }
         default:
             return state;
