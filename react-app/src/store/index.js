@@ -4,12 +4,14 @@ import questionReducer from './questions';
 import session from './session'
 import surveyReducer from './surveys';
 import userReducer from './users';
+import matchReducer from './matches';
 
 const rootReducer = combineReducers({
   session,
   user: userReducer,
   surveys: surveyReducer,
-  questions: questionReducer
+  questions: questionReducer,
+  matches: matchReducer
 });
 
 

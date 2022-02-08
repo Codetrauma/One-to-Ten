@@ -23,8 +23,7 @@ export const getUsers = () => async dispatch => {
 
     if (response.ok) {
         const users = await response.json();
-
-        dispatch(loadUsers([users]))
+        dispatch(loadUsers(users.users))
     }
 }
 
@@ -63,7 +62,6 @@ const userReducer = (state = initialState, action) => {
         case LOAD_USERS: {
             newState = { ...state };
             newState.users = action.users.reduce((users, user) => {
-                // console.log(user)
                 users[user.id] = user;
                 return users
             }, {});

@@ -1,6 +1,7 @@
 #match__table {
     position: relative;
     width: 100%;
+    font-weight: var(--medium-weight);
 }
 
 #match__table td a {
@@ -13,5 +14,4 @@
 
 td#match__name {
     width: 50%;
-    /* padding: 10px; */
 }

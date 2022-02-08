@@ -1,8 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, matchPath } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getMatches } from '../../../store/matches';
+import { getUsers } from '../../../store/users';
 
 import './MatchList.css';
 
-const matches = [
+const matchers = [
     'Name N.',
     'Name N.',
     'Name N.',
@@ -21,6 +26,24 @@ const matches = [
 ]
 
 function MatchList() {
+    const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
+    const matchesObj = useSelector(state => state.matches.matches.byUserId)
+    const usersObj = useSelector(state => state.user.users);
+
+    useEffect(() => {
+        dispatch(getUsers());
+        dispatch(getMatches(sessionUser.id));
+        // dispatch(delete)
+    }, []);
+
+    let users;
+    if (usersObj) users = Object.values(usersObj);
+
+    let matches;
+    if (matchesObj) matches = Object.values(matchesObj);
+
+    console.log(usersObj[1])
     return (
         <>
             <div id="flex__container--split">
@@ -36,16 +59,17 @@ function MatchList() {
                 <div className="flex__container--child flex__container--padded">
                     <table id="match__table">
                         <tbody>
-                            {matches.map(match => {
+                            {matchesObj && matches.map(match => {
                                 return (
                                     <tr>
                                         <td className="match__name">
-                                            <Link to="/users/2" className="underline-slide">
-                                                {match}
+                                            <Link to={`/users/${match.user_2_id}`} className="underline-slide">
+                                                {usersObj[match.user_2_id]?.first_name + ' '}
+                                                {usersObj[match.user_2_id]?.last_name.slice(0, 1) + '.'}
                                             </Link>
                                         </td>
                                         <td className="match__percentage">
-                                            99.0
+                                            {match.compatibility_score}
                                         </td>
                                     </tr>
                                 )
