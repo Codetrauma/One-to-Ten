@@ -74,7 +74,7 @@ const userReducer = (state = initialState, action) => {
 
         case UPDATE_USER: {
             newState = { ...state }
-            newState.byId.userId = action.user
+            newState.byId[action.user.id] = action.user
 
             return newState;
         }

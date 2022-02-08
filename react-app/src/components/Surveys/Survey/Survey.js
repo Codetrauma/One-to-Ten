@@ -28,6 +28,8 @@ const Survey = () => {
     }
 
     const dispatch = useDispatch();
+
+    //gets questions from state and puts them into array called questionsList
     const questions = useSelector(state => state.questions.byId);
     const questionsList = Object.values(questions)
 
