@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
 from app.models.question_responses import QuestionResponses
 from app.forms import SurveyForm
