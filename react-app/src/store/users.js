@@ -54,7 +54,7 @@ export const changeUser = (payload, id) => async dispatch => {
 
 
 //reducer
-const initialState = { users: {} }
+const initialState = { byId: {} }
 
 const userReducer = (state = initialState, action) => {
     let newState;
@@ -62,8 +62,8 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USERS: {
             newState = { ...state };
-            console.log(`user action`, action.users)
-            newState.users = action.users.reduce((users, user) => {
+            // console.log(`user action`, action.users)
+            newState.byId = action.users.reduce((users, user) => {
                 // console.log(user)
                 users[user.id] = user;
                 return users
@@ -74,7 +74,7 @@ const userReducer = (state = initialState, action) => {
 
         case UPDATE_USER: {
             newState = { ...state }
-            newState.users.userId = action.user
+            newState.byId.userId = action.user
 
             return newState;
         }
