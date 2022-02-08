@@ -2,6 +2,7 @@ from app.models import db, Questions
 
 
 def seed_questions():
+
   # basic
   survey_01_q1 = Questions(
     weight=1,

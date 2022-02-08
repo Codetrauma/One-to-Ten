@@ -1,6 +1,6 @@
 import './MatchProfile.css';
 
-function MatchProfile({ user }) {
+function MatchProfile({ user, children, previewMode }) {
     const socials = {
         facebook: user.facebook,
         instagram: user.instagram,
@@ -65,12 +65,20 @@ function MatchProfile({ user }) {
         <>
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
-                    <h1 className="main-color">
-                        {user.first_name} {user.last_name.slice(0, 1) + '.'}
-                    </h1>
-                    <p className="p-1 accent-color-1">
-                        Your Match Compatibility: 0%
-                    </p>
+
+                            <h1 className="main-color">
+                                    { user.first_name } {user.last_name.slice(0, 1) + '.'}
+                            </h1>
+                    {previewMode ?
+                        <p className="p-1 accent-color-1">
+                            Complete more surveys to view your compatibility.
+                        </p>
+                        :
+                        <p className="p-1 accent-color-1">
+                            Your Match Compatibility: 0
+                        </p>
+                    }
+                    {previewMode && children}
                 </div>
                 <div className="flex__container--child flex__container--padded match__profile--info">
                     <div className="match__profile--info">
@@ -85,16 +93,24 @@ function MatchProfile({ user }) {
                         <div className="match__socials">
                             <h5>Get Connected</h5>
                             {truthyExists ? socialLinks : (
+                                 previewMode ?
+                                 <>
+                                     You have not added any social links yet.
+                                 </>
+                                 :
+
                                 <>
-                                    We have no way to help you get in touch with {user.first_name} :(
+                                    We have no way to help you get in touch with {user.first_name} {`:(`}
                                 </>
                             )}
                         </div>
-                        <div className="match__delete">
-                            <button className="match__delete--button underline-slide accent-color-4">
-                                Block {user.first_name}
-                            </button>
-                        </div>
+                        {   !previewMode &&
+                            <div className="match__delete">
+                                <button className="match__delete--button underline-slide accent-color-4">
+                                    Block {user.first_name}
+                                </button>
+                            </div>
+                        }
 
                     </div>
                 </div>
