@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import UserProfile from './UserProfile/UserProfile';
+import MatchProfile from './MatchProfile/MatchProfile';
 import { getOneUser } from '../../store/users';
 
 import '../../utils.css';
@@ -40,17 +41,7 @@ function User() {
       console.log(sessionUser.id, userId, sessionUser === userId)
     }
       {sessionUser.id === parseInt(userId, 10) ? <UserProfile sessionUser={sessionUser} /> : (
-        <ul>
-          <li>
-            <strong>User Id</strong> {user.id}
-          </li>
-          <li>
-            <strong>Name</strong> {user.first_name}
-          </li>
-          <li>
-            <strong>Biography</strong> {user.biography}
-          </li>
-        </ul>
+        <MatchProfile user={user} />
       )}
     </>
   )

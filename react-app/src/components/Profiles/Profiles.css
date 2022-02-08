@@ -1,4 +1,4 @@
-/* profile section */
+/* profile menu section */
 .profile__title {
     color: var(--accent-color-2);
 }
@@ -14,7 +14,7 @@
     margin: 10px 0;
 }
 
-/* stats section */
+/* profile stats section */
 .profile__stats {
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     font-weight: 600;
 }
 
-/* link styling */
+/* profile menu link styling */
 .profile__navigation--link a {
     box-sizing: content-box;
     color: var(--accent-color-2);

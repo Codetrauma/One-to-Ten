@@ -7,6 +7,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/Profiles/Profiles';
 import Survey from './components/Surveys/Survey/Survey'
+import FirstSurvey from './components/FirstSurvey/FirstSurvey'
 import { authenticate } from './store/session';
 
 import Navigation from './components/Navigation/Navigation';
@@ -62,6 +63,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/first-survey' exact={true} >
+            <FirstSurvey />
           </ProtectedRoute>
           {/* <ProtectedRoute path='/' exact={true} >
             <h1>Redirect to user profile?</h1>

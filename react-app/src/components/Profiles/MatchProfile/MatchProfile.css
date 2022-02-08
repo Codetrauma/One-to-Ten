@@ -1,0 +1,18 @@
+.match__profile--info {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+}
+
+.match__social--links {
+    margin-right: 20px;
+    color: var(--main-color);
+    font-weight: var(--medium-weight);
+}
+
+.match__delete--button {
+    color: var(--accent-color-4);
+    font-size: var(--body-small);
+    font-weight: var(--medium-weight);
+    background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
+}
