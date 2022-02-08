@@ -8,9 +8,9 @@ const loadMatches = (matches) => ({
     matches
 });
 
-const deleteMatch = (match) => ({
+const removeMatch = (matchedUserId) => ({
     type: DELETE_MATCH,
-    match
+    matchedUserId
 });
 
 // thunks
@@ -23,9 +23,11 @@ export const getMatches = (userId) => async dispatch => {
     }
 }
 
-// export const deleteMatch = (matchedUserId) => {
+export const deleteMatch = (userId, matchedUserId) => async dispatch => {
+    // const response = await fetch(``)
 
-// }
+    dispatch(removeMatch(matchedUserId))
+}
 
 // reducer
 const initialState = { matches: {} };
@@ -41,9 +43,10 @@ const matchReducer = (state = initialState, action) => {
                 return matches;
             }, {})
             return newState;
-
         case DELETE_MATCH:
             newState = { ...state };
+            // console.log(newState.matches['byUserId'])
+            // delete newState.matches['byUserId'][action.matchedUserId];
             return newState;
         default:
             return state

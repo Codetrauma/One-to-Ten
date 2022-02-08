@@ -4,26 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches } from '../../../store/matches';
 import { getUsers } from '../../../store/users';
+import { deleteMatch } from '../../../store/matches';
 
 import './MatchList.css';
-
-const matchers = [
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-    'Name N.',
-]
 
 function MatchList() {
     const dispatch = useDispatch();
@@ -34,7 +17,7 @@ function MatchList() {
     useEffect(() => {
         dispatch(getUsers());
         dispatch(getMatches(sessionUser.id));
-        // dispatch(delete)
+        // if (sessionUser.id) dispatch(deleteMatch(sessionUser?.id, 3))
     }, []);
 
     let users;
