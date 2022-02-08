@@ -62,6 +62,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USERS: {
             newState = { ...state };
+            console.log(`user action`, action.users)
             newState.users = action.users.reduce((users, user) => {
                 // console.log(user)
                 users[user.id] = user;

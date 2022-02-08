@@ -58,7 +58,7 @@ export const createSurveyResponse = (surveyResponse) => async dispatch =>{
 
 
 //reducer
-const initialState = { surveyResponses: {} };
+const initialState = { surveyResponses: [] };
 
 const surveyResponseReducer = (state = initialState, action) => {
     let newState;
@@ -74,6 +74,15 @@ const surveyResponseReducer = (state = initialState, action) => {
             return newState;
         }
         case DELETE_SURVEY_RESPONSE: {
+            newState = { ...state }
+
+            newState.surveyResponses.forEach(surveyResponse => {
+                if (surveyResponse.survey_id === action.surveyId) {
+                    delete newState.surveyResponses.surveyResponse
+                }
+            })
+
+            return newState;
 
         }
         case ADD_SURVEY_RESPONSE: {
@@ -81,7 +90,6 @@ const surveyResponseReducer = (state = initialState, action) => {
 
 
 
-            
 
         }
         default:

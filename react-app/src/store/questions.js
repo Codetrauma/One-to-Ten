@@ -28,7 +28,7 @@ const questionReducer = (state = initialState, action) => {
         case LOAD_QUESTIONS: {
             newState = { ...state };
 
-            console.log(`ACTION ACTION ACTION`, action)
+            // console.log(`ACTION ACTION ACTION`, action)
 
             newState.questions = action.questions.questions.map(question => question)
 

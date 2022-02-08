@@ -28,7 +28,7 @@ const deleteQuestionResponses = (surveyId) => ({
 
 //thunks
 export const getQuestionResponses = (surveyId, userId) => async dispatch => {
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}`);
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`);
 
     if (res.ok) {
         const questionResponses = await res.json();
@@ -38,7 +38,7 @@ export const getQuestionResponses = (surveyId, userId) => async dispatch => {
 };
 
 export const createQuestionResponses = (surveyId, userId, payload) => async dispatch => {
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}`, {
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
@@ -80,13 +80,20 @@ export const removeQuestionResponses = (surveyId, userId) => async dispatch => {
 
 
 //reducers
-const initialState = { }
+const initialState = { questionResponses: [] }
 
 const questionResponsesReducer = (state = initialState, action) => {
-
+    let newState;
     switch (action.type) {
         case LOAD_QUESTION_RESPONSES: {
+            newState = { ...state }
+            // newState.questionResponses = action.questionResponses.reduce((questionResponses, questionResponse) => {
 
+            //     questionResponses[questionResponse.id] = questionResponse;
+            //     return questionResponses
+            // }, {});
+
+            return newState;
         }
         case ADD_QUESTION_RESPONSE: {
 

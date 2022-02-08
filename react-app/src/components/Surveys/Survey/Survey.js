@@ -6,10 +6,12 @@ import Slider from '../Slider/Slider'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
 import './Survey.css'
 import { getSurveys } from '../../../store/surveys';
+import { getQuestionResponses } from '../../../store/questionResponses';
 
 const Survey = () => {
 
     // const userId = session.user.id
+    const sessionUser = useSelector(state => state.session.user);
     const params = useParams();
     const history = useHistory()
     // let surveyId = 4;
@@ -28,10 +30,13 @@ const Survey = () => {
     const dispatch = useDispatch();
     const questions = useSelector(state => state.questions.questions);
 
+    const questionResponses = useSelector(state => state.questionResponses);
+
 
     useEffect(() => {
         dispatch(getSurveys());
         dispatch(getQuestions(params.surveyId));
+        dispatch(getQuestionResponses(params.surveyId, sessionUser.id))
     }, [dispatch])
 
     if (!questions) return null;
