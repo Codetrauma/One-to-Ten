@@ -19,6 +19,7 @@ import StyleGuide from './components/StyleGuide/StyleGuide';
 
 import './App.css';
 import MatchList from './components/Profiles/MatchList/MatchList';
+import EditProfile from './components/Profiles/EditProfile/EditProfile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +56,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId/matches' exact={true} >
             <MatchList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/profile' exact={true} >
+            <EditProfile />
           </ProtectedRoute>
           <ProtectedRoute path='/surveys/:surveyId' exact={true} >
             <Survey />

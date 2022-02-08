@@ -40,9 +40,11 @@ function User() {
     <>{
       console.log(sessionUser.id, userId, sessionUser === userId)
     }
-      {sessionUser.id === parseInt(userId, 10) ? <UserProfile sessionUser={sessionUser} /> : (
+      {sessionUser.id === parseInt(userId, 10) ?
+        <UserProfile sessionUser = { sessionUser } />
+        :
         <MatchProfile user={user} />
-      )}
+      }
     </>
   )
 }

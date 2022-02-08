@@ -87,13 +87,13 @@ function SurveyList() {
     // console.log(`!!!!!!!!!!`, Object.values(surveys))
     // const surveyList = Object.values(surveys);
     // console.log(surveyList)
+    
+
+        // useEffect(() => {
+        //     dispatch(getSurveys());
+        // }, [dispatch])
 
     const [deleteResponseMode, setDeleteResponseMode] = useState(false)
-
-
-    // useEffect(() => {
-    //     dispatch(getSurveys());
-    // }, [dispatch])
     const toggleDeleteResponse = () => {
         setDeleteResponseMode(!deleteResponseMode)
     }
