@@ -58,7 +58,7 @@ export const createSurveyResponse = (surveyResponse) => async dispatch =>{
 
 
 //reducer
-const initialState = { surveyResponses: [] };
+const initialState = { bySurveyId: {} };
 
 const surveyResponseReducer = (state = initialState, action) => {
     let newState;
@@ -67,30 +67,25 @@ const surveyResponseReducer = (state = initialState, action) => {
         case LOAD_SURVEY_RESPONSES: {
             newState = { ...state }
 
-            newState.surveyResponses = action.surveyResponses.survey_responses.map(surveyResponse => {
-                return surveyResponse
-            })
+            newState.bySurveyId = action.surveyResponses.survey_responses.reduce((surveyResponses, response) => {
+                surveyResponses[response.survey_id] = response;
+                return surveyResponses
+            }, {})
 
             return newState;
         }
         case DELETE_SURVEY_RESPONSE: {
-            newState = { ...state }
-
-            newState.surveyResponses.forEach(surveyResponse => {
-                if (surveyResponse.survey_id === action.surveyId) {
-                    delete newState.surveyResponses.surveyResponse
-                }
-            })
+            newState = { ...state };
+            delete newState.bySurveyId[action.surveyId]
 
             return newState;
 
         }
         case ADD_SURVEY_RESPONSE: {
-            newState = { ...state,  }
+            newState = { ...state }
+            newState.bySurveyId[action.surveyResponse.survey_id] = action.surveyResponse
 
-
-
-
+            return newState;
         }
         default:
             return state;

@@ -13,10 +13,11 @@ function SurveyList() {
 
     const dispatch = useDispatch();
     const surveys = useSelector(state => state.surveys);
-    const surveyResponses = useSelector(state => state.surveyResponses.surveyResponses);
+    const surveyResponses = useSelector(state => state.surveyResponses.bySurveyId);
 
     //change from object to array to make iterable
     const surveyList = Object.values(surveys);
+    const surveyResponseList = Object.values(surveyResponses);
 
     useEffect(() => {
         dispatch(getSurveys());
@@ -35,7 +36,7 @@ function SurveyList() {
 
         <div id="surveys__container">
                 {surveyList.map(survey => {
-                    let completed = surveyResponses.map(response => response.survey_id).includes(survey.id)
+                    let completed = surveyResponseList.map(response => response.survey_id).includes(survey.id)
                     return (
                         <SurveyButton
                             key={survey.id}
