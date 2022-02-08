@@ -14,6 +14,10 @@
     max-width: 520px;
 }
 
+.flex__container--padded{
+    padding: 60px;
+}
+
 /* divider between flex containers */
 #flex__container--divider {
     position: absolute;
@@ -37,4 +41,9 @@
     height: 100%;
     background-color: var(--main-color);
     z-index: -5;
+}
+
+
+.margin-bottom-30{
+    margin-bottom: 30px;
 }
