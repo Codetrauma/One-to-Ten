@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats
+from app.models import db, Surveys, SurveyResponses, Questions, QuestionStats, Matches, User
 from app.models.question_responses import QuestionResponses
 from app.forms import SurveyForm
 
@@ -20,14 +20,15 @@ def survey_questions(id):
     survey = Surveys.query.get(id)
     return {'questions': [question.to_dict() for question in survey.survey]}
 
+
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses')
 def survey_user(id, user_id):
+    all_questions_dict = {}
     questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
-        question_responses = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == user_id).all()
-        for questions in question_responses:
-            return questions.to_dict()
-    return {'message': 'No responses found'}
+        question_responses = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question.id).all()
+        all_questions_dict[question.id] = [response.to_dict() for response in question_responses]
+    return {'questions': all_questions_dict}
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
@@ -40,7 +41,6 @@ def survey_user_response(id, user_id):
         validate = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).all()
         for something in validate:
             db.session.delete(something)
-
         new_question_response = QuestionResponses(response=response,
                                user_id=user_id,
                                question_id=question_id)
@@ -50,6 +50,33 @@ def survey_user_response(id, user_id):
         question.question_stats.average = (question.question_stats.response_count * question.question_stats.average) / new_response_count
         question_stats.response_count += 1
         db.session.add(new_question_response)
+    user_to_match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    for match in user_to_match:
+        previous_compatibility_score = match.compatibility_score
+        compatibility_modification = 0
+        for questions in request_body_list:
+            question_id = questions['question_id']
+            current_user_response = questions['value']
+            second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_2_id, QuestionResponses.question_id == question_id).first()
+            average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+
+            if second_user and second_user.response:
+                question_compatibility = (current_user_response - average) * (second_user.response - average)
+                compatibility_modification += question_compatibility
+        match.compatibility_score = compatibility_modification + previous_compatibility_score
+    second_user_to_match = Matches.query.filter(Matches.user_2_id == user_id).all()
+    for match in second_user_to_match:
+        previous_compatibility_score = match.compatibility_score
+        compatibility_modification = 0
+        for questions in request_body_list:
+            question_id = questions['question_id']
+            current_user_response = questions['value']
+            second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_1_id, QuestionResponses.question_id == question_id).first()
+            average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+            if second_user and second_user.response:
+                question_compatibility = (current_user_response - average) * (second_user.response - average)
+                compatibility_modification += question_compatibility
+        match.compatibility_score = compatibility_modification + previous_compatibility_score
     db.session.add(new_survey_response)
     db.session.commit()
     return {"message": "Success"}
@@ -71,10 +98,13 @@ def survey_user_delete(id, userId):
     questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
         question_response = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == userId).first()
+        if question_response:
+            db.session.delete(question_response)
+        else:
+            return {"message": "No response found"}
         question_stats = QuestionStats.query.filter(QuestionStats.question_id == question.id)
         for question_stat in question_stats:
             question_stat.response_count -= 1
-        db.session.delete(question_response)
     db.session.delete(survey)
     db.session.commit()
     return {"message": "Survey Response deleted"}
