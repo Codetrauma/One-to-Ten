@@ -30,7 +30,7 @@ const Survey = () => {
     const dispatch = useDispatch();
     const questions = useSelector(state => state.questions.questions);
 
-    const questionResponses = useSelector(state => state.questionResponses);
+    const questionResponses = useSelector(state => state.questionResponses.bySurveyId);
 
 
     useEffect(() => {

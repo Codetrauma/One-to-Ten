@@ -2,24 +2,26 @@
 //action types
 const LOAD_QUESTION_RESPONSES = 'question_responses/LOAD';
 const ADD_QUESTION_RESPONSE = 'question_response/ADD';
-const UPDATE_QUESTION_RESPONSE = 'question_response/UPDATE';
+// const UPDATE_QUESTION_RESPONSE = 'question_response/UPDATE';
 const DELETE_QUESTION_RESPONSE = 'question_response/DELETE';
 
 //action creators
-const loadQuestionsResponses = (questionResponses) => ({
+const loadQuestionsResponses = (questionResponses, surveyId) => ({
     type: LOAD_QUESTION_RESPONSES,
-    questionResponses
+    questionResponses,
+    surveyId
 });
 
-const addQuestionResponses = (questionResponse) => ({
+const addQuestionResponses = (questionResponse, surveyId) => ({
     type: ADD_QUESTION_RESPONSE,
-    questionResponse
+    questionResponse,
+    surveyId
 });
 
-const updateQuestionResponses = (questionResponse) => ({
-    type: UPDATE_QUESTION_RESPONSE,
-    questionResponse
-})
+// const updateQuestionResponses = (questionResponse) => ({
+//     type: UPDATE_QUESTION_RESPONSE,
+//     questionResponse
+// })
 
 const deleteQuestionResponses = (surveyId) => ({
     type: DELETE_QUESTION_RESPONSE,
@@ -32,8 +34,9 @@ export const getQuestionResponses = (surveyId, userId) => async dispatch => {
 
     if (res.ok) {
         const questionResponses = await res.json();
+        console.log(`THUNKKKKKKKK`, surveyId)
 
-        dispatch(loadQuestionsResponses(questionResponses))
+        dispatch(loadQuestionsResponses(questionResponses, surveyId))
     }
 };
 
@@ -46,7 +49,7 @@ export const createQuestionResponses = (surveyId, userId, payload) => async disp
 
     if (res.ok) {
         const newQuestionResponses = await res.json();
-        dispatch(addQuestionResponses(newQuestionResponses));
+        dispatch(addQuestionResponses(newQuestionResponses, surveyId));
         return newQuestionResponses;
     }
 };
@@ -61,7 +64,7 @@ export const editQuestionResponses = (surveyId, userId, payload) => async dispat
     if (res.ok) {
         const edittedQuestionResponses = await res.json();
 
-        dispatch(updateQuestionResponses(edittedQuestionResponses));
+        dispatch(addQuestionResponses(edittedQuestionResponses, surveyId));
         return edittedQuestionResponses;
     }
 };
@@ -80,29 +83,36 @@ export const removeQuestionResponses = (surveyId, userId) => async dispatch => {
 
 
 //reducers
-const initialState = { questionResponses: [] }
+const initialState = { bySurveyId: {} }
 
 const questionResponsesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_QUESTION_RESPONSES: {
             newState = { ...state }
-            // newState.questionResponses = action.questionResponses.reduce((questionResponses, questionResponse) => {
 
-            //     questionResponses[questionResponse.id] = questionResponse;
-            //     return questionResponses
-            // }, {});
+            newState.bySurveyId[action.surveyId] = action.questionResponses
+
+            // action.questionResponses.reduce((questionResponses, response) => {
+            //     questionResponses[] = response;
+            //     return questionResponses;
+            // }, {})
 
             return newState;
         }
         case ADD_QUESTION_RESPONSE: {
+            newState = { ...state }
 
+            newState.bySurveyId[action.surveyId] = action.questionResponses
+
+            return newState;
         }
-        case UPDATE_QUESTION_RESPONSE: {
+        case DELETE_QUESTION_RESPONSE: {
+            newState = { ...state }
 
-        }
-        case ADD_QUESTION_RESPONSE: {
+            delete newState.bySurveyId[action.surveyId]
 
+            return newState; 
         }
         default:
             return state;
