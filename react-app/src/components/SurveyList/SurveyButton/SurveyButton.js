@@ -10,7 +10,7 @@ function SurveyButton({ name, completed, id, deleteResponseMode }) {
 
     return (
         <>
-            <NavLink className='survey__navlink' to={`surveys/${id}`}>
+            <NavLink className='survey__navlink' to={`/surveys/${id}`}>
                 {deleteResponseMode && completed &&
                     <button className="survey__delete-resposnes" onClick={handleDelete}>
                         <span>X</span>

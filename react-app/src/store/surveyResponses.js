@@ -81,7 +81,7 @@ const surveyResponseReducer = (state = initialState, action) => {
 
 
 
-            console.log("NEWSTATEEEEEEEE", newState)
+            
 
         }
         default:
