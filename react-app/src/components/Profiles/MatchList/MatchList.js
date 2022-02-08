@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import { Link, matchPath } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches } from '../../../store/matches';
 import { getUsers } from '../../../store/users';
-import { deleteMatch } from '../../../store/matches';
 
 import './MatchList.css';
 
@@ -17,7 +16,6 @@ function MatchList() {
     useEffect(() => {
         dispatch(getUsers());
         dispatch(getMatches(sessionUser.id));
-        // if (sessionUser.id) dispatch(deleteMatch(sessionUser?.id, 3))
     }, []);
 
     let users;

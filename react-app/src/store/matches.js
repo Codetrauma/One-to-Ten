@@ -39,7 +39,7 @@ const matchReducer = (state = initialState, action) => {
         case LOAD_MATCHES:
             newState = { ...state };
             newState.matches['byUserId'] = action.matches.user_matches.reduce((matches, match) => {
-                matches[match.id] = match;
+                matches[match.user_2_id] = match;
                 return matches;
             }, {})
             return newState;
