@@ -1,7 +1,17 @@
 #match__table {
     position: relative;
+    width: 100%;
 }
 
-td#match__table {
+#match__table td a {
+    color: var(--accent-color-3);
+}
+
+#match__table td a:hover {
+    color: var(--main-color);
+}
+
+td#match__name {
+    width: 50%;
     /* padding: 10px; */
 }
