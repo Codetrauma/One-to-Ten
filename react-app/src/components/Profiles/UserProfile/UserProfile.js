@@ -7,6 +7,10 @@ function SessionProfile({ sessionUser }) {
     let isActive = sessionUser.isActive
     if (isActive === undefined) isActive = true
 
+    const handleDeactivate = () => {
+        console.log('handle deactivate')
+    }
+
     return (
         <>
             <div id="dark__background"></div>
@@ -35,11 +39,7 @@ function SessionProfile({ sessionUser }) {
                                 Answer Questions
                             </Link>
                         </p>
-                        <p className="profile__navigation--link">
-                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/responses`}>
-                                Deactivate Profile
-                            </Link>
-                            </p>
+
                         </>
                         }
 
@@ -48,6 +48,14 @@ function SessionProfile({ sessionUser }) {
                                 Edit Profile
                             </Link>
                         </p>
+                        {isActive &&
+                            <p
+                                className="deactivate profile__navigation--link underline-slide link__light"
+                                onClick={handleDeactivate}
+                            >
+                                Deactivate Profile
+                            </p>
+                        }
                     </div>
                 </div>
                 <div className="flex__container--child flex__container--padded">
