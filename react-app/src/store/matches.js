@@ -14,6 +14,16 @@ const removeMatch = (matchedUserId) => ({
 });
 
 // thunks
+export const createMatches = (userId) => async dispatch => {
+    const response = await fetch(`/api/users/${userId}/matches/create`, {
+        method: 'POST'
+    });
+
+    if (response.ok) {
+        const matches = await response.json();
+        dispatch(loadMatches(matches));
+    }
+}
 export const getMatches = (userId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/matches`);
 

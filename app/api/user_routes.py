@@ -84,8 +84,13 @@ def user_survey_responses(user_id):
 
     return { 'survey_responses': [survey_response.to_dict() for survey_response in survey_responses]}
 
+@user_routes.route('/<int:user_id>/matches')
+@login_required
+def user_matches(user_id):
+    match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    return {'user_matches': [match.to_dict() for match in match]}
 
-@user_routes.route('/<int:user_id>/matches/create', methods=['GET'])
+@user_routes.route('/<int:user_id>/matches/create', methods=['POST'])
 @login_required
 def generate_matches(user_id):
     users = User.query.all()
@@ -100,10 +105,6 @@ def generate_matches(user_id):
         db.session.add(key)
 
     db.session.commit()
-    return {'message': 'Success'}
 
-@user_routes.route('/<int:user_id>/matches', methods=['GET'])
-@login_required
-def user_matches(user_id):
     match = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in match]}
