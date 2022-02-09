@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom';
 import { getQuestions } from '../../../store/questions';
@@ -11,10 +11,9 @@ const Survey = () => {
     // const userId = session.user.id
     const params = useParams();
     const history = useHistory()
-    // let surveyId = 4;
-    console.log({ params })
+    let surveyId = 4;
 
-    const [formData, setFormData] = useState()
+    const [validationObject, setValidationObject] = useState({ test: true });
 
 
     const surveys = [
@@ -67,31 +66,35 @@ const Survey = () => {
             name: 'Music'
         }
     ]
-    const surveyQuestions = [
+    const questions = [
         {
         id:1,
         one_label:'Disagree',
         ten_label: 'Agree',
         text: `If all my ex-partners remembered to sign out of their streaming services prior to breaking up, I wouldn't have access to a single streaming service.`,
-        initial_value: 1
+        initial_value: 1,
+        surveyId: 4,
         },
         {
             id:36,
             one_label:'Disagree',
             ten_label: 'Agree',
             text: `When I hear the term 'Pop Culture' I immediately think of soda and soft drinks.`,
-            initial_value: 6
+            initial_value: 6,
+            surveyId: 4,
         },
         {
             id:222,
             one_label:'Disagree',
             ten_label: 'Agree',
             text: `I say that I like St. Vincent because I feel like cool people like St. Vincent, but I can't bring myself to genuinely enjoy her music.`,
-            initial_value: 7
+            initial_value: 7,
+            surveyId: 4,
         }
     ]
 
-    const surveyName = surveys.filter(survey => survey.id === 4)[0].name
+    const survey = surveys.filter(survey => survey.id === 4)[0]
+    const surveyQuestions = questions.filter(question => (parseInt(question.surveyId) === parseInt(survey.id)))
 
     // const dispatch = useDispatch();
     // const questions = useSelector(state => state.questions);
@@ -102,21 +105,15 @@ const Survey = () => {
 
     const handleSubmit = (e) => {
         console.log('handleSubmit')
-        let entries = []
+        let entries = {}
         let inputs = document.querySelectorAll('input')
 
         for (let i = 0; i < inputs.length; i++) {
-            let newObj = {
-                question_id: inputs[i]['id'],
-                value: inputs[i]['value']
-            }
-
-            entries.push(newObj)
+            entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
         }
 
-        let reqBody = JSON.stringify({
-            "question_responses": entries
-        })
+        let reqBody = {}
+        reqBody[surveyId] = entries
 
         console.log(reqBody)
     }
@@ -128,17 +125,22 @@ const Survey = () => {
 
     return (
         <>
+        { validationObject
+                &&
+        <>
         <div className='survey-background' id='dark__background'/>
         <div className='survey' id="flex__container--split">
             <div className='left-col flex__container--child'>
-                    <h1>{surveyName}</h1>
+                    <h1>{survey.name}</h1>
                     <div className='button-container'>
 
                     <ArrowButton
                         // type='submit'
                         // formId='survey-form'
                         // validationObject={{}}
-                            onClickFunction={handleSubmit}
+                                onClickFunction={handleSubmit}
+                                disabled={true}
+                            // validationObject={validationObject}
                     >
                         Submit
 
@@ -162,12 +164,16 @@ const Survey = () => {
                         text={question.text}
                         questionId={question.id}
                         initialValue={question.initial_value}
+                        validationObject={validationObject}
+                        setValidationObject={setValidationObject}
                     />
                     ))
                 }
             </form>
             </div>
-            </div>
+                </div>
+                </>
+            }
     </>
     )
 }
