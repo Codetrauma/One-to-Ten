@@ -21,7 +21,6 @@ function User() {
   if (!user) {
     return (
       <>
-        <div id="dark__background"></div>
         <div className="error__404 link__light">
           <h3>User Does Not Exist</h3>
           <p className="p-1">
