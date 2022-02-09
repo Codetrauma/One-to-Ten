@@ -89,7 +89,7 @@ function MatchProfile({ user, children, previewMode }) {
         </>
     )
 
-    if (!match && location.pathname !== `/users/${sessionUser.id}` || !user) {
+    if (!match && !previewMode) {
         return (
             <>
                 <div className="error__404">

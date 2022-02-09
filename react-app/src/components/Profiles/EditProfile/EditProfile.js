@@ -6,6 +6,7 @@ import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, getOneUser } from '../../../store/users';
+import MatchProfileSelf from "../MatchProfile/MatchProfileSelf"
 
 const EditProfile = ({initialPreviewMode}) => {
     let params = useParams()
@@ -35,8 +36,8 @@ const EditProfile = ({initialPreviewMode}) => {
     const [validationObject, setValidationObject] = useState({ true: true })
 
     let previewUser = {
-        // first_name: sessionUser.first_name,
-        // last_name: sessionUser.last_name,
+        first_name: sessionUser.first_name,
+        last_name: sessionUser.last_name,
         facebook,
         instagram,
         snapchat,
@@ -51,7 +52,7 @@ const EditProfile = ({initialPreviewMode}) => {
     }
 
     const onProfileUpdate = async (e) => {
-        console.log('updating profile!!!!!!!!!!')
+        // console.log('updating profile!!!!!!!!!!')
         e.preventDefault()
 
         const editedProfile = await dispatch(changeUser(previewUser, sessionUser.id));
@@ -65,7 +66,8 @@ const EditProfile = ({initialPreviewMode}) => {
         history.push(`/users/${urlUserId}`)
     }
 
-    let currentUserId = 1
+    const currentSessionUser = useSelector(state => state.session.user.id);
+    let currentUserId = currentSessionUser;
 
     useEffect(() => {
         dispatch(getOneUser(urlUserId))
