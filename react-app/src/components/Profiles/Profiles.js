@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import UserProfile from './UserProfile/UserProfile';
@@ -33,7 +33,19 @@ function User() {
   }, [dispatch])
 
   if (!user) {
-    return null;
+    console.log('test')
+    return (
+      <>
+        <div className="error__404">
+          <h3>Match Does Not Exist</h3>
+          <p className="p-1">
+            <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
+              Click here to return to your top matches list.
+            </Link>
+          </p>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -41,7 +53,7 @@ function User() {
       console.log(sessionUser.id, userId, sessionUser === userId)
     }
       {sessionUser.id === parseInt(userId, 10) ?
-        <UserProfile sessionUser = { sessionUser } />
+        <UserProfile sessionUser={sessionUser} />
         :
         <MatchProfile user={user} />
       }

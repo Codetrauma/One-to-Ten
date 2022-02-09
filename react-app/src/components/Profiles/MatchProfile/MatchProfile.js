@@ -89,8 +89,6 @@ function MatchProfile({ user, children, previewMode }) {
         </>
     )
 
-    console.log(user)
-
     if (!match && location.pathname !== `/users/${sessionUser.id}` || !user) {
         return (
             <>
