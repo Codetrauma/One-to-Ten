@@ -7,25 +7,25 @@ function SessionNav({ sessionUser }) {
             <>
                 <div className="nav__bar--child nav__bar--2">
                     <div className="nav__bar--grid">
-                        <div className="nav__bar--grid-left link__light">
+                        <div className="nav__bar--grid-left nav__link--light">
                             <NavLink
-                                activeClassName='nav__bar--link-active link__light'
+                                activeClassName='nav__bar--link-active nav__link--light'
                                 className="underline-slide"
                                 to={`/users/${sessionUser.id}/matches`} >
                                 View Matches
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-right link__light">
+                        <div className="nav__bar--grid-right nav__link--light">
                             <NavLink
-                                activeClassName='nav__bar--link-active link__light'
+                                activeClassName='nav__bar--link-active nav__link--light'
                                 className="underline-slide"
                                 to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-left link__light">
+                        <div className="nav__bar--grid-left nav__link--light">
                             <NavLink
-                                activeClassName='nav__bar--link-active link__light'
+                                activeClassName='nav__bar--link-active nav__link--light'
                                 className="underline-slide"
                                 to={`/surveys`}>
                                 Answer Questions
@@ -43,7 +43,7 @@ function SessionNav({ sessionUser }) {
                                 Participant
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-right link__light">
+                        <div className="nav__bar--grid-right nav__link--light">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
                                 className="underline-slide"
@@ -59,7 +59,7 @@ function SessionNav({ sessionUser }) {
                                 </NavLink>
                             </div>
                         </div>
-                        <div className="nav__bar--grid-right link__light">
+                        <div className="nav__bar--grid-right nav__link--light">
                             <a
                                 activeClassName='nav__bar--link-active'
                                 className="underline-slide"

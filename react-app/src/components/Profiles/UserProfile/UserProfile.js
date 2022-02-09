@@ -39,12 +39,12 @@ function SessionProfile({ sessionUser }) {
                         {isActive &&
                             <>
                                 <p className="profile__navigation--link">
-                                    <Link className="underline-slide profile__link--light" to={`/users/${sessionUser.id}/matches`}>
+                                    <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
                                         View Matches
                                     </Link>
                                 </p>
                                 <p className="profile__navigation--link">
-                                    <Link className="underline-slide profile__link--light" to="/surveys">
+                                    <Link className="underline-slide" to="/surveys">
                                         Answer Questions
                                     </Link>
                                 </p>
@@ -53,7 +53,7 @@ function SessionProfile({ sessionUser }) {
                         }
 
                         <p className="profile__navigation--link">
-                            <Link className="underline-slide profile__link--light" to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide" to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </Link>
                         </p>
@@ -65,7 +65,7 @@ function SessionProfile({ sessionUser }) {
                                 hideText={`Go Back`}
                             >
                                 <p
-                                    className="deactivate profile__navigation--link"
+                                    className="deactivate"
                                 >
                                     Deactivate Profile
                                 </p>

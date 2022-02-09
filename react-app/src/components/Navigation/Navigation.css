@@ -69,3 +69,7 @@
     border: none;
     all: unset;
 }
+
+.nav__link--light a {
+    background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
+}

@@ -37,8 +37,5 @@
     box-sizing: content-box;
     color: var(--accent-color-2);
     text-decoration: none;
-}
-
-.profile__link--light {
     background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
 }
