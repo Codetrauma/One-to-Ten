@@ -109,7 +109,6 @@ def generate_matches(user_id):
         if user_id != user.id:
             match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
             match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
-            user.isActive = True
             db.session.add(match1)
             db.session.add(match2)
 
@@ -125,6 +124,8 @@ def delete_matches(user_id):
     Find and delete all matches where a given user_id shows up in the record,
     on either user_1_id column or user_2_id column.
     """
+    user = User.query.get(user_id)
+    user.is_active = False
     matches = Matches.query.filter(
                 or_(
                     Matches.user_1_id == user_id,
