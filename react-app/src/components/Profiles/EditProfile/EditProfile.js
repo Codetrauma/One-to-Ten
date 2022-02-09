@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Redirect, useHistory, useParams } from "react-router-dom"
 import FormInput from '../../Forms/FormInput/FormInput'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
 import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 import { useDispatch, useSelector } from "react-redux";
-import { changeUser } from '../../../store/users';
+import { changeUser, getOneUser } from '../../../store/users';
 
 const EditProfile = ({initialPreviewMode}) => {
     let params = useParams()
@@ -18,23 +18,25 @@ const EditProfile = ({initialPreviewMode}) => {
     //     last_name: 'User'
     // }
 
-    const sessionUser = useSelector(state => state.session.user)
-    console.log(typeof sessionUser.id, sessionUser.id)
+    // const sessionUser = useSelector(state => state.session.user)
+    // console.log(typeof sessionUser.id, sessionUser.id)
+    const sessionUser = useSelector(state => state.user?.byId[urlUserId])
+    console.log(sessionUser, 'HELLLLLLLLLLLLO')
 
     const [previewMode, setPreviewMode] = useState(initialPreviewMode || false)
-    const [biography, setBiography] = useState(sessionUser.biography || '')
-    const [facebook, setFacebook] = useState(sessionUser.facebook || '')
-    const [instagram, setInstagram] = useState(sessionUser.instagram || '')
-    const [snapchat, setSnapchat] = useState(sessionUser.snapchat || '')
-    const [twitter, setTwitter] = useState(sessionUser.twitter || '')
-    const [tiktok, setTikTok] = useState(sessionUser.tiktok || '')
-    const [github, setGithub] = useState(sessionUser.github || '')
+    const [biography, setBiography] = useState(sessionUser?.biography || '')
+    const [facebook, setFacebook] = useState(sessionUser?.facebook || '')
+    const [instagram, setInstagram] = useState(sessionUser?.instagram || '')
+    const [snapchat, setSnapchat] = useState(sessionUser?.snapchat || '')
+    const [twitter, setTwitter] = useState(sessionUser?.twitter || '')
+    const [tiktok, setTikTok] = useState(sessionUser?.tiktok || '')
+    const [github, setGithub] = useState(sessionUser?.github || '')
     const [errors, setErrors] = useState()
     const [validationObject, setValidationObject] = useState({ true: true })
 
     let previewUser = {
-        first_name: sessionUser.first_name,
-        last_name: sessionUser.last_name,
+        // first_name: sessionUser.first_name,
+        // last_name: sessionUser.last_name,
         facebook,
         instagram,
         snapchat,
@@ -43,7 +45,6 @@ const EditProfile = ({initialPreviewMode}) => {
         github,
         biography
     }
-    console.log(previewUser, 'pupupupupupu')
 
     const togglePreviewMode = () => {
         setPreviewMode(!previewMode)
@@ -65,6 +66,10 @@ const EditProfile = ({initialPreviewMode}) => {
     }
 
     let currentUserId = 1
+
+    useEffect(() => {
+        dispatch(getOneUser(urlUserId))
+    }, [dispatch])
 
 
     return (
