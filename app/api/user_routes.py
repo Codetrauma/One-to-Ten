@@ -90,7 +90,7 @@ def user_matches(user_id):
     match = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in match]}
 
-@user_routes.route('/<int:user_id>/matches/create', methods=['GET'])
+@user_routes.route('/<int:user_id>/matches/create', methods=['POST'])
 @login_required
 def generate_matches(user_id):
     users = User.query.all()
