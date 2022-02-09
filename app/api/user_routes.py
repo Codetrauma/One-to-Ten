@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.api.survey_routes import survey
 from app.forms import UserForm
+from app.forms.user_edit_form import UserEditForm
 from app.models import db, User, SurveyResponses, Matches
 
 user_routes = Blueprint('users', __name__)
@@ -44,21 +45,21 @@ def user_update(id):
     Update the session user's record if id of record being updated matches current user's id.
     Returns unauthorized error ids do not match.
     """
-    form = UserForm()
+    form = UserEditForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if id == current_user.id:
         user = User.query.get(id)
 
         if form.validate_on_submit():
-            user.first_name = form.data['first_name']
-            user.last_name = form.data['last_name']
-            user.email = form.data['email']
-            user.password = form.data['password']
-            user.gender = form.data['gender']
-            user.dob = form.data['dob']
-            user.city = form.data['city']
-            user.state_abbreviation = form.data['state_abbreviation']
+            # user.first_name = form.data['first_name']
+            # user.last_name = form.data['last_name']
+            # user.email = form.data['email']
+            # user.password = form.data['password']
+            # user.gender = form.data['gender']
+            # user.dob = form.data['dob']
+            # user.city = form.data['city']
+            # user.state_abbreviation = form.data['state_abbreviation']
             user.biography = form.data['biography']
             user.facebook = form.data['facebook']
             user.instagram = form.data['instagram']
