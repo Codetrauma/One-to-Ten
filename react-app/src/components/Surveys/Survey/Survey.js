@@ -7,25 +7,16 @@ import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
 import './Survey.css'
 import { getSurveys } from '../../../store/surveys';
 import { getQuestionResponses } from '../../../store/questionResponses';
-
+import { createSurveyResponse } from '../../../store/surveyResponses';
 const Survey = () => {
 
     // const userId = session.user.id
     const sessionUser = useSelector(state => state.session.user);
     const params = useParams();
     const history = useHistory()
-    // let surveyId = 4;
-    // console.log(`PARAMS `, { params })
 
     const [validationObject, setValidationObject] = useState({ test: true });
 
-
-    const survey = useSelector(state => state.surveys[params.surveyId]);
-
-    let surveyName;
-    if (survey) {
-        surveyName = survey.name
-    }
 
     const dispatch = useDispatch();
 
@@ -42,26 +33,37 @@ const Survey = () => {
         dispatch(getQuestionResponses(params.surveyId, sessionUser.id));
     }, [dispatch])
 
+    const allSurveys = useSelector(state => state.surveys)
+    const survey = useSelector(state => state.surveys[params.surveyId]);
+
+    let surveyName;
+    if (survey) {
+        surveyName = survey.name
+    }
+
+
     if (!questions) return null;
 
     const handleSubmit = (e) => {
         console.log('handleSubmit')
         let entries = {}
         let inputs = document.querySelectorAll('input')
-
         for (let i = 0; i < inputs.length; i++) {
             entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
         }
 
         let reqBody = {}
         reqBody[params.surveyId] = entries
-
         console.log(reqBody)
     }
+
 
     const handleCancel = (e) => {
         console.log('handleCancel')
         history.push('/surveys')
+    }
+    if (!survey) {
+        return <h1>No Survey Found</h1>
     }
 
     return (
@@ -72,7 +74,7 @@ const Survey = () => {
                     <div className='survey-background' id='dark__background' />
                     <div className='survey' id="flex__container--split">
                         <div className='left-col flex__container--child'>
-                            <h1>{survey.name}</h1>
+                            <h1>{survey?.name}</h1>
                             <div className='button-container'>
 
                                 <ArrowButton

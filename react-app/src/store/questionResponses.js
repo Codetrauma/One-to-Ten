@@ -95,7 +95,7 @@ const questionResponsesReducer = (state = initialState, action) => {
             // console.log(responseInfo, `999999999999999`)
             // console.log(responseInfo[0].length)
 
-            if (responseInfo[0].length) {
+            if (responseInfo[0]?.length) {
                 newState.bySurveyId_obj[action.surveyId] = action.questionResponses.questions
                 newState.bySurveyId_ResVals[action.surveyId] = responseInfo.reduce((responses, res) => {
                     responses[res[0].question_id] = res[0].response
