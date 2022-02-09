@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { removeQuestionResponses } from "../../../store/questionResponses";
 import { removeSurveyResponse } from "../../../store/surveyResponses";
 
 function SurveyButton({ name, completed, id, deleteResponseMode }) {
@@ -12,7 +13,8 @@ function SurveyButton({ name, completed, id, deleteResponseMode }) {
         e.stopPropagation()
         console.log(`deleting id ${id}`)
         //dispatch deletion
-        dispatch(removeSurveyResponse(id, userId))
+        dispatch(removeSurveyResponse(id, userId));
+        dispatch(removeQuestionResponses(id, userId)); 
     }
 
     return (

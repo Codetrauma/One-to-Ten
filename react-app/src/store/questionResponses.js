@@ -76,7 +76,7 @@ export const removeQuestionResponses = (surveyId, userId) => async dispatch => {
 
     if (res.ok) {
         const questionResponses = await res.json();
-        dispatch(deleteQuestionResponses(questionResponses));
+        dispatch(deleteQuestionResponses(surveyId));
         return questionResponses;
     }
 };
@@ -118,7 +118,7 @@ const questionResponsesReducer = (state = initialState, action) => {
             newState = { ...state }
 
             delete newState.bySurveyId_obj[action.surveyId];
-            delete newState.bySurveyId_ResVals[action.surveyId]; 
+            delete newState.bySurveyId_ResVals[action.surveyId];
 
             return newState;
         }
