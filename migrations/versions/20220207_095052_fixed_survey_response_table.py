@@ -1,7 +1,7 @@
 """Fixed survey response table
 
 Revision ID: 4b960e4de256
-Revises: 
+Revises:
 Create Date: 2022-02-07 09:50:52.373743
 
 """
@@ -30,8 +30,8 @@ def upgrade():
     sa.Column('first_name', sa.String(length=40), nullable=False),
     sa.Column('last_name', sa.String(), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('gender', sa.String(), nullable=False),
-    sa.Column('dob', sa.Date(), nullable=False),
+    sa.Column('gender', sa.String(), nullable=True),
+    sa.Column('dob', sa.Date(), nullable=True),
     sa.Column('biography', sa.String(), nullable=True),
     sa.Column('facebook', sa.String(), nullable=True),
     sa.Column('instagram', sa.String(), nullable=True),

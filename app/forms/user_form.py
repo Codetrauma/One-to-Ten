@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, DateField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.fields.html5 import EmailField
 from app.models import User
 
 
@@ -33,10 +34,10 @@ def user_exists(form, field):
 class UserForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    email = EmailField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
-    gender = SelectField('Gender', choices=[('Male', 'Male'), ('Female', 'Female'), ('Non-binary', 'Non-binary')])
-    dob = DateField('Date of Birth', format='%Y-%m-%d', validators=[DataRequired()])
+    gender = StringField('Gender')
+    dob = DateField('Date of Birth', format='%Y-%m-%d')
     biography = TextAreaField('Biography')
     facebook = StringField('Facebook')
     instagram = StringField('Instagram')
