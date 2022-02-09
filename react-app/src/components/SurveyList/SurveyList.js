@@ -16,7 +16,7 @@ function SurveyList() {
     const surveyResponses = useSelector(state => state.surveyResponses.bySurveyId);
 
     //change from object to array to make iterable
-    const surveyList = Object.values(surveys);
+    const surveyList = Object.values(surveys).splice(1);
     const surveyResponseList = Object.values(surveyResponses);
 
     useEffect(() => {
