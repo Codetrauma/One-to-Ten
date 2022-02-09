@@ -51,6 +51,7 @@ class User(db.Model, UserMixin):
                 'tiktok': self.tiktok,
                 'twitter': self.twitter,
                 'github': self.github,
+                'is_active': self.is_active
             }
         else:
             return {
@@ -65,6 +66,7 @@ class User(db.Model, UserMixin):
                 'tiktok': self.tiktok,
                 'twitter': self.twitter,
                 'github': self.github,
+                'is_active': self.is_active
             }
 
 
