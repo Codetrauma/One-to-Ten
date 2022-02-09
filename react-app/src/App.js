@@ -16,6 +16,7 @@ import SurveyList from './components/SurveyList/SurveyList';
 import Dots from './components/Dots/Dots';
 import Splash from './components/Splash/Splash';
 import StyleGuide from './components/StyleGuide/StyleGuide';
+import NoMatch from './components/404/404';
 
 import './App.css';
 import MatchList from './components/Profiles/MatchList/MatchList';
@@ -78,6 +79,9 @@ function App() {
           {/* <ProtectedRoute path='/' exact={true} >
             <h1>Redirect to user profile?</h1>
           </ProtectedRoute> */}
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </Switch>
       </div>
       <Dots />

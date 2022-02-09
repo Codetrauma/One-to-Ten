@@ -94,7 +94,7 @@ function MatchProfile({ user, children, previewMode }) {
     if (!match && location.pathname !== `/users/${sessionUser.id}` || !user) {
         return (
             <>
-                <div className="match__404">
+                <div className="error__404">
                     <h3>Match Does Not Exist</h3>
                     <p className="p-1">
                         <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
