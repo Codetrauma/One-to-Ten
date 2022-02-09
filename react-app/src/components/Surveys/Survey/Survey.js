@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom';
 import { getQuestions } from '../../../store/questions';
@@ -17,7 +17,7 @@ const Survey = () => {
     // let surveyId = 4;
     // console.log(`PARAMS `, { params })
 
-    const [formData, setFormData] = useState()
+    const [validationObject, setValidationObject] = useState({ test: true });
 
 
     const survey = useSelector(state => state.surveys[params.surveyId]);
@@ -46,21 +46,15 @@ const Survey = () => {
 
     const handleSubmit = (e) => {
         console.log('handleSubmit')
-        let entries = []
+        let entries = {}
         let inputs = document.querySelectorAll('input')
 
         for (let i = 0; i < inputs.length; i++) {
-            let newObj = {
-                question_id: inputs[i]['id'],
-                value: inputs[i]['value']
-            }
-
-            entries.push(newObj)
+            entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
         }
 
-        let reqBody = JSON.stringify({
-            "question_responses": entries
-        })
+        let reqBody = {}
+        reqBody[surveyId] = entries
 
         console.log(reqBody)
     }
@@ -72,17 +66,22 @@ const Survey = () => {
 
     return (
         <>
+        { validationObject
+                &&
+        <>
         <div className='survey-background' id='dark__background'/>
         <div className='survey' id="flex__container--split">
             <div className='left-col flex__container--child'>
-                    <h1>{surveyName}</h1>
+                    <h1>{survey.name}</h1>
                     <div className='button-container'>
 
                     <ArrowButton
                         // type='submit'
                         // formId='survey-form'
                         // validationObject={{}}
-                            onClickFunction={handleSubmit}
+                                onClickFunction={handleSubmit}
+                                disabled={true}
+                            // validationObject={validationObject}
                     >
                         Submit
 
@@ -106,12 +105,16 @@ const Survey = () => {
                         text={question.text}
                         questionId={question.id}
                         initialValue={question.initial_value}
+                        validationObject={validationObject}
+                        setValidationObject={setValidationObject}
                     />
                     ))
                 }
             </form>
             </div>
-            </div>
+                </div>
+                </>
+            }
     </>
     )
 }
