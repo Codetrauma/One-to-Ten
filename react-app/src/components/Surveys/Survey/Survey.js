@@ -54,7 +54,7 @@ const Survey = () => {
         }
 
         let reqBody = {}
-        reqBody[surveyId] = entries
+        reqBody[params.surveyId] = entries
 
         console.log(reqBody)
     }
@@ -66,56 +66,56 @@ const Survey = () => {
 
     return (
         <>
-        { validationObject
+            {validationObject
                 &&
-        <>
-        <div className='survey-background' id='dark__background'/>
-        <div className='survey' id="flex__container--split">
-            <div className='left-col flex__container--child'>
-                    <h1>{survey.name}</h1>
-                    <div className='button-container'>
+                <>
+                    <div className='survey-background' id='dark__background' />
+                    <div className='survey' id="flex__container--split">
+                        <div className='left-col flex__container--child'>
+                            <h1>{survey.name}</h1>
+                            <div className='button-container'>
 
-                    <ArrowButton
-                        // type='submit'
-                        // formId='survey-form'
-                        // validationObject={{}}
-                                onClickFunction={handleSubmit}
-                                disabled={true}
-                            // validationObject={validationObject}
-                    >
-                        Submit
+                                <ArrowButton
+                                    // type='submit'
+                                    // formId='survey-form'
+                                    // validationObject={{}}
+                                    onClickFunction={handleSubmit}
+                                    disabled={true}
+                                // validationObject={validationObject}
+                                >
+                                    Submit
 
-                    </ArrowButton>
-                    <ArrowButton
-                        onClickFunction={handleCancel}
-                    >
-                        Cancel
-                        </ArrowButton>
+                                </ArrowButton>
+                                <ArrowButton
+                                    onClickFunction={handleCancel}
+                                >
+                                    Cancel
+                                </ArrowButton>
+                            </div>
+                        </div>
+                        <div id='flex__container--divider'></div>
+                        <div className='right-col flex__container--child'>
+
+                            <form id='survey-form' onSubmit={handleSubmit}>
+                                {questionsList.map(question => (
+                                    <Slider
+                                        key={question.id}
+                                        oneLabel={question.one_label}
+                                        tenLabel={question.ten_label}
+                                        text={question.text}
+                                        questionId={question.id}
+                                        initialValue={question.initial_value}
+                                        validationObject={validationObject}
+                                        setValidationObject={setValidationObject}
+                                    />
+                                ))
+                                }
+                            </form>
+                        </div>
                     </div>
-        </div>
-        <div id='flex__container--divider'></div>
-            <div className='right-col flex__container--child'>
-
-            <form id='survey-form' onSubmit={handleSubmit}>
-                {questionsList.map(question => (
-                    <Slider
-                        key={question.id}
-                        oneLabel={question.one_label}
-                        tenLabel={question.ten_label}
-                        text={question.text}
-                        questionId={question.id}
-                        initialValue={question.initial_value}
-                        validationObject={validationObject}
-                        setValidationObject={setValidationObject}
-                    />
-                    ))
-                }
-            </form>
-            </div>
-                </div>
                 </>
             }
-    </>
+        </>
     )
 }
 

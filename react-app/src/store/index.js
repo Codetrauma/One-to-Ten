@@ -6,6 +6,7 @@ import session from './session'
 import surveyResponseReducer from './surveyResponses';
 import surveyReducer from './surveys';
 import userReducer from './users';
+import matchReducer from './matches';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   surveys: surveyReducer,
   questions: questionReducer,
   surveyResponses: surveyResponseReducer,
-  questionResponses: questionResponsesReducer
+  questionResponses: questionResponsesReducer,
+  matches: matchReducer,
 });
 
 

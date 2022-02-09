@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.api.survey_routes import survey
 from app.forms import UserForm
-from app.models import db, User, SurveyResponses
+from app.models import db, User, SurveyResponses, Matches
 
 user_routes = Blueprint('users', __name__)
 
@@ -26,14 +26,14 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict(current_user) for user in users]}
 
-@user_routes.route('/<int:id>', methods=['GET'])
+@user_routes.route('/<int:user_id>', methods=['GET'])
 @login_required
-def user(id):
+def user(user_id):
     """
     Get one user. If id argument is the session user's id,
     information about the user's account details will also be shown.
     """
-    user = User.query.get(id)
+    user = User.query.get(user_id)
 
     return user.to_dict(current_user)
 
@@ -69,17 +69,40 @@ def user_update(id):
 
             db.session.commit()
 
-            return user.to_dict(current_user)
+            return {'user': user.to_dict(current_user)}
         else:
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': ['Unauthorized']}, 401
 
-@user_routes.route('/<int:id>/surveys', methods=['GET'])
+@user_routes.route('/<int:user_id>/surveys', methods=['GET'])
 @login_required
-def user_survey_responses(id):
+def user_survey_responses(user_id):
     """
     Get all survey response records for a user.
     """
-    survey_responses = SurveyResponses.query.filter(SurveyResponses.user_id == id).all()
+    survey_responses = SurveyResponses.query.filter(SurveyResponses.user_id == user_id).all()
 
     return { 'survey_responses': [survey_response.to_dict() for survey_response in survey_responses]}
+
+@user_routes.route('/<int:user_id>/matches')
+@login_required
+def user_matches(user_id):
+    match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    return {'user_matches': [match.to_dict() for match in match]}
+
+@user_routes.route('/<int:user_id>/matches/create', methods=['GET'])
+@login_required
+def generate_matches(user_id):
+    users = User.query.all()
+
+    for user in users:
+        if user_id != user.id:
+            match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
+            match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
+            db.session.add(match1)
+            db.session.add(match2)
+
+    db.session.commit()
+
+    match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    return {'user_matches': [match.to_dict() for match in match]}
