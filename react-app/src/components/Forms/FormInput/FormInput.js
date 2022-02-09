@@ -27,7 +27,7 @@ const FormInput = (
 ) => {
 
     useEffect(() => {
-        if (required && !stateVar) {
+        if (required && !stateVar && setValidationObject) {
             let currentValidationObject = { ...validationObject }
             currentValidationObject[id] = false
             setValidationObject(currentValidationObject)
@@ -37,8 +37,15 @@ const FormInput = (
     const acceptSuggestion = (suggestion) => setStateVar(suggestion)
     const updateStateVar = (e) => setStateVar(e.target.value)
 
+    let isSafe, warningText, suggestion
 
-    let { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
+    if (stateVar.length) {
+        let output = unsafeInput(stateVar, id, maxLength)
+        isSafe = output[isSafe]
+        warningText = output[warningText]
+        suggestion = output[suggestion]
+    //   { isSafe, warningText, suggestion } = unsafeInput(stateVar, id, maxLength)
+    }
 
     if (type === 'textarea' && warningText) {
         warningText = 'Input includes forbidden characters (<>$#)'
@@ -53,7 +60,7 @@ const FormInput = (
     let newErrors
 
     useEffect(() => {
-        newErrors = {...validationObject}
+        newErrors = { ...validationObject }
     }, [validationObject, stateVar])
 
     useEffect(() => {

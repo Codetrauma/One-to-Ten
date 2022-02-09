@@ -7,15 +7,30 @@ import { useHistory } from 'react-router-dom';
 
 
 const FirstSurvey = () => {
+
   const dispatch = useDispatch()
   const history = useHistory()
+
   const [value, setValue] = useState('')
+  const [validationObject, setValidationObject] = useState({ test: true });
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // const matches = await dispatch()
-    console.log('handleSubmit')
+
+      let entries = {}
+      let inputs = document.querySelectorAll('input')
+
+      for (let i = 0; i < inputs.length; i++) {
+          entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
+      }
+
+      let reqBody = {}
+      reqBody[1] = entries
+
+      console.log(reqBody)
+
   }
 
   const handleCancel = () => {
@@ -57,10 +72,9 @@ const FirstSurvey = () => {
                 <div className='button-container'>
 
                 <ArrowButton
-                    // type='submit'
-                    // formId='survey-form'
-                    // validationObject={{}}
-                        onClickFunction={handleSubmit}
+                    type='submit'
+                    formId='survey-form'
+                    validationObject={validationObject}
                 >
                     Submit
 
@@ -84,6 +98,8 @@ const FirstSurvey = () => {
                     text={question.text}
                     questionId={question.id}
                     initialValue={question.initial_value}
+                    validationObject={validationObject}
+                    setValidationObject={setValidationObject}
                 />
                 ))
             }

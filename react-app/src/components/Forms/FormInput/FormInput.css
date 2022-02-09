@@ -64,9 +64,13 @@ input, textarea{
      color:var(--accent-color-3);
  }
 
- .required:after{
-     content:'*';
+ .score-display .required:after{
+     content:'';
      color:var(--accent-color-3);
+ }
+
+ .score-display input{
+     display: none;
  }
 
 

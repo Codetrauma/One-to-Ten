@@ -17,6 +17,10 @@
     margin: 0px 0px;
 }
 
+.survey .arrow-button:disabled{
+    color: var(--accent-color-1)
+}
+
 .survey .arrow-shaft:before,
 .survey .arrow-shaft:after,
 .survey .arrow-shaft
