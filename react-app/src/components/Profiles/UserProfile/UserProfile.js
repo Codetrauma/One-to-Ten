@@ -62,7 +62,7 @@ function SessionProfile({ sessionUser }) {
                                 warningText={`Are you sure? This action is irreversible and will delete all survey response and match data.`}
                                 confirmAction={handleDeactivate}
                                 confirmText={`Confirm`}
-                                hideText={`Go Back`}
+                                hideText={`Nevermind`}
                             >
                                 <p
                                     className="deactivate"
