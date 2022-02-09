@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from flask_login import current_user
 from wtforms import StringField, DateField, SelectField, TextAreaField, BooleanField
 from wtforms.validators import DataRequired, ValidationError
+from wtforms.fields.html5 import EmailField
 from app.models import User
 
 
@@ -45,4 +46,4 @@ class UserForm(FlaskForm):
     tiktok = StringField('Tiktok')
     twitter = StringField('Twitter')
     github = StringField('Github')
-    is_active = BooleanField('')
+    is_active = BooleanField()

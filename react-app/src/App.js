@@ -7,7 +7,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/Profiles/Profiles';
 import Survey from './components/Surveys/Survey/Survey'
-import FirstSurvey from './components/Surveys/Survey/FirstSurvey/FirstSurvey';
+import FirstSurvey from './components/FirstSurvey/FirstSurvey';
 import About from './components/Navigation/About/About';
 import { authenticate } from './store/session';
 
