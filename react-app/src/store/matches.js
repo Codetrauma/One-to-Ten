@@ -56,7 +56,7 @@ export const deleteAllMatches = (userId) => async dispatch => {
 }
 
 // reducer
-const initialState = { byUserId: {}, allMatches: [] };
+const initialState = { byUserId: {}, allMatches: {} };
 
 const matchReducer = (state = initialState, action) => {
     let newState;
@@ -73,7 +73,8 @@ const matchReducer = (state = initialState, action) => {
             return newState;
         case DELETE_MATCH:
             newState = { ...state };
-            delete newState['byUserId'][action.matchedUserId];
+            delete newState.byUserId[action.matchedUserId];
+            newState.allMatches.filter(match => match.user_2_id !== action.matchedUserId)
             return newState;
         case DELETE_ALL_MATCHES:
             newState = { ...state };
