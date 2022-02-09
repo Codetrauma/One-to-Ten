@@ -19,9 +19,6 @@ function MatchList() {
         dispatch(getMatches(sessionUser.id));
     }, [])
 
-    let users;
-    if (usersObj) users = Object.values(usersObj);
-
     let matches, matchesTable;
     if (matchesObj) {
         matches = Object.values(matchesObj);
