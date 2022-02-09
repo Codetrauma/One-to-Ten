@@ -45,4 +45,4 @@ class UserForm(FlaskForm):
     tiktok = StringField('Tiktok')
     twitter = StringField('Twitter')
     github = StringField('Github')
-    is_active = BooleanField()
+    is_active = BooleanField('')
