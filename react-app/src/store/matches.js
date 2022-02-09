@@ -56,7 +56,7 @@ export const deleteAllMatches = (userId) => async dispatch => {
 }
 
 // reducer
-const initialState = { matches: {} };
+const initialState = { byUserId: {}, allMatches: [] };
 
 const matchReducer = (state = initialState, action) => {
     let newState;
@@ -64,18 +64,21 @@ const matchReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_MATCHES:
             newState = { ...state };
-            newState.matches['byUserId'] = action.matches.user_matches.reduce((matches, match) => {
+            newState.allMatches = []
+            newState.byUserId = action.matches.user_matches.reduce((matches, match) => {
                 matches[match.user_2_id] = match;
+                newState.allMatches.push(match.user_2_id);
                 return matches;
             }, {})
             return newState;
         case DELETE_MATCH:
             newState = { ...state };
-            delete newState.matches['byUserId'][action.matchedUserId];
+            delete newState['byUserId'][action.matchedUserId];
             return newState;
         case DELETE_ALL_MATCHES:
             newState = { ...state };
-            newState.matches = {};
+            newState.byUserId = {};
+            newState.allMatches = [];
             return newState;
         default:
             return state

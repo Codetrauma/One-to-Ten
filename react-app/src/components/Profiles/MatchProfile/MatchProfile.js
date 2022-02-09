@@ -12,7 +12,7 @@ function MatchProfile({ user, children, previewMode }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const matchesObj = useSelector(state => state.matches.matches.byUserId);
+    const matchesObj = useSelector(state => state.matches.byUserId);
 
     useEffect(() => {
         dispatch(getMatches(sessionUser.id))
