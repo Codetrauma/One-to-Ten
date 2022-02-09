@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     tiktok = db.Column(db.String)
     twitter = db.Column(db.String)
     github = db.Column(db.String)
-
+    is_active = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):

@@ -1,8 +1,8 @@
-"""Fixed survey response table
+"""added is_active to Users
 
-Revision ID: 4b960e4de256
+Revision ID: 62a6f41fce0e
 Revises: 
-Create Date: 2022-02-07 09:50:52.373743
+Create Date: 2022-02-09 09:29:31.311952
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4b960e4de256'
+revision = '62a6f41fce0e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,6 +39,7 @@ def upgrade():
     sa.Column('tiktok', sa.String(), nullable=True),
     sa.Column('twitter', sa.String(), nullable=True),
     sa.Column('github', sa.String(), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
