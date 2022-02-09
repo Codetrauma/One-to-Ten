@@ -2,7 +2,7 @@ from app.models import db, QuestionStats
 
 
 def seed_question_stats():
-  demo_question_stats = QuestionStats(response_count=15, average=5, question_id=1)
+  demo_question_stats_1 = QuestionStats(response_count=15, average=5, question_id=1)
   demo_question_stats_2 = QuestionStats(response_count=15, average=5.6, question_id=2)
   demo_question_stats_3 = QuestionStats(response_count=15, average=5.5, question_id=3)
 
@@ -104,7 +104,7 @@ def seed_question_stats():
 
 
 
-  db.session.add(demo_question_stats)
+  db.session.add(demo_question_stats_1)
   db.session.add(demo_question_stats_2)
   db.session.add(demo_question_stats_3)
   db.session.add(demo_question_stats_4)
@@ -179,7 +179,7 @@ def seed_question_stats():
   db.session.add(demo_question_stats_73)
   db.session.add(demo_question_stats_74)
   db.session.add(demo_question_stats_75)
-  
+
   db.session.commit()
 
 def undo_question_stats():
