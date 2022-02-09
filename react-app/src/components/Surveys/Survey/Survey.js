@@ -16,7 +16,7 @@ const Survey = () => {
     const history = useHistory()
 
     const [validationObject, setValidationObject] = useState({ test: true });
-
+    const [questionValues, setQuestionValues] = useState({});
 
     const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ const Survey = () => {
         dispatch(getSurveys());
         dispatch(getQuestions(params.surveyId));
         dispatch(getQuestionResponses(params.surveyId, sessionUser.id));
-    }, [dispatch])
+    }, [setQuestionValues, dispatch])
 
     const allSurveys = useSelector(state => state.surveys)
     const survey = useSelector(state => state.surveys[params.surveyId]);
@@ -54,6 +54,7 @@ const Survey = () => {
 
         let reqBody = {}
         reqBody[params.surveyId] = entries
+        console.log(questionValues)
         console.log(reqBody)
     }
 
@@ -109,6 +110,7 @@ const Survey = () => {
                                         initialValue={question.initial_value}
                                         validationObject={validationObject}
                                         setValidationObject={setValidationObject}
+                                        onChange={(e) => setQuestionValues({ ...questionValues, [question.id]: e.target.value })}
                                     />
                                 ))
                                 }
