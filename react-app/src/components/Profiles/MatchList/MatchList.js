@@ -17,7 +17,7 @@ function MatchList() {
     useEffect(() => {
         dispatch(getUsers());
         dispatch(getMatches(sessionUser.id));
-    }, [location]);
+    }, [])
 
     let users;
     if (usersObj) users = Object.values(usersObj);
@@ -29,13 +29,11 @@ function MatchList() {
         matchesTable = (
             <table id="match__table">
                 <tbody>
-
                     {matches.map(match => (
                         <tr>
                             <td className="match__name">
                                 <Link to={`/users/${match.user_2_id}`} className="underline-slide">
-                                    {usersObj[match.user_2_id]?.first_name + ' '}
-                                    {usersObj[match.user_2_id]?.last_name.slice(0, 1) + '.'}
+                                    {usersObj[match.user_2_id] && usersObj[match.user_2_id].first_name + ' ' + usersObj[match.user_2_id].last_name.slice(0, 1) + '.'}
                                 </Link>
                             </td>
                             <td className="match__percentage">
@@ -46,6 +44,7 @@ function MatchList() {
                 </tbody>
             </table>
         )
+
     }
 
     const noMatches = (
