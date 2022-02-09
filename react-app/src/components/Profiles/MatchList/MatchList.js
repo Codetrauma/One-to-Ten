@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches } from '../../../store/matches';
@@ -8,6 +8,7 @@ import { getUsers } from '../../../store/users';
 import './MatchList.css';
 
 function MatchList() {
+    const location = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const matchesObj = useSelector(state => state.matches.matches.byUserId)
@@ -16,7 +17,7 @@ function MatchList() {
     useEffect(() => {
         dispatch(getUsers());
         dispatch(getMatches(sessionUser.id));
-    }, []);
+    }, [location]);
 
     let users;
     if (usersObj) users = Object.values(usersObj);

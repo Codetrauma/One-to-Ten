@@ -37,8 +37,9 @@ function MatchProfile({ user, children, previewMode }) {
     function handleBlock(e) {
         e.preventDefault();
         dispatch(deleteMatch(sessionUser.id, match.user_2_id));
+        dispatch(getMatches(sessionUser.id))
 
-        history.push(`/`);
+        history.push(`/users/${sessionUser.id}/matches`);
     }
 
     const socialLinks = (
@@ -88,7 +89,9 @@ function MatchProfile({ user, children, previewMode }) {
         </>
     )
 
-    if (!match && location.pathname !== `/users/${sessionUser.id}`) {
+    console.log(user)
+
+    if (!match && location.pathname !== `/users/${sessionUser.id}` || !user) {
         return (
             <>
                 <div className="match__404">
@@ -117,13 +120,6 @@ function MatchProfile({ user, children, previewMode }) {
                         :
                         <p className="p-1 accent-color-1">
                             Your Match Compatibility: {match && match.compatibility_score}
-                            <Link className="" to="/sign-up">
-                                <ArrowButton>
-                                    <h5>
-                                        Back to Matches
-                                    </h5>
-                                </ArrowButton>
-                            </Link>
                         </p>
                     }
                     {previewMode && children}
@@ -153,14 +149,21 @@ function MatchProfile({ user, children, previewMode }) {
                             )}
                         </div>
                         {!previewMode &&
-                            <div className="match__delete">
-                                <button
-                                    onClick={handleBlock}
-                                    className="match__delete--button underline-slide accent-color-4"
-                                >
-                                    Block {user.first_name}
-                                </button>
-                            </div>
+                            <>
+                                <div className="match__delete">
+                                    <button
+                                        onClick={handleBlock}
+                                        className="match__delete--button underline-slide accent-color-4"
+                                    >
+                                        Block {user.first_name}
+                                    </button>
+                                    <div className="back__link">
+                                        <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
+                                            Back to Matches
+                                        </Link>
+                                    </div>
+                                </div>
+                            </>
                         }
 
                     </div>
