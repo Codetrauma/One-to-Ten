@@ -1,20 +1,29 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { removeQuestionResponses } from "../../../store/questionResponses";
-import { removeSurveyResponse } from "../../../store/surveyResponses";
+import { removeQuestionResponses, getQuestionResponses } from "../../../store/questionResponses";
+import { getSurveyResponses, removeSurveyResponse } from "../../../store/surveyResponses";
 
-function SurveyButton({ name, completed, id, deleteResponseMode }) {
+function SurveyButton({ name, completed, id, deleteResponseMode, setDeleteResponseMode }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const surveyResponses = useSelector(state => state.surveyResponses.bySurveyId)
+    const surveys = useSelector(state => state.surveys)
     const userId = sessionUser.id;
+
+    useEffect(() => {
+        dispatch(getSurveyResponses(userId));
+    }, [deleteResponseMode, dispatch])
+
 
     const handleDelete = (e) => {
         e.preventDefault()
         e.stopPropagation()
         console.log(`deleting id ${id}`)
         //dispatch deletion
+        dispatch(removeQuestionResponses(id, userId));
         dispatch(removeSurveyResponse(id, userId));
-        dispatch(removeQuestionResponses(id, userId)); 
+        setDeleteResponseMode(false)
     }
 
     return (
