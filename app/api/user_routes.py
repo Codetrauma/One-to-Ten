@@ -99,6 +99,7 @@ def generate_matches(user_id):
         if user_id != user.id:
             match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
             match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
+            user.isActive = True
             db.session.add(match1)
             db.session.add(match2)
 
