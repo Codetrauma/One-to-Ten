@@ -26,7 +26,7 @@ function User() {
           <h3>User Does Not Exist</h3>
           <p className="p-1">
             <Link className="underline-slide" to={`/users/${sessionUser.id}`}>
-              Click here to return to your profile page.
+              Click here to return to your dashboard.
             </Link>
           </p>
         </div>

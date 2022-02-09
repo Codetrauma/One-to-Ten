@@ -7,26 +7,26 @@ function SessionNav({ sessionUser }) {
             <>
                 <div className="nav__bar--child nav__bar--2">
                     <div className="nav__bar--grid">
-                        <div className="nav__bar--grid-left">
+                        <div className="nav__bar--grid-left link__light">
                             <NavLink
-                                activeClassName='nav__bar--link-active'
-                                className="underline-slide link__light"
+                                activeClassName='nav__bar--link-active link__light'
+                                className="underline-slide"
                                 to={`/users/${sessionUser.id}/matches`} >
                                 View Matches
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-right">
+                        <div className="nav__bar--grid-right link__light">
                             <NavLink
-                                activeClassName='nav__bar--link-active'
-                                className="underline-slide link__light"
+                                activeClassName='nav__bar--link-active link__light'
+                                className="underline-slide"
                                 to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-left">
+                        <div className="nav__bar--grid-left link__light">
                             <NavLink
-                                activeClassName='nav__bar--link-active'
-                                className="underline-slide link__light"
+                                activeClassName='nav__bar--link-active link__light'
+                                className="underline-slide"
                                 to={`/surveys`}>
                                 Answer Questions
                             </NavLink>
@@ -43,10 +43,10 @@ function SessionNav({ sessionUser }) {
                                 Participant
                             </NavLink>
                         </div>
-                        <div className="nav__bar--grid-right">
+                        <div className="nav__bar--grid-right link__light">
                             <NavLink
                                 activeClassName='nav__bar--link-active'
-                                className="underline-slide link__light"
+                                className="underline-slide"
                                 to="/about">
                                 About Us
                             </NavLink>
@@ -59,10 +59,10 @@ function SessionNav({ sessionUser }) {
                                 </NavLink>
                             </div>
                         </div>
-                        <div className="nav__bar--grid-right">
+                        <div className="nav__bar--grid-right link__light">
                             <a
                                 activeClassName='nav__bar--link-active'
-                                className="underline-slide link__light"
+                                className="underline-slide"
                                 href="https://github.com/JTannerShaw/One-to-Ten"
                                 target="_blank" rel="noreferrer noopener">
                                 Github
