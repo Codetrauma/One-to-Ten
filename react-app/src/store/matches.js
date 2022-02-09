@@ -15,7 +15,7 @@ const removeMatch = (matchedUserId) => ({
 
 // thunks
 export const getMatches = (userId) => async dispatch => {
-    const response = await fetch(`/api/matches/${userId}`);
+    const response = await fetch(`/api/users/${userId}/matches`);
 
     if (response.ok) {
         const matches = await response.json();

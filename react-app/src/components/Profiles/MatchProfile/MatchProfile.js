@@ -117,6 +117,13 @@ function MatchProfile({ user, children, previewMode }) {
                         :
                         <p className="p-1 accent-color-1">
                             Your Match Compatibility: {match && match.compatibility_score}
+                            <Link className="" to="/sign-up">
+                                <ArrowButton>
+                                    <h5>
+                                        Back to Matches
+                                    </h5>
+                                </ArrowButton>
+                            </Link>
                         </p>
                     }
                     {previewMode && children}
