@@ -90,19 +90,17 @@ def user_matches(user_id):
     match = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in match]}
 
-@user_routes.route('/<int:user_id>/matches/create', methods=['POST'])
+@user_routes.route('/<int:user_id>/matches/create', methods=['GET'])
 @login_required
 def generate_matches(user_id):
     users = User.query.all()
 
-    userList = {
-                user.id: Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
-                for user in users if user_id != user.id
-                }
-
-    for key, val, in userList.items():
-        key = val
-        db.session.add(key)
+    for user in users:
+        if user_id != user.id:
+            match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
+            match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
+            db.session.add(match1)
+            db.session.add(match2)
 
     db.session.commit()
 
