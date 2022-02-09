@@ -79,7 +79,10 @@ input, textarea{
 }
 
 .form-input textarea {
+    margin-top: 10px;
     min-height: 150px;
+    position: relative;
+    top: 12px;
 }
 
  /* form button{
