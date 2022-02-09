@@ -103,6 +103,7 @@ const FormInput = (
                                         id={optionName}
                                         name={id}
                                         value={optionName}
+                                        onChange={updateStateVar}
                                         className='underline-slide'
                                         />
                                         <span className='underline-slide'>{optionName}</span>

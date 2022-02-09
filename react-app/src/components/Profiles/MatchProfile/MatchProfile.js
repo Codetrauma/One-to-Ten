@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches, deleteMatch } from '../../../store/matches';
@@ -12,14 +12,14 @@ function MatchProfile({ user, children, previewMode }) {
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const matchesObj = useSelector(state => state.matches.matches.byUserId);
+    const match = useSelector(state => state.matches.byUserId[user.id]);
 
     useEffect(() => {
         dispatch(getMatches(sessionUser.id))
     }, [])
 
-    let match;
-    if (matchesObj) match = matchesObj[user.id];
+    // let match;
+    // if (matchesObj) match = matchesObj[user.id];
 
     const socials = {
         facebook: user.facebook,
@@ -34,12 +34,11 @@ function MatchProfile({ user, children, previewMode }) {
     const socialVals = Object.values(socials);
     const truthyExists = socialVals.some(val => !!val);
 
-    function handleBlock(e) {
+    async function handleBlock(e) {
         e.preventDefault();
-        dispatch(deleteMatch(sessionUser.id, match.user_2_id));
-        dispatch(getMatches(sessionUser.id))
+        await dispatch(deleteMatch(sessionUser.id, match.user_2_id));
 
-        history.push(`/users/${sessionUser.id}/matches`);
+        await history.push(`/users/${sessionUser.id}/matches`);
     }
 
     const socialLinks = (
