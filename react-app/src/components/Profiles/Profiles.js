@@ -33,14 +33,13 @@ function User() {
   }, [dispatch])
 
   if (!user) {
-    console.log('test')
     return (
       <>
         <div className="error__404">
-          <h3>Match Does Not Exist</h3>
+          <h3>User Does Not Exist</h3>
           <p className="p-1">
-            <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
-              Click here to return to your top matches list.
+            <Link className="underline-slide" to={`/users/${sessionUser.id}`}>
+              Click here to return to your profile page.
             </Link>
           </p>
         </div>
