@@ -21,4 +21,5 @@
     color: var(--main-color);
     font-size: var(--body-small);
     font-weight: var(--medium-weight);
+    margin-bottom: 0px;
 }

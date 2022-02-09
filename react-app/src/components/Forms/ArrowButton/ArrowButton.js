@@ -13,24 +13,26 @@ const ArrowButton = ({
             {
 
                 (type === 'submit' && formId) ?
+                <>
+                    {validationObject &&
+                        < button
+                            type={type}
+                            className="arrow-button"
+                            disabled={Object.values(validationObject).includes(false)}
+                            form={formId}
+                        >
+                            <span className="arrow-left">
+                                <span className="arrow-shaft">
+                                </span>
+                            </span>
+                            <span className="main-arrow">
 
-                <button
-                    type={type}
-                    className="arrow-button"
-                    disabled={Object.values(validationObject).includes(false)}
-                    form={formId}
-                >
-                    <span className="arrow-left">
-                        <span className="arrow-shaft">
-                        </span>
-                    </span>
-                    <span className="main-arrow">
+                                {children}
 
-                             {children}
-
-                    </span>
-                    </button>
-
+                            </span>
+                        </button>
+                        }
+                        </>
                     :
 
                     <button

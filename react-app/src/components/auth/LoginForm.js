@@ -4,7 +4,7 @@ import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
 import FormInput from '../Forms/FormInput/FormInput';
-import Lorem from '../Lorem/Lorem';
+import Lorem from '../Utils/Lorem/Lorem';
 import './Login.css'
 
 

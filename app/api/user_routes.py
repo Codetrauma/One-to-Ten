@@ -4,6 +4,7 @@ from app.api.survey_routes import survey
 from app.forms import UserForm
 from app.forms.user_edit_form import UserEditForm
 from app.models import db, User, SurveyResponses, Matches
+from sqlalchemy import or_, select
 
 user_routes = Blueprint('users', __name__)
 
@@ -88,12 +89,21 @@ def user_survey_responses(user_id):
 @user_routes.route('/<int:user_id>/matches')
 @login_required
 def user_matches(user_id):
-    match = Matches.query.filter(Matches.user_1_id == user_id).all()
-    return {'user_matches': [match.to_dict() for match in match]}
+    """
+    Get all match records for a user where user_1_id column matches user_id.
+    """
+    matches = Matches.query.filter(Matches.user_1_id == user_id).all()
+    return {'user_matches': [match.to_dict() for match in matches]}
 
-@user_routes.route('/<int:user_id>/matches/create', methods=['POST'])
+@user_routes.route('/<int:user_id>/matches', methods=['POST'])
 @login_required
 def generate_matches(user_id):
+    """
+    Generate matches for a new user for every pre-existing user in the database.
+    Each match between two users will require two records:
+        - One where the new user is in user_1_id column and existing user is in user_2_column
+        - Another record where the column data is swapped.
+    """
     users = User.query.all()
 
     for user in users:
@@ -107,3 +117,24 @@ def generate_matches(user_id):
 
     match = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in match]}
+
+@user_routes.route('/<int:user_id>/matches', methods=['DELETE'])
+@login_required
+def delete_matches(user_id):
+    """
+    Find and delete all matches where a given user_id shows up in the record,
+    on either user_1_id column or user_2_id column.
+    """
+    matches = Matches.query.filter(
+                or_(
+                    Matches.user_1_id == user_id,
+                    Matches.user_2_id == user_id
+                )
+            )
+
+    for match in matches:
+        db.session.delete(match)
+
+    db.session.commit()
+
+    return {'user_matches': [match.to_dict() for match in matches]}

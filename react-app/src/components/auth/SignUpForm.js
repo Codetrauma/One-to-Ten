@@ -1,51 +1,53 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Navlink, NavLink } from 'react-router-dom';
+import { useSelector, useDispatch} from 'react-redux'
+import { Redirect, NavLink, useHistory  } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import FormInput from '../Forms/FormInput/FormInput';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
-import Lorem from '../Lorem/Lorem';
+import Lorem from '../Utils/Lorem/Lorem';
 import './SignUpForm.css'
-
+import { validateSignUp, formatDate } from './utils';
 const SignUpForm = () => {
+  const history=useHistory()
+
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  const [dob, setDob] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [gender, setGender] = useState('');
-  const [validationObject, setValidationObject] = useState({ test: true });
+  const [gender, setGender] = useState('lork');
+  const [validationObject, setValidationObject] = useState({ test: true, email:false, first_name: false, last_name: false, password: false, repeatPassword: false });
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
+
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, email, password));
+
+    let frontendErrors = validateSignUp(email, dob, zipCode, password, repeatPassword)
+
+    if (frontendErrors.length) {
+      setErrors(frontendErrors)
+    } else {
+
+      const data = await dispatch(signUp(firstName, lastName, email, password, formatDate(dob), zipCode, gender));
+
       if (data) {
         setErrors(data)
+      } else {
+        <Redirect to='/' />
       }
     }
   };
 
-  // const updateUsername = (e) => {
-  //   setUsername(e.target.value);
-  // };
+  const onCancel = () => {
+    history.push('/')
+  }
 
-  // const updateEmail = (e) => {
-  //   setEmail(e.target.value);
-  // };
 
-  // const updatePassword = (e) => {
-  //   setPassword(e.target.value);
-  // };
-
-  // const updateRepeatPassword = (e) => {
-  //   setRepeatPassword(e.target.value);
-  // };
 
   if (user) {
     return <Redirect to='/' />;
@@ -151,9 +153,10 @@ const SignUpForm = () => {
                   labelText='Birthdate'
                   id='dob'
                   type='text'
-                  stateVar={birthdate}
-                  setStateVar={setBirthdate}
+                  stateVar={dob}
+                  setStateVar={setDob}
                   restrictSafe={false}
+                  required={true}
                   placeholder={`mm/dd/yyyy`}
                   validationObject={validationObject}
                   setValidationObject={setValidationObject}
@@ -178,6 +181,7 @@ const SignUpForm = () => {
                   stateVar={gender}
                   setStateVar={setGender}
                   restrictSafe={false}
+                  required={false}
                   placeholder={``}
                   validationObject={validationObject}
                   setValidationObject={setValidationObject}
@@ -192,7 +196,10 @@ const SignUpForm = () => {
             <div className="error-area">
               {errors && errors.map(error => (
                 <div className="database-errors">
-                  {error.split(":")[1]}
+                  {error.includes(': ') ?
+                    error.split(": ")[1]
+                    : error
+                  }
                 </div>
               ))
               }
@@ -205,7 +212,7 @@ const SignUpForm = () => {
               Submit
             </ArrowButton>
             <ArrowButton
-              onClickFunction={(e) => { console.log('cancel') }}
+              onClickFunction={onCancel}
             >
               Cancel
             </ArrowButton>

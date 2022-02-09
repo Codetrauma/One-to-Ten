@@ -1,19 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import { getMatches } from '../../../store/matches';
+import Confirmation from '../../Utils/Confirmation/Confirmation'
 import '../Profiles.css';
 import './UserProfile.css';
 
 function SessionProfile({ sessionUser }) {
-
-    const [isActive, setIsActive] = useState(sessionUser.isActive || true)
+    const dispatch = useDispatch();
+    const [isActive, setIsActive] = useState(sessionUser.isActive || true);
+    const allMatches = useSelector(state => state.matches.allMatches);
 
     // let isActive = sessionUser.isActive
     // if (isActive === undefined) isActive = true
 
+    useEffect(() => {
+        dispatch(getMatches(sessionUser.id));
+    }, []);
+
+    console.log(allMatches)
+
     const handleDeactivate = () => {
         console.log('handle deactivate')
         setIsActive(false)
-    }
+    };
 
     return (
         <>
@@ -25,26 +35,26 @@ function SessionProfile({ sessionUser }) {
                     </h1>
                     {!isActive &&
                         <>
-                        <p className="p-1 accent-color-5">
+                            <p className="p-1 accent-color-5">
                                 Complete the Icebreaker survey to activate your profile.
-                        </p>
+                            </p>
                         </>
-                        }
+                    }
                     <div className="profile__navigation">
                         {isActive &&
-                        <>
-                        <p className="profile__navigation--link">
-                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
-                                View Matches
-                            </Link>
-                        </p>
-                        <p className="profile__navigation--link">
-                            <Link className="underline-slide link__light" to="/surveys">
-                                Answer Questions
-                            </Link>
-                        </p>
+                            <>
+                                <p className="profile__navigation--link">
+                                    <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
+                                        View Matches
+                                    </Link>
+                                </p>
+                                <p className="profile__navigation--link">
+                                    <Link className="underline-slide link__light" to="/surveys">
+                                        Answer Questions
+                                    </Link>
+                                </p>
 
-                        </>
+                            </>
                         }
 
                         <p className="profile__navigation--link">
@@ -53,24 +63,30 @@ function SessionProfile({ sessionUser }) {
                             </Link>
                         </p>
                         {isActive &&
-                            <p
-                                className="deactivate profile__navigation--link underline-slide link__light"
-                                onClick={handleDeactivate}
+                            <Confirmation
+                                warningText={`Are you sure? This action is irreversible and will delete all survey response and match data.`}
+                                confirmAction={handleDeactivate}
+                                confirmText={`Confirm`}
+                                hideText={`Go Back`}
                             >
-                                Deactivate Profile
-                            </p>
+                                <p
+                                className="deactivate profile__navigation--link"
+                                >
+                                    Deactivate Profile
+                                </p>
+                            </Confirmation>
                         }
                     </div>
                 </div>
                 <div className="flex__container--child flex__container--padded">
-                    { isActive ?
+                    {isActive ?
                         <div className="profile__stats">
                             <div className="profile__stats--section">
                                 <div className="profile__stats--num">212</div>
                                 <div className="profile__stats--caption">Questions Answered</div>
                             </div>
                             <div className="profile__stats--section">
-                                <div className="profile__stats--num">74</div>
+                                <div className="profile__stats--num">{allMatches?.length}</div>
                                 <div className="profile__stats--caption">Matches Found</div>
                             </div>
                         </div>
