@@ -164,7 +164,6 @@ const EditProfile = ({sessionUser, initialPreviewMode}) => {
               <FormInput
                 labelText='Biography'
                 id='biography'
-                required={true}
                 type='textarea'
                 maxLength={220}
                 stateVar={biography}
