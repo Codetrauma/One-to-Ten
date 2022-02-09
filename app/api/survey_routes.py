@@ -32,7 +32,8 @@ def survey_user(id, user_id):
 
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
-    request_body_list = request.json['question_responses']
+    # request_body_list = request.json['question_responses']
+    request_body_list = request.json
     new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
     for responses in request_body_list:
         question_id = responses['question_id']

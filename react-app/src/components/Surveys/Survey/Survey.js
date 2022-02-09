@@ -15,6 +15,9 @@ const Survey = () => {
     const params = useParams();
     const history = useHistory()
 
+    const userId = sessionUser.id
+    const surveyId = params.surveyId
+
     const [validationObject, setValidationObject] = useState({ test: true });
     const [questionValues, setQuestionValues] = useState({});
 
@@ -29,22 +32,22 @@ const Survey = () => {
 
     useEffect(() => {
         dispatch(getSurveys());
-        dispatch(getQuestions(params.surveyId));
-        dispatch(getQuestionResponses(params.surveyId, sessionUser.id));
-    }, [setQuestionValues, dispatch])
+        dispatch(getQuestions(surveyId));
+        dispatch(getQuestionResponses(surveyId, userId));
+    }, [dispatch])
 
     const allSurveys = useSelector(state => state.surveys)
-    const survey = useSelector(state => state.surveys[params.surveyId]);
+    const survey = useSelector(state => state.surveys[surveyId]);
 
     let surveyName;
+
     if (survey) {
         surveyName = survey.name
     }
 
-
     if (!questions) return null;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         console.log('handleSubmit')
         let entries = {}
         let inputs = document.querySelectorAll('input')
@@ -52,12 +55,11 @@ const Survey = () => {
             entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
         }
 
-        let reqBody = {}
-        reqBody[params.surveyId] = entries
-        console.log(questionValues)
-        console.log(reqBody)
+        let surveyResponse = {}
+        surveyResponse[params.surveyId] = entries
+        let res = await dispatch(createSurveyResponse(surveyResponse, surveyId, userId))
+        if (res?.message.includes('Success')) history.push('/surveys')
     }
-
 
     const handleCancel = (e) => {
         console.log('handleCancel')
