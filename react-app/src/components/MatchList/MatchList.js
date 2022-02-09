@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getMatches } from '../../../store/matches';
-import { getUsers } from '../../../store/users';
+import { getMatches } from '../../store/matches';
+import { getUsers } from '../../store/users';
 
 import './MatchList.css';
 
