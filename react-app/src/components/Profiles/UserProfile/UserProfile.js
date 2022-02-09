@@ -11,14 +11,9 @@ function SessionProfile({ sessionUser }) {
     const [isActive, setIsActive] = useState(sessionUser.isActive || true);
     const allMatches = useSelector(state => state.matches.allMatches);
 
-    // let isActive = sessionUser.isActive
-    // if (isActive === undefined) isActive = true
-
     useEffect(() => {
         dispatch(getMatches(sessionUser.id));
     }, []);
-
-    console.log(allMatches)
 
     const handleDeactivate = () => {
         console.log('handle deactivate')
@@ -44,12 +39,12 @@ function SessionProfile({ sessionUser }) {
                         {isActive &&
                             <>
                                 <p className="profile__navigation--link">
-                                    <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
+                                    <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
                                         View Matches
                                     </Link>
                                 </p>
                                 <p className="profile__navigation--link">
-                                    <Link className="underline-slide link__light" to="/surveys">
+                                    <Link className="underline-slide" to="/surveys">
                                         Answer Questions
                                     </Link>
                                 </p>
@@ -58,7 +53,7 @@ function SessionProfile({ sessionUser }) {
                         }
 
                         <p className="profile__navigation--link">
-                            <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide" to={`/users/${sessionUser.id}/profile`}>
                                 Edit Profile
                             </Link>
                         </p>
@@ -67,10 +62,10 @@ function SessionProfile({ sessionUser }) {
                                 warningText={`Are you sure? This action is irreversible and will delete all survey response and match data.`}
                                 confirmAction={handleDeactivate}
                                 confirmText={`Confirm`}
-                                hideText={`Go Back`}
+                                hideText={`Nevermind`}
                             >
                                 <p
-                                className="deactivate profile__navigation--link"
+                                    className="deactivate"
                                 >
                                     Deactivate Profile
                                 </p>

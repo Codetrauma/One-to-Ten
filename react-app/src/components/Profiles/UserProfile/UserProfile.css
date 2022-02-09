@@ -1,13 +1,13 @@
-.deactivate{
-    width: fit-content
+.deactivate {
+    width: fit-content;
 }
 
-.deactivate:hover{
+.deactivate:hover {
     cursor: pointer;
 }
 
-.icebreaker-circle{
-    height:250px;
+.icebreaker-circle {
+    height: 250px;
     width: 250px;
     border: 12px solid var(--accent-color-2);
     border-radius: 125px;
@@ -19,21 +19,20 @@
     transition: 0.2s all ease-in-out;
 }
 
-.icebreaker-label{
+.icebreaker-label {
     margin-top: 20px;
-    color: var(--accent-color-2)
+    color: var(--accent-color-2);
 }
 
-.icebreaker-container{
+.icebreaker-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.icebreaker-container:hover .icebreaker-circle{
+.icebreaker-container:hover .icebreaker-circle {
     background-color: var(--accent-color-2);
 }
-
 
 /* .expanding-circle{
     height: 0px;

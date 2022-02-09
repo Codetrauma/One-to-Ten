@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
-import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Confirmation from '../../Utils/Confirmation/Confirmation';
 
 import { getMatches, deleteMatch } from '../../../store/matches';
 
 import './MatchProfile.css';
-import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
 
 function MatchProfile({ user, children, previewMode }) {
-    const location = useLocation();
     const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -19,8 +17,6 @@ function MatchProfile({ user, children, previewMode }) {
         dispatch(getMatches(sessionUser.id))
     }, [])
 
-    // let match;
-    // if (matchesObj) match = matchesObj[user.id];
 
     const socials = {
         facebook: user.facebook,
@@ -89,13 +85,13 @@ function MatchProfile({ user, children, previewMode }) {
         </>
     )
 
-    if (!match && location.pathname !== `/users/${sessionUser.id}` || !user) {
+    if (!match && !previewMode) {
         return (
             <>
                 <div className="error__404">
                     <h3>Match Does Not Exist</h3>
                     <p className="p-1">
-                        <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
+                        <Link className="underline-slide link__light" to={`/users/${sessionUser.id}/matches`}>
                             Click here to return to your top matches list.
                         </Link>
                     </p>
@@ -148,24 +144,24 @@ function MatchProfile({ user, children, previewMode }) {
                         </div>
                         {!previewMode &&
                             <>
-                            <div className="match__delete">
-                            <div className="back__link">
+                                <div className="match__delete">
+                                    <div className="back__link">
                                         <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
                                             Back to Matches
                                         </Link>
-                            </div>
-                            <Confirmation
-                                warningText={`Are you sure? This action is permanent and you will not be able to match with ${user.first_name} again in the future.`}
-                                confirmAction={handleBlock}
-                                confirmText={`Confirm`}
-                                hideText={`Go Back`}
-                            >
-                                <button
-                                className="match__delete--button underline-slide accent-color-4"
-                                >
-                                    Block {user.first_name}
-                                </button>
-                            </Confirmation>
+                                    </div>
+                                    <Confirmation
+                                        warningText={`Are you sure? This action is permanent and you will not be able to match with ${user.first_name} again in the future.`}
+                                        confirmAction={handleBlock}
+                                        confirmText={`Confirm`}
+                                        hideText={`Nevermind`}
+                                    >
+                                        <button
+                                            className="match__delete--button underline-slide accent-color-4"
+                                        >
+                                            Block {user.first_name}
+                                        </button>
+                                    </Confirmation>
 
                                     {/* <button
                                         onClick={handleBlock}
