@@ -71,7 +71,7 @@ const surveyResponseReducer = (state = initialState, action) => {
                 surveyResponses[response.survey_id] = response;
                 return surveyResponses
             }, {})
-
+            
             return newState;
         }
         case DELETE_SURVEY_RESPONSE: {
