@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getMatches } from '../../../store/matches';
+import Confirmation from '../../Utils/Confirmation/Confirmation'
 import '../Profiles.css';
 import './UserProfile.css';
 
@@ -57,12 +58,18 @@ function SessionProfile({ sessionUser }) {
                             </Link>
                         </p>
                         {isActive &&
-                            <p
-                                className="deactivate profile__navigation--link underline-slide profile__link--light"
-                                onClick={handleDeactivate}
+                            <Confirmation
+                                warningText={`Are you sure? This action is irreversible and will delete all survey response and match data.`}
+                                confirmAction={handleDeactivate}
+                                confirmText={`Confirm`}
+                                hideText={`Go Back`}
                             >
-                                Deactivate Profile
-                            </p>
+                                <p
+                                    className="deactivate profile__navigation--link"
+                                >
+                                    Deactivate Profile
+                                </p>
+                            </Confirmation>
                         }
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import { Redirect, NavLink, useHistory  } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import FormInput from '../Forms/FormInput/FormInput';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
-import Lorem from '../Lorem/Lorem';
+import Lorem from '../Utils/Lorem/Lorem';
 import './SignUpForm.css'
 import { validateSignUp, formatDate } from './utils';
 const SignUpForm = () => {
