@@ -47,14 +47,13 @@ export const deleteMatch = (userId, matchedUserId) => async dispatch => {
     dispatch(removeMatch(matchedUserId))
 }
 
-// export const deleteAllMatches = (userId) => async dispatch => {
-//     await fetch(`/api/users/${userId}/matches`, {
-//         method: 'DELETE'
-//     });
+export const deleteAllMatches = (userId) => async dispatch => {
+    await fetch(`/api/users/${userId}/matches`, {
+        method: 'DELETE'
+    });
 
-//     dispatch(removeMatch(matchedUserId))
-// }
-
+    dispatch(removeAllMatches())
+}
 
 // reducer
 const initialState = { matches: {} };
@@ -73,6 +72,10 @@ const matchReducer = (state = initialState, action) => {
         case DELETE_MATCH:
             newState = { ...state };
             delete newState.matches['byUserId'][action.matchedUserId];
+            return newState;
+        case DELETE_ALL_MATCHES:
+            newState = { ...state };
+            newState.matches = {};
             return newState;
         default:
             return state
