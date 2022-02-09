@@ -24,7 +24,9 @@ export const getMatches = (userId) => async dispatch => {
 }
 
 export const deleteMatch = (userId, matchedUserId) => async dispatch => {
-    // const response = await fetch(``)
+    await fetch(`/api/matches/${userId}/${matchedUserId}`, {
+        method: 'DELETE'
+    });
 
     dispatch(removeMatch(matchedUserId))
 }
@@ -45,8 +47,7 @@ const matchReducer = (state = initialState, action) => {
             return newState;
         case DELETE_MATCH:
             newState = { ...state };
-            // console.log(newState.matches['byUserId'])
-            // delete newState.matches['byUserId'][action.matchedUserId];
+            delete newState.matches['byUserId'][action.matchedUserId];
             return newState;
         default:
             return state

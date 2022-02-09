@@ -1,10 +1,15 @@
 import { useEffect } from 'react';
-import { getMatches } from '../../../store/matches';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { getMatches, deleteMatch } from '../../../store/matches';
+
 import './MatchProfile.css';
+import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
 
 function MatchProfile({ user, children, previewMode }) {
+    const location = useLocation();
+    const history = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const matchesObj = useSelector(state => state.matches.matches.byUserId);
@@ -16,7 +21,6 @@ function MatchProfile({ user, children, previewMode }) {
     let match;
     if (matchesObj) match = matchesObj[user.id];
 
-    console.log(match)
     const socials = {
         facebook: user.facebook,
         instagram: user.instagram,
@@ -29,6 +33,13 @@ function MatchProfile({ user, children, previewMode }) {
     // see if there are any social records exist for the user
     const socialVals = Object.values(socials);
     const truthyExists = socialVals.some(val => !!val);
+
+    function handleBlock(e) {
+        e.preventDefault();
+        dispatch(deleteMatch(sessionUser.id, match.user_2_id));
+
+        history.push(`/`);
+    }
 
     const socialLinks = (
         <>
@@ -77,6 +88,20 @@ function MatchProfile({ user, children, previewMode }) {
         </>
     )
 
+    if (!match && location.pathname !== `/users/${sessionUser.id}`) {
+        return (
+            <>
+                <div className="match__404">
+                    <h3>Match Does Not Exist</h3>
+                    <p className="p-1">
+                        <Link className="underline-slide" to={`/users/${sessionUser.id}/matches`}>
+                            Click here to return to your top matches list.
+                        </Link>
+                    </p>
+                </div>
+            </>
+        )
+    }
     return (
         <>
             <div id="flex__container--split">
@@ -123,7 +148,7 @@ function MatchProfile({ user, children, previewMode }) {
                         {!previewMode &&
                             <div className="match__delete">
                                 <button
-                                    // onClick={handleDelete}
+                                    onClick={handleBlock}
                                     className="match__delete--button underline-slide accent-color-4"
                                 >
                                     Block {user.first_name}

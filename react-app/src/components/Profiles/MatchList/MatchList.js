@@ -21,10 +21,36 @@ function MatchList() {
     let users;
     if (usersObj) users = Object.values(usersObj);
 
-    let matches;
-    if (matchesObj) matches = Object.values(matchesObj);
+    let matches, matchesTable;
+    if (matchesObj) {
+        matches = Object.values(matchesObj);
 
-    console.log(usersObj[1])
+        matchesTable = (
+            <table id="match__table">
+                <tbody>
+
+                    {matches.map(match => (
+                        <tr>
+                            <td className="match__name">
+                                <Link to={`/users/${match.user_2_id}`} className="underline-slide">
+                                    {usersObj[match.user_2_id]?.first_name + ' '}
+                                    {usersObj[match.user_2_id]?.last_name.slice(0, 1) + '.'}
+                                </Link>
+                            </td>
+                            <td className="match__percentage">
+                                {match.compatibility_score}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        )
+    }
+
+    const noMatches = (
+        (<p className="p-1 match__none">No matches available at the moment.</p>)
+    );
+
     return (
         <>
             <div id="flex__container--split">
@@ -38,25 +64,7 @@ function MatchList() {
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
-                    <table id="match__table">
-                        <tbody>
-                            {matchesObj && matches.map(match => {
-                                return (
-                                    <tr>
-                                        <td className="match__name">
-                                            <Link to={`/users/${match.user_2_id}`} className="underline-slide">
-                                                {usersObj[match.user_2_id]?.first_name + ' '}
-                                                {usersObj[match.user_2_id]?.last_name.slice(0, 1) + '.'}
-                                            </Link>
-                                        </td>
-                                        <td className="match__percentage">
-                                            {match.compatibility_score}
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
+                    {matches?.length > 0 ? matchesTable : noMatches}
                 </div>
             </div>
         </>

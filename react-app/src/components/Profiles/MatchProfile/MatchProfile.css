@@ -16,3 +16,19 @@
     font-weight: var(--medium-weight);
     background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
 }
+
+.match__404 {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+    text-align: center;
+}
+
+.match__404 a {
+    color: var(--accent-color-4);
+    font-weight: var(--medium-weight);
+}
+
+.match__404 a:hover {
+    background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
+}

@@ -15,3 +15,8 @@
 td#match__name {
     width: 50%;
 }
+
+.match__none {
+    color: var(--accent-color-4);
+    font-weight: var(--medium-weight);
+}
