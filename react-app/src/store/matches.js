@@ -1,6 +1,7 @@
 // action types
 const LOAD_MATCHES = 'match/LOAD';
 const DELETE_MATCH = 'match/DELETE';
+const DELETE_ALL_MATCHES = 'match/DELETE_ALL_MATCHES';
 
 // action creators
 const loadMatches = (matches) => ({
@@ -13,9 +14,14 @@ const removeMatch = (matchedUserId) => ({
     matchedUserId
 });
 
+const removeAllMatches = () => ({
+    type: DELETE_MATCH
+});
+
+
 // thunks
 export const createMatches = (userId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}/matches/create`, {
+    const response = await fetch(`/api/users/${userId}/matches`, {
         method: 'POST'
     });
 
@@ -40,6 +46,15 @@ export const deleteMatch = (userId, matchedUserId) => async dispatch => {
 
     dispatch(removeMatch(matchedUserId))
 }
+
+// export const deleteAllMatches = (userId) => async dispatch => {
+//     await fetch(`/api/users/${userId}/matches`, {
+//         method: 'DELETE'
+//     });
+
+//     dispatch(removeMatch(matchedUserId))
+// }
+
 
 // reducer
 const initialState = { matches: {} };
