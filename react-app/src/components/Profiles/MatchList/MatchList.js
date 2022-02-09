@@ -26,10 +26,13 @@ function MatchList() {
     if (matchesObj) {
         matches = Object.values(matchesObj);
 
+        const sortedMatches = matches.sort((match1, match2) => match2.compatibility_score - match1.compatibility_score);
+        const topSortedMatches = sortedMatches.slice(0, 15)
+
         matchesTable = (
             <table id="match__table">
                 <tbody>
-                    {matches.map(match => (
+                    {topSortedMatches.map(match => (
                         <tr>
                             <td className="match__name">
                                 <Link to={`/users/${match.user_2_id}`} className="underline-slide">
@@ -64,7 +67,7 @@ function MatchList() {
                     </p>
                 </div>
                 <div className="flex__container--child flex__container--padded">
-                    {matches?.length > 0 ? matchesTable : noMatches}
+                    {matches.length ? matchesTable : noMatches}
                 </div>
             </div>
         </>
