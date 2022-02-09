@@ -1,6 +1,7 @@
 // action types
 const LOAD_MATCHES = 'match/LOAD';
 const DELETE_MATCH = 'match/DELETE';
+const DELETE_ALL_MATCHES = 'match/DELETE_ALL_MATCHES';
 
 // action creators
 const loadMatches = (matches) => ({
@@ -13,9 +14,14 @@ const removeMatch = (matchedUserId) => ({
     matchedUserId
 });
 
+const removeAllMatches = () => ({
+    type: DELETE_MATCH
+});
+
+
 // thunks
 export const createMatches = (userId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}/matches/create`, {
+    const response = await fetch(`/api/users/${userId}/matches`, {
         method: 'POST'
     });
 
@@ -41,8 +47,16 @@ export const deleteMatch = (userId, matchedUserId) => async dispatch => {
     dispatch(removeMatch(matchedUserId))
 }
 
+export const deleteAllMatches = (userId) => async dispatch => {
+    await fetch(`/api/users/${userId}/matches`, {
+        method: 'DELETE'
+    });
+
+    dispatch(removeAllMatches())
+}
+
 // reducer
-const initialState = { matches: {} };
+const initialState = { byUserId: {}, allMatches: [] };
 
 const matchReducer = (state = initialState, action) => {
     let newState;
@@ -50,14 +64,22 @@ const matchReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_MATCHES:
             newState = { ...state };
-            newState.matches['byUserId'] = action.matches.user_matches.reduce((matches, match) => {
+            newState.allMatches = []
+            newState.byUserId = action.matches.user_matches.reduce((matches, match) => {
                 matches[match.user_2_id] = match;
+                newState.allMatches.push(match.user_2_id);
                 return matches;
             }, {})
             return newState;
         case DELETE_MATCH:
             newState = { ...state };
-            delete newState.matches['byUserId'][action.matchedUserId];
+            newState.allMatches = state.allMatches.filter(match => match !== action.matchedUserId);
+            delete newState.byUserId[action.matchedUserId];
+            return newState;
+        case DELETE_ALL_MATCHES:
+            newState = { ...state };
+            newState.byUserId = {};
+            newState.allMatches = [];
             return newState;
         default:
             return state

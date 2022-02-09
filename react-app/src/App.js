@@ -19,7 +19,7 @@ import StyleGuide from './components/StyleGuide/StyleGuide';
 import NoMatch from './components/404/404';
 
 import './App.css';
-import MatchList from './components/Profiles/MatchList/MatchList';
+import MatchList from './components/MatchList/MatchList';
 import EditProfile from './components/Profiles/EditProfile/EditProfile';
 
 function App() {

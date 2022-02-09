@@ -48,9 +48,7 @@ function User() {
   }
 
   return (
-    <>{
-      console.log(sessionUser.id, userId, sessionUser === userId)
-    }
+    <>
       {sessionUser.id === parseInt(userId, 10) ?
         <UserProfile sessionUser={sessionUser} />
         :
