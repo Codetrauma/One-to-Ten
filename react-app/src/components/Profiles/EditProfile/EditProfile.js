@@ -6,7 +6,6 @@ import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, getOneUser } from '../../../store/users';
-import MatchProfileSelf from "../MatchProfile/MatchProfileSelf"
 
 const EditProfile = ({initialPreviewMode}) => {
     let params = useParams()
@@ -59,6 +58,7 @@ const EditProfile = ({initialPreviewMode}) => {
         if (editedProfile) {
             setErrors(editedProfile.errors)
         }
+        setPreviewMode(!previewMode)
     }
 
     const handleCancel = () => {
