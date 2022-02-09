@@ -14,7 +14,7 @@ function User() {
 
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.users[parseInt(userId, 10)]);
+  const user = useSelector(state => state.user.byId[parseInt(userId, 10)]);
   console.log(`!!!!!!~#@!$@!$`, user)
 
   // useEffect(() => {

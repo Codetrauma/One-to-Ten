@@ -12,7 +12,7 @@ function MatchList() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const matchesObj = useSelector(state => state.matches.matches.byUserId)
-    const usersObj = useSelector(state => state.user.users);
+    const usersObj = useSelector(state => state.user.byId);
 
     useEffect(() => {
         dispatch(getUsers());

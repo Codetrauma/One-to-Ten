@@ -1,7 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import questionResponsesReducer from './questionResponses';
 import questionReducer from './questions';
 import session from './session'
+import surveyResponseReducer from './surveyResponses';
 import surveyReducer from './surveys';
 import userReducer from './users';
 import matchReducer from './matches';
@@ -11,7 +13,9 @@ const rootReducer = combineReducers({
   user: userReducer,
   surveys: surveyReducer,
   questions: questionReducer,
-  matches: matchReducer
+  surveyResponses: surveyResponseReducer,
+  questionResponses: questionResponsesReducer,
+  matches: matchReducer,
 });
 
 
