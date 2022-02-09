@@ -4,16 +4,19 @@ import FormInput from '../../Forms/FormInput/FormInput'
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
 import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
+import { useSelector } from "react-redux"
 
-const EditProfile = ({sessionUser, initialPreviewMode}) => {
+const EditProfile = ({initialPreviewMode}) => {
     let params = useParams()
     let history = useHistory()
     let urlUserId = params.userId
 
-    sessionUser = {
-        first_name: 'Sample',
-        last_name: 'User'
-    }
+    // sessionUser = {
+    //     first_name: 'Sample',
+    //     last_name: 'User'
+    // }
+
+    const sessionUser = useSelector(state => state.session.user)
 
     const [previewMode, setPreviewMode] = useState(initialPreviewMode || false)
     const [biography, setBiography] = useState(sessionUser.biography || '')
@@ -43,6 +46,8 @@ const EditProfile = ({sessionUser, initialPreviewMode}) => {
 
     const onProfileUpdate = () => {
         console.log('updating profile')
+
+
     }
 
     const handleCancel = () => {
