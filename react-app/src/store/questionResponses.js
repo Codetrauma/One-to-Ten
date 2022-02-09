@@ -83,7 +83,7 @@ export const removeQuestionResponses = (surveyId, userId) => async dispatch => {
 
 
 //reducers
-const initialState = { bySurveyId: {} }
+const initialState = { bySurveyId_obj: {}, bySurveyId_ResVals: {} }
 
 const questionResponsesReducer = (state = initialState, action) => {
     let newState;
@@ -91,28 +91,34 @@ const questionResponsesReducer = (state = initialState, action) => {
         case LOAD_QUESTION_RESPONSES: {
             newState = { ...state }
 
-            console.log(`BABABABABAA`, action.questionResponses)
+            let responseInfo = Object.values(action.questionResponses.questions)
+            // console.log(responseInfo, `999999999999999`)
+            // console.log(responseInfo[0].length)
 
-            newState.bySurveyId[action.surveyId] = action.questionResponses
+            if (responseInfo[0].length) {
+                newState.bySurveyId_obj[action.surveyId] = action.questionResponses.questions
+                newState.bySurveyId_ResVals[action.surveyId] = responseInfo.reduce((responses, res) => {
+                    responses[res[0].question_id] = res[0].response
+                    return responses;
+                }, {})
+            }
 
-            // action.questionResponses.reduce((questionResponses, response) => {
-            //     questionResponses[] = response;
-            //     return questionResponses;
-            // }, {})
-
+            console.log(`NEWSTATSTATe`, newState)
             return newState;
         }
         case ADD_QUESTION_RESPONSE: {
             newState = { ...state }
 
-            newState.bySurveyId[action.surveyId] = action.questionResponses
+            //needs to be redone
+            newState.bySurveyId[action.surveyId] = action.questionResponses.questions
 
             return newState;
         }
         case DELETE_QUESTION_RESPONSE: {
             newState = { ...state }
 
-            delete newState.bySurveyId[action.surveyId]
+            delete newState.bySurveyId_obj[action.surveyId];
+            delete newState.bySurveyId_ResVals[action.surveyId]; 
 
             return newState;
         }

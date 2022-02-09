@@ -33,8 +33,8 @@ const Survey = () => {
     const questions = useSelector(state => state.questions.byId);
     const questionsList = Object.values(questions)
 
-    const questionResponses = useSelector(state => state.questionResponses.bySurveyId);
-
+    //questionResponses looks like {surveyId: {qId: val, qId: val, qId: val}}
+    const questionResponses = useSelector(state => state.questionResponses.bySurveyId_ResVals);
 
     useEffect(() => {
         dispatch(getSurveys());
