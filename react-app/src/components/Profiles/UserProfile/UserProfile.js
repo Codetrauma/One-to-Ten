@@ -10,14 +10,9 @@ function SessionProfile({ sessionUser }) {
     const [isActive, setIsActive] = useState(sessionUser.isActive || true);
     const allMatches = useSelector(state => state.matches.allMatches);
 
-    // let isActive = sessionUser.isActive
-    // if (isActive === undefined) isActive = true
-
     useEffect(() => {
         dispatch(getMatches(sessionUser.id));
     }, []);
-
-    console.log(allMatches)
 
     const handleDeactivate = () => {
         console.log('handle deactivate')

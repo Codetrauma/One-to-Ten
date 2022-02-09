@@ -53,12 +53,14 @@
 .error__404 a {
     color: var(--accent-color-4);
     font-weight: var(--medium-weight);
-}
-
-.error__404 a:hover {
     background-image: linear-gradient(var(--accent-color-4), var(--accent-color-4));
 }
 
+.link__light a {
+    color: var(--accent-color-2);
+    font-weight: var(--medium-weight);
+    background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
+}
 .margin-bottom-30 {
     margin-bottom: 30px;
 }

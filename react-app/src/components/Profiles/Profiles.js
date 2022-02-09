@@ -9,24 +9,10 @@ import { getOneUser } from '../../store/users';
 import '../../utils.css';
 
 function User() {
-  // const [user, setUser] = useState({});
   const { userId } = useParams();
-
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.byId[parseInt(userId, 10)]);
-  console.log(`!!!!!!~#@!$@!$`, user)
-
-  // useEffect(() => {
-  //   if (!userId) {
-  //     return;
-  //   }
-  //   (async () => {
-  //     const response = await fetch(`/api/users/${userId}`);
-  //     const user = await response.json();
-  //     setUser(user);
-  //   })();
-  // }, [userId]);
 
   useEffect(() => {
     dispatch(getOneUser(userId));
@@ -35,7 +21,8 @@ function User() {
   if (!user) {
     return (
       <>
-        <div className="error__404">
+        <div id="dark__background"></div>
+        <div className="error__404 link__light">
           <h3>User Does Not Exist</h3>
           <p className="p-1">
             <Link className="underline-slide" to={`/users/${sessionUser.id}`}>
