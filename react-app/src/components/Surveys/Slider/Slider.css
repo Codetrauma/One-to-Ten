@@ -71,6 +71,7 @@
     line-height: 30px;
 }
 
+.hidden-input,
 input.score-input{
     background-color: transparent;
     border: 0px;

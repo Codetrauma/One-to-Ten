@@ -1,6 +1,7 @@
-import react from 'react'
+import react, {useState} from 'react'
 import './Slider.css'
-const { useState } = require("react")
+// const { useState } = require("react")
+import FormInput from '../../Forms/FormInput/FormInput'
 
 
 const Slider = ({
@@ -8,10 +9,10 @@ const Slider = ({
     questionId,
     oneLabel,
     tenLabel,
-    initialValue
-
+    initialValue,
+    validationObject,
+    setValidationObject
 }) => {
-
 
     const [roundedScore, setRoundedScore] = useState(initialValue || '')
 
@@ -108,13 +109,24 @@ const Slider = ({
                         >
                             {roundedScore || ''}
                         </span>
-                        <input
-                            type="number"
-                            id={questionId}
-                            value={roundedScore}
-                            disabled
-                            className='score-input'
-                        />
+
+                            <FormInput
+                                type="text"
+                                id={questionId}
+                                value={roundedScore}
+                                disabled
+                                className='score-input'
+                                restrictSafe={false}
+                                required={true}
+                                minLength={1}
+                                maxLength={2}
+                                labelText=''
+                                placeholder=''
+                                stateVar={roundedScore}
+                                setStateVar={setRoundedScore}
+                                validationObject={validationObject}
+                                setValidationObject={setValidationObject}
+                            />
                     </div>
                 </div>
                 <div className='question-labels'>
