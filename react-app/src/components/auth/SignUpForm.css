@@ -2,7 +2,6 @@
 .right_col.signup {
     width: 550px;
     padding: 0px;
-    height: 100%;
     max-height: 470px;
     display: flex;
     flex-direction: column;
