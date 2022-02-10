@@ -2,7 +2,7 @@
     position: absolute;
     bottom: 0;
     display: grid;
-    grid-template-columns: 1.3fr 2fr 2fr 1.3fr;
+    grid-template-columns: 1.3fr 1.8fr 1.8fr 1.3fr;
     height: var(--nav-height);
     width: 100%;
     background-color: var(--main-color);

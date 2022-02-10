@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+import ActiveOnlyRoute from './components/auth/ActiveOnlyRoute';
 import User from './components/Profiles/Profiles';
 import Survey from './components/Surveys/Survey/Survey'
 import FirstSurvey from './components/FirstSurvey/FirstSurvey';
@@ -52,33 +52,27 @@ function App() {
           <Route path='/sign-up' exact={true}>
             <SignUpForm />
           </Route>
-          <ProtectedRoute path='/users' exact={true} >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId/matches' exact={true} >
-            <MatchList />
-          </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId/edit' exact={true} >
-            <EditProfile />
-          </ProtectedRoute>
-          <ProtectedRoute path='/surveys/:surveyId' exact={true} >
-            <Survey />
-          </ProtectedRoute>
-          <ProtectedRoute path='/surveys' exact={true} >
-            <SurveyList />
+          <Route path='/about' exact={true} >
+            <About />
+          </Route>
+          <ProtectedRoute path='/first-survey' exact={true} >
+            <FirstSurvey />
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path='/first-survey' exact={true} >
-            <FirstSurvey />
+          <ProtectedRoute path='/users/:userId/edit' exact={true} >
+            <EditProfile />
           </ProtectedRoute>
-          <ProtectedRoute path='/about' exact={true} >
-            <About />
-          </ProtectedRoute>
-          {/* <ProtectedRoute path='/' exact={true} >
-            <h1>Redirect to user profile?</h1>
-          </ProtectedRoute> */}
+          <ActiveOnlyRoute path='/users/:userId/matches' exact={true} >
+            <MatchList />
+          </ActiveOnlyRoute>
+          <ActiveOnlyRoute path='/surveys/:surveyId' exact={true} >
+            <Survey />
+          </ActiveOnlyRoute>
+          <ActiveOnlyRoute path='/surveys' exact={true} >
+            <SurveyList />
+          </ActiveOnlyRoute>
           <Route path="*">
             <NoMatch />
           </Route>

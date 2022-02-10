@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import UserProfile from './UserProfile/UserProfile';
@@ -16,7 +16,8 @@ function User() {
 
   useEffect(() => {
     dispatch(getOneUser(userId));
-  }, [dispatch])
+  }, [dispatch]);
+
 
   if (!user) {
     return (
@@ -24,7 +25,7 @@ function User() {
         <div className="error__404 link__light">
           <h3>User Does Not Exist</h3>
           <p className="p-1">
-            <Link className="underline-slide" to={`/users/${sessionUser.id}`}>
+            <Link className="underline-slide" to={`/`}>
               Click here to return to your dashboard.
             </Link>
           </p>
