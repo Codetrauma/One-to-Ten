@@ -124,6 +124,8 @@ def delete_matches(user_id):
     Find and delete all matches where a given user_id shows up in the record,
     on either user_1_id column or user_2_id column.
     """
+    user = User.query.get(user_id)
+    user.is_active = False
     matches = Matches.query.filter(
                 or_(
                     Matches.user_1_id == user_id,

@@ -16,16 +16,16 @@ function SurveyList() {
     const surveyResponses = useSelector(state => state.surveyResponses.bySurveyId);
 
     //change from object to array to make iterable
-    const surveyList = Object.values(surveys);
+    const surveyList = Object.values(surveys).splice(1);
     const surveyResponseList = Object.values(surveyResponses);
+
+    const [deleteResponseMode, setDeleteResponseMode] = useState(false)
 
     useEffect(() => {
         dispatch(getSurveys());
         dispatch(getSurveyResponses(sessionUser.id));
     }, [dispatch])
 
-
-    const [deleteResponseMode, setDeleteResponseMode] = useState(false)
 
     const toggleDeleteResponse = () => {
         setDeleteResponseMode(!deleteResponseMode)
@@ -44,6 +44,7 @@ function SurveyList() {
                             id={survey.id}
                             completed={completed}
                             deleteResponseMode={deleteResponseMode}
+                            setDeleteResponseMode={setDeleteResponseMode}
                         />
                     )
                 }

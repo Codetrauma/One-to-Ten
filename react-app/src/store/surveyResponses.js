@@ -42,11 +42,22 @@ export const removeSurveyResponse = (surveyId, userId) => async dispatch => {
     }
 };
 
-export const createSurveyResponse = (surveyResponse) => async dispatch =>{
-    const res = await fetch(`/api/surveys/${surveyResponse.surveyId}/users/${surveyResponse.userId}`, {
+export const createSurveyResponse = (surveyResponse, surveyId, userId) => async dispatch => {
+
+    let responseArr = Object.entries(Object.values(surveyResponse)[0])
+    let responseObj = responseArr.map(response => {
+        return {
+            question_id: response[0],
+            value: response[1]
+        }
+    })
+
+    console.log(responseObj)
+
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(surveyResponse)
+        body: JSON.stringify(responseObj)
     })
 
     if (res.ok) {
@@ -71,7 +82,7 @@ const surveyResponseReducer = (state = initialState, action) => {
                 surveyResponses[response.survey_id] = response;
                 return surveyResponses
             }, {})
-            
+
             return newState;
         }
         case DELETE_SURVEY_RESPONSE: {
