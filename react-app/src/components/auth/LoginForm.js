@@ -90,10 +90,12 @@ const LoginForm = () => {
             <div className="error-area">
               {errors && errors.map(error => (
                 <div className="database-errors">
-                  {error.split(":")[1]}
+                  {error.includes(': ') ?
+                    error.split(": ")[1]
+                    : error
+                  }
                 </div>
-              ))
-              }
+              ))}
             </div>
             <ArrowButton
               type='submit'
