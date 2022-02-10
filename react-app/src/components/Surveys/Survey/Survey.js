@@ -77,7 +77,7 @@ const Survey = () => {
 
     if (!survey) {
         return(
-        <>
+            <>
                 <div id='#dark__background '>
                 <h1>No Survey Found</h1>
                 </div>
