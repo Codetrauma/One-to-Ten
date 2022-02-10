@@ -62,7 +62,7 @@ function SessionProfile({ sessionUser }) {
                         }
 
                         <p className="profile__navigation--link">
-                            <Link className="underline-slide" to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide" to={`/users/${sessionUser.id}/edit`}>
                                 Edit Profile
                             </Link>
                         </p>
