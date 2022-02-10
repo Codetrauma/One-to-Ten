@@ -75,9 +75,8 @@ const FirstSurvey = () => {
         <div className='left-col flex__container--child'>
           <h1>Icebreaker</h1>
           <p className='icebreaker p-1 accent-color-2'>
-            Submitting this survey will activate your profile and generate matches with
-            other users. Answer thoughtfully beacause your response cannot be changed
-            after being submitted.
+            Tell us about yourself. Submitting this survey will activate your profile and generate matches with
+            other users.
           </p>
           <div className='button-container'>
 
