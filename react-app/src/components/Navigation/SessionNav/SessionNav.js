@@ -32,6 +32,12 @@ function SessionNav({ sessionUser }) {
                             </NavLink>
                         </div>
                         <div className="nav__bar--grid-right">
+                        <NavLink
+                                activeClassName='nav__bar--link-active nav__link--light'
+                                className="underline-slide"
+                                to={`/`}>
+                                View Dashboard
+                            </NavLink>
                         </div>
                     </div>
                 </div>
