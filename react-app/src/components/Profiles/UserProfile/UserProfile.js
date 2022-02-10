@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { getMatches } from '../../../store/matches';
+import { getMatches, deleteAllMatches } from '../../../store/matches';
 import { getSurveyResponses } from '../../../store/surveyResponses';
-import Confirmation from '../../Utils/Confirmation/Confirmation'
+import Confirmation from '../../Utils/Confirmation/Confirmation';
 import '../Profiles.css';
 import './UserProfile.css';
 
@@ -25,6 +25,7 @@ function SessionProfile({ sessionUser }) {
 
 
     const handleDeactivate = () => {
+        dispatch(deleteAllMatches(sessionUser.id));
         console.log('handle deactivate')
         setIsActive(false)
     };
@@ -68,7 +69,7 @@ function SessionProfile({ sessionUser }) {
                         </p>
                         {isActive &&
                             <Confirmation
-                                warningText={`Are you sure? This action is irreversible and will delete all survey response and match data.`}
+                                warningText={`Are you sure? This action is irreversible and will delete all your match data.`}
                                 confirmAction={handleDeactivate}
                                 confirmText={`Confirm`}
                                 hideText={`Nevermind`}
