@@ -36,3 +36,23 @@ def undo():
     undo_question_stats()
     undo_matches()
     # Add other undo functions here
+
+@seed_commands.command('reset')
+def reset():
+    # Add whatever is in the undo function
+    undo_users()
+    undo_surveys()
+    undo_survey_responses()
+    undo_questions()
+    undo_question_responses()
+    undo_question_stats()
+    undo_matches()
+
+    # Add whatever is in your seed function
+    seed_users()
+    seed_surveys()
+    seed_survey_responses()
+    seed_questions()
+    seed_question_responses()
+    seed_question_stats()
+    seed_matches()
