@@ -42,7 +42,7 @@ const LoginForm = () => {
       <div className='light_background' />
       <div className='login-form' id='flex__container--split'>
         {/* <div id='flex__container--divider'/> */}
-        <div className='left_col flex__container--child login'>
+        <div className='left_col flex__container--child flex__container--padded login'>
           <h1>Log In</h1>
           <p className='p-1'>
             {/* <Lorem chars='200' /> */}
@@ -54,7 +54,7 @@ const LoginForm = () => {
           </p>
 
         </div>
-        <div className='right_col flex__container--child login'>
+        <div className='right_col flex__container--child flex__container--padded login'>
           <div className='top_group'>
             <form id='login' onSubmit={onLogin}>
               <FormInput

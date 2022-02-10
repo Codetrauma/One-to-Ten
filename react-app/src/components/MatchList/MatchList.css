@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     font-weight: var(--medium-weight);
+    font-size: var(--h5-size);
 }
 
 #match__table td a {

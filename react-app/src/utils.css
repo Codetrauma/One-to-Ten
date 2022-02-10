@@ -1,12 +1,12 @@
 /* split containers styling */
 #flex__container--split {
     height: 100%;
-    width: 80%;
+    width: 95%;
     margin: 20px 0;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 120px;
+    gap: 0px;
 }
 
 .flex__container--child {

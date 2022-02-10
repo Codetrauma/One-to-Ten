@@ -39,7 +39,7 @@ function SessionNav({ sessionUser }) {
                     <div className="nav__bar--grid">
                         <div className="nav__bar--grid-left">
                             <NavLink
-                                to={`/users/${sessionUser.id}`}>
+                                to="/">
                                 Participant
                             </NavLink>
                         </div>
@@ -54,7 +54,7 @@ function SessionNav({ sessionUser }) {
                         <div className="nav__bar--grid-left">
                             <div className="nav__bar--user-no">
                                 <NavLink
-                                    to={`/users/${sessionUser.id}`}>
+                                    to="">
                                     &#8470; {sessionUser.id}
                                 </NavLink>
                             </div>
