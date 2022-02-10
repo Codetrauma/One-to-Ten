@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import Slider from '../Surveys/Slider/Slider'
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
-
+import { createSurveyResponse } from '../../store/surveyResponses';
 import { getMatches, createMatches } from '../../store/matches';
 
 import './FirstSurvey.css'
@@ -13,7 +13,9 @@ const FirstSurvey = () => {
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
-  const [value, setValue] = useState('')
+  const userId = sessionUser.id
+
+  // const [value, setValue] = useState('')
   const [validationObject, setValidationObject] = useState({ test: true });
 
   const matches = useSelector(state => state.matches.allMatches);
@@ -34,10 +36,10 @@ const FirstSurvey = () => {
       entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
     }
 
-    let reqBody = {}
-    reqBody[1] = entries
-
-    console.log(reqBody)
+    let surveyResponse = {}
+    surveyResponse[1] = entries
+    let res = await dispatch(createSurveyResponse(surveyResponse, 1, userId))
+    if (res?.message.includes('Success')) history.push('/surveys')
 
   }
 
