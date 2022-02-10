@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     tiktok = db.Column(db.String)
     twitter = db.Column(db.String)
     github = db.Column(db.String)
-    is_active = db.Column(db.Boolean, default=False)
+    active = db.Column(db.Boolean, default=False)
 
     @property
     def password(self):
@@ -51,7 +51,7 @@ class User(db.Model, UserMixin):
                 'tiktok': self.tiktok,
                 'twitter': self.twitter,
                 'github': self.github,
-                'is_active': self.is_active
+                'active': self.active
             }
         else:
             return {
@@ -66,7 +66,7 @@ class User(db.Model, UserMixin):
                 'tiktok': self.tiktok,
                 'twitter': self.twitter,
                 'github': self.github,
-                'is_active': self.is_active
+                'active': self.active
             }
 
 

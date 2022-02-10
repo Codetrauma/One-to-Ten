@@ -1,4 +1,4 @@
-"""added is_active to Users
+"""added active to Users
 
 Revision ID: 62a6f41fce0e
 Revises:
@@ -39,7 +39,7 @@ def upgrade():
     sa.Column('tiktok', sa.String(), nullable=True),
     sa.Column('twitter', sa.String(), nullable=True),
     sa.Column('github', sa.String(), nullable=True),
-    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('active', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )

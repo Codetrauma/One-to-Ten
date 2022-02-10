@@ -9,7 +9,7 @@ import './UserProfile.css';
 
 function SessionProfile({ sessionUser }) {
     const dispatch = useDispatch();
-    const [isActive, setIsActive] = useState(sessionUser.isActive || true);
+    const [isActive, setIsActive] = useState(sessionUser.active);
     const allMatches = useSelector(state => state.matches.allMatches);
 
     //to get number of questions completed by user
@@ -26,7 +26,6 @@ function SessionProfile({ sessionUser }) {
 
     const handleDeactivate = () => {
         dispatch(deleteAllMatches(sessionUser.id));
-        console.log('handle deactivate')
         setIsActive(false)
     };
 
