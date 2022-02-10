@@ -9,7 +9,7 @@ import './UserProfile.css';
 
 function SessionProfile({ sessionUser }) {
     const dispatch = useDispatch();
-    const [isActive, setIsActive] = useState(sessionUser.is_active);
+    const [isActive, setIsActive] = useState(sessionUser.active);
     const allMatches = useSelector(state => state.matches.allMatches);
 
     //to get number of questions completed by user

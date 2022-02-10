@@ -126,7 +126,7 @@ def delete_matches(user_id):
     on either user_1_id column or user_2_id column.
     """
     user = User.query.get(user_id)
-    user.is_active = False
+    user.active = False
     matches = Matches.query.filter(
                 or_(
                     Matches.user_1_id == user_id,
