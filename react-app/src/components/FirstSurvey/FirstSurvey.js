@@ -7,6 +7,7 @@ import { createSurveyResponse } from '../../store/surveyResponses';
 import { getMatches, createMatches } from '../../store/matches';
 
 import './FirstSurvey.css'
+import { updateSessionUser } from '../../store/session';
 
 const FirstSurvey = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const FirstSurvey = () => {
     e.preventDefault();
 
     if (!matches.length) dispatch(createMatches(sessionUser.id));
+    dispatch(updateSessionUser(sessionUser, sessionUser.id))
 
     let entries = {}
     let inputs = document.querySelectorAll('input')
