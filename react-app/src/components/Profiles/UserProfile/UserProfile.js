@@ -3,14 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getMatches, deleteAllMatches } from '../../../store/matches';
 import { getSurveyResponses } from '../../../store/surveyResponses';
+import { updateSessionUser } from '../../../store/session';
 import Confirmation from '../../Utils/Confirmation/Confirmation';
 import '../Profiles.css';
 import './UserProfile.css';
 
-function SessionProfile({ sessionUser }) {
+function SessionProfile() {
     const dispatch = useDispatch();
-    const [isActive, setIsActive] = useState(sessionUser.active);
+    // const [isActive, setIsActive] = useState(sessionUser.active);
+    const sessionUser = useSelector(state => state.session.user);
     const allMatches = useSelector(state => state.matches.allMatches);
+
+    const isActive = sessionUser.active;
 
     //to get number of questions completed by user
     const allSurveys = useSelector(state => state.surveyResponses.bySurveyId);
@@ -23,9 +27,9 @@ function SessionProfile({ sessionUser }) {
         dispatch(getSurveyResponses(sessionUser.id));
     }, []);
 
-    const handleDeactivate = () => {
-        dispatch(deleteAllMatches(sessionUser.id));
-        setIsActive(false)
+    async function handleDeactivate() {
+        await dispatch(deleteAllMatches(sessionUser.id));
+        await dispatch(updateSessionUser(sessionUser, sessionUser.id));
     };
 
     return (
@@ -34,11 +38,11 @@ function SessionProfile({ sessionUser }) {
             <div id="flex__container--split">
                 <div className="flex__container--child flex__container--padded">
                     <h1 className="accent-color-2">
-                        Hello {sessionUser.first_name}
+                        Hello {sessionUser.first_name.slice(0, 1).toUpperCase() + sessionUser.first_name.slice(1).toLowerCase()}
                     </h1>
                     {!isActive &&
                         <>
-                            <p className="p-1 accent-color-5">
+                            <p className="p-1 accent-color-2">
                                 Complete the Icebreaker survey to activate your profile.
                             </p>
                         </>

@@ -105,7 +105,7 @@ function MatchProfile({ user, children, previewMode }) {
                 <div className="flex__container--child flex__container--padded">
 
                     <h1 className="main-color">
-                        {user.first_name} {user.last_name.slice(0, 1) + '.'}
+                        {user.first_name.slice(0, 1).toUpperCase() + user.first_name.slice(1).toLowerCase()} {user.last_name.slice(0, 1).toUpperCase() + '.'}
                     </h1>
                     {previewMode ?
                         <p className="p-1 accent-color-1">
@@ -122,7 +122,8 @@ function MatchProfile({ user, children, previewMode }) {
                     <div className="match__profile--info">
                         {user.biography && (
                             <div className="match__bio">
-                                <h4>About {user.first_name}</h4>
+                                <h4>About {user.first_name.slice(0, 1).toUpperCase() + user.first_name.slice(1).toLowerCase()}
+                                </h4>
                                 <p className="p-1 accent-color-3">
                                     {user.biography}
                                 </p>

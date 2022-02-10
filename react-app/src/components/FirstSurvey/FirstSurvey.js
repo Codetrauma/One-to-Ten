@@ -28,8 +28,8 @@ const FirstSurvey = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!matches.length) dispatch(createMatches(sessionUser.id));
-    dispatch(updateSessionUser(sessionUser, sessionUser.id))
+    if (!matches.length) await dispatch(createMatches(sessionUser.id));
+    await dispatch(updateSessionUser(sessionUser, sessionUser.id))
 
     let entries = {}
     let inputs = document.querySelectorAll('input')
@@ -41,7 +41,7 @@ const FirstSurvey = () => {
     let surveyResponse = {}
     surveyResponse[1] = entries
     let res = await dispatch(createSurveyResponse(surveyResponse, 1, userId))
-    if (res?.message.includes('Success')) history.push('/surveys')
+    if (res?.message.includes('Success')) history.push('/')
 
   }
 
@@ -54,19 +54,19 @@ const FirstSurvey = () => {
       id: 1,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I am a person who is very open to new ideas and experiences.',
+      text: 'I prefer cats over dogs.',
     },
     {
       id: 2,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I enjoy traveling',
+      text: 'I am a person who is very open to new ideas an experiences.',
     },
     {
       id: 3,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I am an animal person',
+      text: 'To feel at ease, I need to be in a position of control',
     }
   ]
 

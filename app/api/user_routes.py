@@ -95,7 +95,7 @@ def user_matches(user_id):
     matches = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in matches]}
 
-@user_routes.route('/<int:user_id>/matches', methods=['POST'])
+@user_routes.route('/<int:user_id>/matches/get', methods=['GET'])
 @login_required
 def generate_matches(user_id):
     """
@@ -104,21 +104,20 @@ def generate_matches(user_id):
         - One where the new user is in user_1_id column and existing user is in user_2_column
         - Another record where the column data is swapped.
     """
-    users = User.query.all()
+    users = User.query.filter(User.active == True).filter(User.id != user_id).all()
     user = User.query.get(user_id)
     user.active = True
 
     for user in users:
-        if user_id != user.id:
-            match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
-            match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
-            db.session.add(match1)
-            db.session.add(match2)
+        match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
+        match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
+        db.session.add(match1)
+        db.session.add(match2)
 
     db.session.commit()
 
-    match = Matches.query.filter(Matches.user_1_id == user_id).all()
-    return {'user_matches': [match.to_dict() for match in match]}
+    matches = Matches.query.filter(Matches.user_1_id == user_id).all()
+    return {'user_matches': [match.to_dict() for match in matches]}
 
 @user_routes.route('/<int:user_id>/matches', methods=['DELETE'])
 @login_required
