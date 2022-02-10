@@ -120,7 +120,6 @@ const Slider = ({
                                 disabled={true}
                                 className='score-input'
                                 restrictSafe={false}
-                                required={true}
                                 labelText=''
                                 placeholder=''
                                 stateVar={roundedScore}

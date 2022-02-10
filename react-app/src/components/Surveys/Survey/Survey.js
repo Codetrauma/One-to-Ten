@@ -20,6 +20,7 @@ const Survey = () => {
 
     const [validationObject, setValidationObject] = useState({ test: true });
     const [questionValues, setQuestionValues] = useState({});
+    const [errors, setErrors] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -41,12 +42,23 @@ const Survey = () => {
     if (!questions) return null;
 
     const handleSubmit = async (e) => {
+
         e.preventDefault()
-        console.log('handleSubmit')
+
         let entries = {}
+
         let inputs = document.querySelectorAll('input')
+
         for (let i = 0; i < inputs.length; i++) {
+            let input = inputs[i]
+            let value = parseInt(input['value'])
+            if (!value) {
+                setErrors(['Responses cannot be left blank'])
+                return;
+            }
+
             entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
+
         }
 
         let surveyResponse = {}
@@ -56,15 +68,21 @@ const Survey = () => {
         dispatch(getQuestions(surveyId, userId))
 
         if (res.message) history.push('/surveys')
-        
+
         }
 
     const handleCancel = (e) => {
-        console.log('handleCancel')
         history.push('/surveys')
     }
+
     if (!survey) {
-        return <h1>No Survey Found</h1>
+        return(
+            <>
+                <div id='#dark__background '>
+                <h1>No Survey Found</h1>
+                </div>
+            </>
+        )
     }
 
     return (
@@ -76,7 +94,17 @@ const Survey = () => {
                     <div className='survey' id="flex__container--split">
                         <div className='left-col flex__container--child'>
                             <h1>{survey?.name}</h1>
-                            <div className='button-container'>
+                        <div className='button-container'>
+                            <div className='error-container'>
+                            {errors && errors.map(error => (
+                                <div className="database-errors">
+                                {error.includes(': ') ?
+                                    error.split(": ")[1]
+                                    : error
+                                }
+                                </div>
+                            ))}
+                            </div>
 
                                 <ArrowButton
                                     type='submit'
