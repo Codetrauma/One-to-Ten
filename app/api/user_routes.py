@@ -6,6 +6,8 @@ from app.forms.user_edit_form import UserEditForm
 from app.models import db, User, SurveyResponses, Matches
 from sqlalchemy import or_, select
 
+from app.models.question_responses import QuestionResponses
+
 user_routes = Blueprint('users', __name__)
 
 def validation_errors_to_error_messages(validation_errors):
@@ -129,6 +131,12 @@ def delete_matches(user_id):
     """
     user = User.query.get(user_id)
     user.active = False
+    user_questions = QuestionResponses.query.filter(QuestionResponses.user_id == user_id).all()
+    for question in user_questions:
+        db.session.delete(question)
+    user_surveys = SurveyResponses.query.filter(SurveyResponses.user_id == user_id).all()
+    for survey in user_surveys:
+        db.session.delete(survey)
     matches = Matches.query.filter(
                 or_(
                     Matches.user_1_id == user_id,
