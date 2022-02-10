@@ -55,7 +55,18 @@ def seed_bulk():
         "Mackenzie"
     ]
 
-    print('~~~~~~', len(names))
+    surnames = [
+        'Smith',
+        'Johnson',
+        'Williams',
+        'Jones',
+        'Miller',
+        'Davis',
+        'Garcia',
+        'Moore',
+        'Wilson',
+        'Jackson'
+    ]
 
     biographies = [
 
@@ -931,7 +942,7 @@ def seed_bulk():
 
         email=f'user{user_id}@aa.io'
         first_name=names[user_id-1]
-        last_name='X'
+        last_name=surnames[user_id % 10]
         biography=biographies[user_id % 19]
         active=True
         password='password'
@@ -940,6 +951,12 @@ def seed_bulk():
             first_name=first_name,
             last_name=last_name,
             biography=biography,
+            facebook=f'{first_name}{last_name}',
+            instagram=f'{first_name}{last_name}',
+            snapchat=f'{first_name}{last_name}',
+            tiktok=f'{first_name}{last_name}',
+            twitter=f'{first_name}{last_name}',
+            github=f'{first_name}{last_name}',
             active=active,
             password=password
         )
