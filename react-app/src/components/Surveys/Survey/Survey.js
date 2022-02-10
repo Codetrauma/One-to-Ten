@@ -102,7 +102,7 @@ const Survey = () => {
                         <div className='right-col flex__container--child'>
 
                             <form id='survey-form' onSubmit={handleSubmit}>
-                                {questionsList?.map(question => (
+                                {questionsList.map(question => (
                                     <Slider
                                         key={question.id}
                                         oneLabel={question.one_label}
