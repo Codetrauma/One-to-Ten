@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch} from 'react-redux'
-import { Redirect, NavLink, useHistory  } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import FormInput from '../Forms/FormInput/FormInput';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
@@ -8,7 +8,7 @@ import Lorem from '../Utils/Lorem/Lorem';
 import './SignUpForm.css'
 import { validateSignUp, formatDate } from './utils';
 const SignUpForm = () => {
-  const history=useHistory()
+  const history = useHistory()
 
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -19,7 +19,7 @@ const SignUpForm = () => {
   const [dob, setDob] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [gender, setGender] = useState('lork');
-  const [validationObject, setValidationObject] = useState({ test: true, email:false, first_name: false, last_name: false, password: false, repeatPassword: false });
+  const [validationObject, setValidationObject] = useState({ test: true, email: false, first_name: false, last_name: false, password: false, repeatPassword: false });
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
@@ -62,7 +62,7 @@ const SignUpForm = () => {
           <h1>Account Setup</h1>
           <p className='p-1'>
             This information is used for indentity verification and
-            compaitibility calculations. Your email, gender, zip code,
+            compatibility calculations. Your email, gender, zip code,
             and date of birth will never be shared publicly,
             however your age and city name will be visible on your
             public profile.

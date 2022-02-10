@@ -54,19 +54,19 @@ const FirstSurvey = () => {
       id: 1,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I am a person who is very open to new ideas and experiences.',
+      text: 'I prefer cats over dogs.',
     },
     {
       id: 2,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I enjoy traveling',
+      text: 'I am a person who is very open to new ideas an experiences.',
     },
     {
       id: 3,
       one_label: 'Disagree',
       ten_label: 'Agree',
-      text: 'I am an animal person',
+      text: 'To feel at ease, I need to be in a position of control',
     }
   ]
 

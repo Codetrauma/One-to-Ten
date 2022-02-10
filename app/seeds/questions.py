@@ -6,15 +6,15 @@ def seed_questions():
   # basic
   survey_01_q1 = Questions(
     weight=1,
-    text='Do you like cats more or dogs more?',
-    one_label='Cats',
-    ten_label='Dogs',
+    text='I prefer cats over dogs.',
+    one_label='Disagree',
+    ten_label='Agree',
     survey_id=1
     )
 
   survey_01_q2 = Questions(
     weight=1,
-    text='Most people really want to help others.',
+    text='I am a person who is very open to new ideas an experiences.',
     one_label='Disagree',
     ten_label='Agree',
     survey_id=1

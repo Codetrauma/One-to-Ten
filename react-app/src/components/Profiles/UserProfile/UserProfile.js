@@ -42,7 +42,7 @@ function SessionProfile() {
                     </h1>
                     {!isActive &&
                         <>
-                            <p className="p-1 accent-color-5">
+                            <p className="p-1 accent-color-2">
                                 Complete the Icebreaker survey to activate your profile.
                             </p>
                         </>
