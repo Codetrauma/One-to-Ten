@@ -19,7 +19,7 @@ function SessionNav({ sessionUser }) {
                             <NavLink
                                 activeClassName='nav__bar--link-active nav__link--light'
                                 className="underline-slide"
-                                to={`/users/${sessionUser.id}/profile`}>
+                                to={`/users/${sessionUser.id}/edit`}>
                                 Edit Profile
                             </NavLink>
                         </div>
