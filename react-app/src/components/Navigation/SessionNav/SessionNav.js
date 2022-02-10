@@ -61,7 +61,7 @@ function SessionNav({ sessionUser }) {
                         </div>
                         <div className="nav__bar--grid-right nav__link--light">
                             <a
-                                activeClassName='nav__bar--link-active'
+                                // activeClassName='nav__bar--link-active'
                                 className="underline-slide"
                                 href="https://github.com/JTannerShaw/One-to-Ten"
                                 target="_blank" rel="noreferrer noopener">

@@ -63,7 +63,7 @@ function SessionProfile({ sessionUser }) {
                         }
 
                         <p className="profile__navigation--link">
-                            <Link className="underline-slide" to={`/users/${sessionUser.id}/profile`}>
+                            <Link className="underline-slide" to={`/users/${sessionUser.id}/edit`}>
                                 Edit Profile
                             </Link>
                         </p>
@@ -87,7 +87,7 @@ function SessionProfile({ sessionUser }) {
                     {isActive ?
                         <div className="profile__stats">
                             <div className="profile__stats--section">
-                                <div className="profile__stats--num">{numberOfQuestions}</div>
+                                <div className="profile__stats--num">{numberOfQuestions < 0 ? 0 : numberOfQuestions}</div>
                                 <div className="profile__stats--caption">Questions Answered</div>
                             </div>
                             <div className="profile__stats--section">
