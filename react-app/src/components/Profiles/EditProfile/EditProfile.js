@@ -6,6 +6,7 @@ import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, getOneUser } from '../../../store/users';
+import { updateSessionUser } from "../../../store/session"
 
 const EditProfile = ({initialPreviewMode}) => {
     let params = useParams()
@@ -13,15 +14,9 @@ const EditProfile = ({initialPreviewMode}) => {
     let urlUserId = params.userId;
     const dispatch = useDispatch();
 
-    // sessionUser = {
-    //     first_name: 'Sample',
-    //     last_name: 'User'
-    // }
-
-    // const sessionUser = useSelector(state => state.session.user)
-    // console.log(typeof sessionUser.id, sessionUser.id)
-    const sessionUser = useSelector(state => state.user?.byId[urlUserId])
-    console.log(sessionUser, 'HELLLLLLLLLLLLO')
+    const sessionUser = useSelector(state => state.session.user);
+    const currentUserId = sessionUser.id;
+    
 
     const [previewMode, setPreviewMode] = useState(initialPreviewMode || false)
     const [biography, setBiography] = useState(sessionUser?.biography || '')
@@ -54,11 +49,12 @@ const EditProfile = ({initialPreviewMode}) => {
         // console.log('updating profile!!!!!!!!!!')
         e.preventDefault()
 
-        const editedProfile = await dispatch(changeUser(previewUser, sessionUser.id));
+        const editedProfile = await dispatch(updateSessionUser(previewUser, sessionUser.id));
         if (editedProfile) {
             setErrors(editedProfile.errors)
         }
-        setPreviewMode(!previewMode)
+
+       setPreviewMode(!previewMode)
     }
 
     const handleCancel = () => {
@@ -66,8 +62,6 @@ const EditProfile = ({initialPreviewMode}) => {
         history.push(`/users/${urlUserId}`)
     }
 
-    const currentSessionUser = useSelector(state => state.session.user.id);
-    let currentUserId = currentSessionUser;
 
     useEffect(() => {
         dispatch(getOneUser(urlUserId))
