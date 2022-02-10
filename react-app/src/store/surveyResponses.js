@@ -61,6 +61,7 @@ export const createSurveyResponse = (surveyResponse, surveyId, userId) => async 
     })
 
     if (res.ok) {
+        console.log('res is oka on reducer', res)
         const newSurveyResponse = await res.json();
         dispatch(addSurveyResponse(newSurveyResponse));
         return newSurveyResponse;

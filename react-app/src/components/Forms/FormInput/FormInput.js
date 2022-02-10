@@ -13,6 +13,7 @@ const FormInput = (
         stateVar,
         setStateVar,
         required,
+        disabled,
         minLength,
         maxLength,
         placeholder,
@@ -21,7 +22,8 @@ const FormInput = (
         validationObject,
         setValidationObject,
         restrictSafe,
-        radioOptions
+        radioOptions,
+        testingMovement
     }
 
 ) => {
@@ -83,8 +85,8 @@ const FormInput = (
                             required={required}
                             onChange={updateStateVar}
                             placeholder={placeholder}
-                            data-hasinput={stateVar && stateVar.length > 0}
-                            data-toolong={maxLength && stateVar && stateVar.length > maxLength}
+                            data-hasinput={stateVar && stateVar.length && stateVar.length > 0}
+                            data-toolong={maxLength && stateVar && stateVar.length && stateVar.length > maxLength}
                             data-issafe={isSafe}
                         ></textarea>
                     }
@@ -121,10 +123,11 @@ const FormInput = (
                         type={type}
                         value={stateVar}
                         required={required}
+                        disabled={disabled}
                         onChange={updateStateVar}
                         placeholder={placeholder}
-                        data-hasinput={stateVar && stateVar.length > 0}
-                        data-toolong={maxLength && stateVar && stateVar.length > maxLength}
+                        data-hasinput={stateVar && stateVar.length && stateVar.length > 0}
+                        data-toolong={maxLength && stateVar && stateVar.length && stateVar.length > maxLength}
                         data-issafe={isSafe}
                     />
                     }
