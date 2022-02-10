@@ -28,8 +28,8 @@ const FirstSurvey = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!matches.length) dispatch(createMatches(sessionUser.id));
-    dispatch(updateSessionUser(sessionUser, sessionUser.id))
+    if (!matches.length) await dispatch(createMatches(sessionUser.id));
+    await dispatch(updateSessionUser(sessionUser, sessionUser.id))
 
     let entries = {}
     let inputs = document.querySelectorAll('input')
@@ -41,7 +41,7 @@ const FirstSurvey = () => {
     let surveyResponse = {}
     surveyResponse[1] = entries
     let res = await dispatch(createSurveyResponse(surveyResponse, 1, userId))
-    if (res?.message.includes('Success')) history.push('/surveys')
+    if (res?.message.includes('Success')) history.push('/')
 
   }
 
