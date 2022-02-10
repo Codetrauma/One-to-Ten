@@ -15,9 +15,11 @@ const Slider = ({
 }) => {
 
     const [roundedScore, setRoundedScore] = useState(initialValue || '')
+    const [movementInitiated, setMovementInitiated] = useState(false)
 
     function smartSlide(e) {
 
+    console.log('movement started')
       let target = e.target;
       //sets property to handle event start/stop logic
       target.movementEnabled = true;
@@ -41,7 +43,7 @@ const Slider = ({
 
         function dr(event) {
             event.preventDefault();
-
+            setMovementInitiated(true)
             if (!target.movementEnabled) {
                 return;
             }
@@ -100,12 +102,13 @@ const Slider = ({
                     <div className="slider-track"></div>
 
                     <div
-                        className="score-display"
                         onMouseDown={smartSlide}
                         onTouchStart={smartSlide}
+                        className={`score-display moved-${movementInitiated}-${roundedScore}`}
                     >
                         <span
                             className='score-span'
+                            disabled={true}
                         >
                             {roundedScore || ''}
                         </span>
@@ -114,18 +117,17 @@ const Slider = ({
                                 type="text"
                                 id={questionId}
                                 value={roundedScore}
-                                disabled
+                                disabled={true}
                                 className='score-input'
                                 restrictSafe={false}
                                 required={true}
-                                minLength={1}
-                                maxLength={2}
                                 labelText=''
                                 placeholder=''
                                 stateVar={roundedScore}
                                 setStateVar={setRoundedScore}
                                 validationObject={validationObject}
                                 setValidationObject={setValidationObject}
+                                testingMovement={true}
                             />
                     </div>
                 </div>
