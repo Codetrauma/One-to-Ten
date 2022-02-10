@@ -8,8 +8,19 @@ const loadQuestions = (questions) => ({
 });
 
 //thunks
-export const getQuestions = (surveyId) => async dispatch => {
-    const response = await fetch(`/api/surveys/${surveyId}/questions`);
+// export const getQuestions = (surveyId) => async dispatch => {
+//     const response = await fetch(`/api/surveys/${surveyId}/questions`);
+
+//     if (response.ok) {
+//         const questions = await response.json();
+
+//         dispatch(loadQuestions(questions))
+//     }
+// }
+
+
+export const getQuestions = (surveyId, userId) => async dispatch => {
+    const response = await fetch(`/api/surveys/${surveyId}/users/${userId}/questions`);
 
     if (response.ok) {
         const questions = await response.json();

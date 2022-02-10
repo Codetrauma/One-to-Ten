@@ -89,3 +89,43 @@ input.score-input {
     height: 48px;
     border-radius: 30px;
 }
+
+.moved-false-10{
+    left: calc((100% - 45px)*.99);
+}
+
+.moved-false-9{
+    left: calc((100% - 50px)*.88);
+}
+
+.moved-false-8{
+    left: calc((100% - 50px)*.77);
+}
+
+.moved-false-7{
+    left: calc((100% - 50px)*.66);
+}
+
+.moved-false-6{
+    left: calc((100% - 50px)*.55);
+}
+
+.moved-false-5{
+    left: calc((100% - 50px)*0.44);
+}
+
+.moved-false-4{
+    left: calc((100% - 50px)*0.33);
+}
+
+.moved-false-3{
+    left: calc((100% - 50px)*0.22);
+}
+
+.moved-false-2{
+    left: calc((100% - 50px)*0.11);
+}
+
+.moved-false-1{
+    left: 0px;
+}
