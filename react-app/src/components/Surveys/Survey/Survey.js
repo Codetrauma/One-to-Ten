@@ -41,6 +41,7 @@ const Survey = () => {
     if (!questions) return null;
 
     const handleSubmit = async (e) => {
+        e.preventDefault()
         console.log('handleSubmit')
         let entries = {}
         let inputs = document.querySelectorAll('input')
@@ -51,9 +52,12 @@ const Survey = () => {
         let surveyResponse = {}
         surveyResponse[params.surveyId] = entries
         let res = await dispatch(createSurveyResponse(surveyResponse, surveyId, userId))
+
         dispatch(getQuestions(surveyId, userId))
-        if (res?.message.includes('Success')) history.push('/surveys')
-    }
+
+        if (res.message) history.push('/surveys')
+        
+        }
 
     const handleCancel = (e) => {
         console.log('handleCancel')
@@ -75,12 +79,9 @@ const Survey = () => {
                             <div className='button-container'>
 
                                 <ArrowButton
-                                    // type='submit'
-                                    // formId='survey-form'
-                                    // validationObject={{}}
-                                    onClickFunction={handleSubmit}
-                                    disabled={true}
-                                // validationObject={validationObject}
+                                    type='submit'
+                                    formId='survey-form'
+                                    validationObject={validationObject}
                                 >
                                     Submit
 
