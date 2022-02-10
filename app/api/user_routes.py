@@ -105,6 +105,8 @@ def generate_matches(user_id):
         - Another record where the column data is swapped.
     """
     users = User.query.all()
+    user = User.query.get(user_id)
+    user.active = True
 
     for user in users:
         if user_id != user.id:
