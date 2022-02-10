@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { getMatches } from '../../../store/matches';
+import { getSurveyResponses } from '../../../store/surveyResponses';
 import Confirmation from '../../Utils/Confirmation/Confirmation'
 import '../Profiles.css';
 import './UserProfile.css';
@@ -11,9 +12,17 @@ function SessionProfile({ sessionUser }) {
     const [isActive, setIsActive] = useState(sessionUser.isActive || true);
     const allMatches = useSelector(state => state.matches.allMatches);
 
+    //to get number of questions completed by user
+    const allSurveys = useSelector(state => state.surveyResponses.bySurveyId);
+    const surveyList = Object.keys(allSurveys)
+    //subtract base survey and multiply by number of questions
+    const numberOfQuestions = (surveyList.length - 1) * 3
+
     useEffect(() => {
         dispatch(getMatches(sessionUser.id));
+        dispatch(getSurveyResponses(sessionUser.id));
     }, []);
+
 
     const handleDeactivate = () => {
         console.log('handle deactivate')
@@ -77,7 +86,7 @@ function SessionProfile({ sessionUser }) {
                     {isActive ?
                         <div className="profile__stats">
                             <div className="profile__stats--section">
-                                <div className="profile__stats--num">212</div>
+                                <div className="profile__stats--num">{numberOfQuestions}</div>
                                 <div className="profile__stats--caption">Questions Answered</div>
                             </div>
                             <div className="profile__stats--section">
