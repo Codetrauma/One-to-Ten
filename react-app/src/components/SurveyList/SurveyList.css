@@ -2,11 +2,11 @@
     width: fit-content;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    column-gap: 50px;
-    row-gap: 20px;
+    column-gap: max(20px, 3vw);
+    row-gap: min(10px, 3vh);
 }
 
-.survey-page__container{
+.survey-page__container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,8 +18,8 @@
 }
 
 .survey__button--link {
-    height: 12vh;
-    width: 12vh;
+    height: max(12vh, 90px);
+    width: max(12vh, 90px);
     position: relative;
     margin: 0 auto;
     background-color: var(--accent-color-2);
@@ -39,40 +39,39 @@
 
 .survey__button--link:hover {
     /* background-color: var(--main-color); */
-    border: var(--full-border)solid var(--main-color);
+    border: var(--full-border) solid var(--main-color);
     cursor: pointer;
 }
 
-.survey__button--link:hover ~ h5{
+.survey__button--link:hover ~ h5 {
     color: var(--main-color);
     cursor: pointer;
 }
 
-
-.completed-true > div{
+.completed-true > div {
     background-color: var(--main-color);
     border-color: var(--main-color);
 }
 
-.completed-true:hover > div{
+.completed-true:hover > div {
     background-color: var(--accent-color-2);
     border-color: var(--main-color);
     cursor: pointer;
 }
 
-.completed-true > h5{
+.completed-true > h5 {
     color: var(--main-color);
 }
 
-.completed-true:hover > h5{
+.completed-true:hover > h5 {
     cursor: pointer;
 }
 
-.survey__navlink{
+.survey__navlink {
     position: relative;
 }
 
-.survey__delete-resposnes{
+.survey__delete-resposnes {
     position: absolute;
     z-index: 3;
     right: 2px;
@@ -97,30 +96,28 @@
 }
 
 .survey__delete-resposnes:hover,
-.survey__delete-resposnes:hover > span
- {
+.survey__delete-resposnes:hover > span {
     color: var(--accent-color-4);
     border-color: var(--accent-color-4);
 }
 
 .survey__delete-resposnes:hover ~ .survey__button--container.completed-true > div {
     background-color: var(--accent-color-4);
-    border-color: var(--accent-color-4)
+    border-color: var(--accent-color-4);
 }
 
-
-h5.edit-toggle{
+h5.edit-toggle {
     width: fit-content;
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
-    color: var(--accent-color-3)
+    color: var(--accent-color-3);
 }
 
-h5.edit-toggle.activated-true{
-    color: var(--main-color)
+h5.edit-toggle.activated-true {
+    color: var(--main-color);
 }
 
-h5.edit-toggle:hover{
+h5.edit-toggle:hover {
     cursor: pointer;
     color: var(--main-color);
 }

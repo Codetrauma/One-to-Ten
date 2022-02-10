@@ -23,7 +23,6 @@ function SessionProfile({ sessionUser }) {
         dispatch(getSurveyResponses(sessionUser.id));
     }, []);
 
-
     const handleDeactivate = () => {
         dispatch(deleteAllMatches(sessionUser.id));
         setIsActive(false)
