@@ -30,6 +30,21 @@ def survey_user(id, user_id):
         all_questions_dict[question.id] = [response.to_dict() for response in question_responses]
     return {'questions': all_questions_dict}
 
+
+@survey_routes.route('/<int:id>/users/<int:user_id>/questions')
+def survey_user_questions(id, user_id):
+    surveys = Surveys.query.get(id)
+    survey_list = [question.to_dict() for question in surveys.survey]
+    for question in survey_list:
+        question_id = question['id']
+        initial_response = None
+        initial_response_entry =  QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).all()
+        if initial_response_entry:
+            initial_response = initial_response_entry[0].to_dict()['response']
+        question['initial_response'] = initial_response
+
+    return {'questions': survey_list}
+
 @survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
 def survey_user_response(id, user_id):
     # request_body_list = request.json['question_responses']

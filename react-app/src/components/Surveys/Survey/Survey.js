@@ -24,26 +24,19 @@ const Survey = () => {
     const dispatch = useDispatch();
 
     //gets questions from state and puts them into array called questionsList
+    const survey = useSelector(state => state.surveys[surveyId]);
     const questions = useSelector(state => state.questions.byId);
     const questionsList = Object.values(questions)
 
-    //questionResponses looks like {surveyId: {qId: val, qId: val, qId: val}}
-    const questionResponses = useSelector(state => state.questionResponses.bySurveyId_ResVals);
+    // //questionResponses looks like {surveyId: {qId: val, qId: val, qId: val}}
+    // const questionResponses = useSelector(state => state.questionResponses.bySurveyId_ResVals);
+    // const allSurveys = useSelector(state => state.surveys)
 
     useEffect(() => {
         dispatch(getSurveys());
-        dispatch(getQuestions(surveyId));
+        dispatch(getQuestions(surveyId, userId));
         dispatch(getQuestionResponses(surveyId, userId));
     }, [dispatch])
-
-    const allSurveys = useSelector(state => state.surveys)
-    const survey = useSelector(state => state.surveys[surveyId]);
-
-    let surveyName;
-
-    if (survey) {
-        surveyName = survey.name
-    }
 
     if (!questions) return null;
 
@@ -58,6 +51,7 @@ const Survey = () => {
         let surveyResponse = {}
         surveyResponse[params.surveyId] = entries
         let res = await dispatch(createSurveyResponse(surveyResponse, surveyId, userId))
+        dispatch(getQuestions(surveyId, userId))
         if (res?.message.includes('Success')) history.push('/surveys')
     }
 
@@ -109,7 +103,7 @@ const Survey = () => {
                                         tenLabel={question.ten_label}
                                         text={question.text}
                                         questionId={question.id}
-                                        initialValue={question.initial_value}
+                                        initialValue={question.initial_response}
                                         validationObject={validationObject}
                                         setValidationObject={setValidationObject}
                                         onChange={(e) => setQuestionValues({ ...questionValues, [question.id]: e.target.value })}
