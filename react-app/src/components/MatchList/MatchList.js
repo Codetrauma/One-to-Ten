@@ -19,6 +19,11 @@ function MatchList() {
         dispatch(getMatches(sessionUser.id));
     }, [])
 
+    function roundMatch(numStr) {
+        const num = Number.parseFloat(numStr).toFixed(2);
+        return num;
+    }
+
     let matches, matchesTable;
     if (matchesObj) {
         matches = Object.values(matchesObj);
@@ -33,11 +38,15 @@ function MatchList() {
                         <tr>
                             <td className="match__name">
                                 <Link to={`/users/${match.user_2_id}`} className="underline-slide">
-                                    {usersObj[match.user_2_id] && usersObj[match.user_2_id].first_name + ' ' + usersObj[match.user_2_id].last_name.slice(0, 1) + '.'}
+                                    {usersObj[match.user_2_id] &&
+                                        usersObj[match.user_2_id].first_name.slice(0, 1).toUpperCase() +
+                                        usersObj[match.user_2_id].first_name.slice(1).toLowerCase() + ' ' +
+                                        usersObj[match.user_2_id].last_name.slice(0, 1).toUpperCase() + '.'
+                                    }
                                 </Link>
                             </td>
                             <td className="match__percentage">
-                                {match.compatibility_score}
+                                {roundMatch(match.compatibility_score)}
                             </td>
                         </tr>
                     ))}

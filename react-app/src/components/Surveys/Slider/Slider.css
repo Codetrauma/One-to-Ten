@@ -1,11 +1,11 @@
-.slider{
+.slider {
     width: 500px;
     position: relative;
     text-align: left;
-    margin: 100px;
+    margin: max(50px, 8vh);
 }
 
-.slider-track{
+.slider-track {
     height: var(--full-border);
     background-color: var(--accent-color-2);
     width: 100%;
@@ -13,13 +13,13 @@
     z-index: -2;
 }
 
-.slider-track{
+.slider-track {
     padding: 0px;
     background-color: var(--accent-color-2);
     width: calc(100%-40px);
 }
 
-.slider-wrapper{
+.slider-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -28,8 +28,7 @@
     position: relative;
 }
 
-
-.score-display{
+.score-display {
     height: 50px;
     width: 50px;
     border-radius: 30px;
@@ -45,15 +44,13 @@
     left: calc(50% - 25px);
 }
 
-.score-span{
+.score-span {
     position: absolute;
     left: -4px;
-    z-index: -1
+    z-index: -1;
 }
 
-
-
-.question-labels{
+.question-labels {
     display: flex;
     justify-content: space-between;
     font-size: var(--h5-size);
@@ -63,7 +60,7 @@
     color: var(--accent-color-2);
 }
 
-.question-text{
+.question-text {
     font-size: var(--h5-size);
     font-weight: var(--heavy-weight);
     color: var(--accent-color-2);
@@ -72,7 +69,7 @@
 }
 
 .hidden-input,
-input.score-input{
+input.score-input {
     background-color: transparent;
     border: 0px;
     width: 0px;
@@ -81,7 +78,7 @@ input.score-input{
     margin: 0px;
 }
 
-.score-span{
+.score-span {
     position: absolute;
     left: -5px;
     top: -5px;
