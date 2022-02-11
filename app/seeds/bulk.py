@@ -1013,8 +1013,8 @@ def seed_bulk():
 
                 reversed_match = Matches(
                     compatibility_score= compatibility,
-                    user_1_id=user_id,
-                    user_2_id=other_user_id
+                    user_2_id=user_id,
+                    user_1_id=other_user_id
                 )
 
                 db.session.add(new_match)
