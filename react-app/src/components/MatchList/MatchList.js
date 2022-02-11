@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches } from '../../store/matches';
 import { getUsers } from '../../store/users';
+import roundMatch from '../Utils/MatchScore/MatchScore';
 
 import './MatchList.css';
 
@@ -19,11 +20,6 @@ function MatchList() {
         dispatch(getMatches(sessionUser.id));
     }, [])
 
-    function roundMatch(numStr) {
-        const num = Number.parseFloat(numStr).toFixed(2);
-        return num;
-    }
-
     let matches, matchesTable;
     if (matchesObj) {
         matches = Object.values(matchesObj);
@@ -35,7 +31,7 @@ function MatchList() {
             <table id="match__table">
                 <tbody>
                     {topSortedMatches.map(match => (
-                        <tr>
+                        <tr key={match.id}>
                             <td className="match__name">
                                 <Link to={`/users/${match.user_2_id}`} className="underline-slide">
                                     {usersObj[match.user_2_id] &&

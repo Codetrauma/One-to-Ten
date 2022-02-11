@@ -3,56 +3,26 @@ from app.models import db, QuestionStats, User, QuestionResponses, SurveyRespons
 def seed_bulk():
 
     names = [
-        "Michael",
-        "Matthew",
-        "Joshua",
-        "Christopher",
-        "Nicholas",
-        "Andrew",
-        "Joseph",
-        "Daniel",
-        "Tyler",
-        "William",
         "Brandon",
         "Ryan",
         "John",
-        "Zachary",
-        "Christian",
         "Austin",
         "Dylan",
         "Ethan",
         "Benjamin",
         "Noah",
-        "Alyssa",
-        "Kayla",
-        "Abigail",
-        "Brianna",
-        "Olivia",
-        "Emma",
         "Megan",
         "Victoria",
         "Rachel",
         "Anna",
-        "Sydney",
-        "Destiny",
-        "Morgan",
-        "Jennifer",
-        "Jasmine",
-        "Haley",
-        "Julia",
         "Kaitlyn",
-        "Nicole",
-        "Amanda",
-        "Katherine",
         "Natalie",
         "Hailey",
-        "Alexandra",
-        "Savannah",
-        "Chloe",
-        "Rebecca",
-        "Stephanie",
-        "Sophia",
-        "Mackenzie"
+        "Mackenzie",
+        "Cameron",
+        "Alethia",
+        "Christy",
+        "Tanner"
     ]
 
     surnames = [
@@ -936,7 +906,7 @@ def seed_bulk():
 
 
 
-    for user_id in range(1,51):
+    for user_id in range(1,21):
 
         #create user
 
@@ -988,7 +958,7 @@ def seed_bulk():
             db.session.add(question_response)
 
 
-        for other_user_id in range(1,51):
+        for other_user_id in range(1,21):
             if user_id != other_user_id:
                 compatibility = 0
                 for question_id in range(1, 76):
@@ -1013,8 +983,8 @@ def seed_bulk():
 
                 reversed_match = Matches(
                     compatibility_score= compatibility,
-                    user_1_id=user_id,
-                    user_2_id=other_user_id
+                    user_2_id=user_id,
+                    user_1_id=other_user_id
                 )
 
                 db.session.add(new_match)
