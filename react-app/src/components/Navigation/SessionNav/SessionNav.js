@@ -82,12 +82,13 @@ function SessionNav({ sessionUser }) {
             <>
                 <div className="nav__bar--child nav__bar--2">
                     <p className="nav__bar--description p-2">
-                        A social experiment designed to connect like-minded individuals with one another. <Link to="/about" className="nav__bar--link underline-slide">Learn More.</Link>
+                        A social experiment designed to connect like-minded individuals with one another. <Link to="/about"
+                            className="nav__link">Learn More.</Link>
                     </p>
                 </div>
                 <div className="nav__bar--child nav__bar--3">
                     <h2 className="nav__bar--title">
-                        <Link to='/sign-up' exact={true}>
+                        <Link to='/signup' exact={true}>
                             Sign Up
                         </Link>
                     </h2>

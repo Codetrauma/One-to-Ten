@@ -14,7 +14,7 @@ const Navigation = () => {
       <div className="nav__bar--child nav__bar--1">
         <h2 className="nav__bar--title">
           <NavLink to='/' exact={true} activeClassName='active'>
-            One to Ten
+            One-to-Ten
           </NavLink>
         </h2>
       </div>

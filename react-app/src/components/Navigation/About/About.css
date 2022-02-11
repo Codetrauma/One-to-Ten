@@ -1,4 +1,41 @@
+#about__container {
+  position: relative;
+  width: 60%;
+}
+
 .about-us-main {
   display: grid;
-  
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin-top: 10px;
+}
+
+.about-us-header {
+  margin-bottom: 20px;
+}
+
+.about-us-header p {
+  margin: 15px 0;
+}
+
+.about__link {
+  color: var(--accent-color-4);
+  font-size: 0.7em;
+}
+
+.about-us-main .arrow-button:hover .arrow-shaft {
+  width: 40px;
+  transition-delay: 0.05s;
+  background-color: var(--accent-color-1);
+}
+
+.about-us-main .arrow-button:hover .arrow-shaft:before,
+.about-us-main .arrow-button:hover .arrow-shaft:after {
+  width: 10px;
+  transition-delay: 0.05s;
+  background-color: var(--accent-color-1);
+}
+
+.about-us-main .arrow-button:hover > .main-arrow {
+  transform: translateX(50px);
 }
