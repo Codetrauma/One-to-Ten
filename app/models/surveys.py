@@ -9,6 +9,8 @@ class Surveys(db.Model):
 
   survey = db.relationship('Questions', back_populates='question', cascade='all, delete-orphan')
   survey_responses = db.relationship('SurveyResponses', back_populates='s_responses', cascade='all, delete-orphan')
+  # most_similar = db.relationship('Matches', back_populates='most_similar')
+  # least_similar = db.relationship('Matches', back_populates='least_similar')
 
   def to_dict(self):
     return {

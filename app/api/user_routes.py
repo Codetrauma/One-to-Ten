@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from app.api.survey_routes import survey
 from app.forms import UserForm
 from app.forms.user_edit_form import UserEditForm
-from app.models import db, User, SurveyResponses, Matches
+from app.models import db, User, SurveyResponses, Matches, Surveys
 from sqlalchemy import or_, select
 
 from app.models.question_responses import QuestionResponses
@@ -94,8 +94,17 @@ def user_matches(user_id):
     """
     Get all match records for a user where user_1_id column matches user_id.
     """
-    matches = Matches.query.filter(Matches.user_1_id == user_id).all()
-    return {'user_matches': [match.to_dict() for match in matches]}
+    print('~~~~~~~~~~~~~~~~~~~~here')
+    all_matches = Matches.query.filter(Matches.user_1_id == user_id).all()
+    matches = [match.to_dict() for match in all_matches]
+    for match in matches:
+        most_similar = Surveys.query.filter(Surveys.id == match['most_similar_id']).first()
+        most_similar_name = most_similar.name
+        match['most_similar_name'] = most_similar_name
+        least_similar = Surveys.query.filter(Surveys.id == match['least_similar_id']).first()
+        least_similar_name = least_similar.name
+        match['least_similar_name'] = least_similar_name
+    return {'user_matches': matches}
 
 @user_routes.route('/<int:user_id>/matches/', methods=['POST'])
 @login_required
@@ -111,8 +120,8 @@ def generate_matches(user_id):
     user.active = True
 
     for user in users:
-        match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id)
-        match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id)
+        match1 = Matches(compatibility_score=0, user_1_id=user_id, user_2_id=user.id, most_similar_score=-100, most_similar_id=1, least_similar_score=100, least_similar_id=1)
+        match2 = Matches(compatibility_score=0, user_1_id=user.id, user_2_id=user_id, most_similar_score=-100, most_similar_id=1, least_similar_score=100, least_similar_id=1)
         db.session.add(match1)
         db.session.add(match2)
 

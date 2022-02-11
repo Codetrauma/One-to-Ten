@@ -39,6 +39,7 @@ function MatchProfile({ user, children, previewMode }) {
         await history.push(`/users/${sessionUser.id}/matches`);
     }
 
+
     const socialLinks = (
         <>
             {socials.facebook &&
@@ -109,18 +110,20 @@ function MatchProfile({ user, children, previewMode }) {
                         {user.first_name.slice(0, 1).toUpperCase() + user.first_name.slice(1).toLowerCase()} {user.last_name.slice(0, 1).toUpperCase() + '.'}
                     </h1>
                     {previewMode ?
-                        <p className="p-1 accent-color-1">
-                            Complete more surveys to view your compatibility.
-                        </p>
+                        <>
+                        </>
                         :
                         <p className="p-1 accent-color-1">
                             Your Match Compatibility: {match && roundMatch(match.compatibility_score)}
                         </p>
                     }
+
                     {previewMode && children}
                 </div>
                 <div className="flex__container--child flex__container--padded match__profile--info">
                     <div className="match__profile--info">
+
+
                         {user.biography && (
                             <div className="match__bio">
                                 <h4>About {user.first_name.slice(0, 1).toUpperCase() + user.first_name.slice(1).toLowerCase()}
@@ -131,7 +134,7 @@ function MatchProfile({ user, children, previewMode }) {
                             </div>
                         )}
                         <div className="match__socials">
-                            <h5>Get Connected</h5>
+                            <h4>Get Connected</h4>
                             {truthyExists ? socialLinks : (
                                 previewMode ?
                                     <>
@@ -144,6 +147,34 @@ function MatchProfile({ user, children, previewMode }) {
                                     </>
                             )}
                         </div>
+                        { !previewMode &&
+                     <>
+                     {   match.most_similar_name &&
+                       match.most_similar_id !== 1&&
+
+                       < div className='similarity-info-container'>
+                       <h4 className='similarity-label'>
+                           Most Similar Topic
+                       </h4>
+                       <h3 className='main-color similarity-name'>
+                           {match.most_similar_name}
+                       </h3>
+                   </div>
+                   }
+
+                   {match.least_similar_name &&
+                       match.least_similar_id !== 1 &&
+
+                       <div className='similarity-info-container'>
+                           <h4 className='similarity-label'>
+                               Least Similar Topic
+                           </h4>
+                           <h3 className='main-color similarity-name'>
+                               {match.least_similar_name}
+                           </h3>
+                       </div>
+                   }
+                 </>}
                         {!previewMode &&
                             <>
                                 <div className="match__delete">
