@@ -9,18 +9,20 @@ function SurveyButton({ name, completed, id, deleteResponseMode, setDeleteRespon
     const sessionUser = useSelector(state => state.session.user);
     const userId = sessionUser.id;
 
-    useEffect(() => {
-        dispatch(getSurveyResponses(userId));
-    }, [deleteResponseMode, dispatch])
+    // useEffect(() => {
+    //     dispatch(getSurveyResponses(userId));
+    // }, [deleteResponseMode, dispatch])
 
 
-    const handleDelete = (e) => {
+    const handleDelete = async (e) => {
         e.preventDefault()
         e.stopPropagation()
         console.log(`deleting id ${id}`)
         //dispatch deletion
         dispatch(removeQuestionResponses(id, userId));
-        dispatch(removeSurveyResponse(id, userId));
+        const deleteResponse = await dispatch(removeSurveyResponse(id, userId))
+            .then(dispatch(getSurveyResponses(userId)))
+
         setDeleteResponseMode(false)
     }
 
