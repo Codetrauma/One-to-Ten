@@ -172,7 +172,7 @@ def seed_questions():
 
   survey_07_q3 = Questions(
     weight=1,
-    text='I prefer tochat over text than on the phone or in person.',
+    text='I prefer to chat over text than on the phone or in person.',
     one_label='Disagree',
     ten_label='Agree',
     survey_id=7
