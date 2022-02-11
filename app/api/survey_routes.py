@@ -164,12 +164,58 @@ def survey_user_response_update(id, user_id):
 
 
 
-@survey_routes.route('/<int:id>/users/<int:userId>/', methods=['DELETE'])
-def survey_user_delete(id, userId):
-    survey = SurveyResponses.query.filter(SurveyResponses.survey_id == id, SurveyResponses.user_id == userId).first()
+@survey_routes.route('/<int:id>/users/<int:user_id>/', methods=['DELETE'])
+def survey_user_delete(id, user_id):
+    # prev_survey_response = SurveyResponses.query.filter(SurveyResponses.user_id == user_id, SurveyResponses.survey_id == id).first()
+    # new_survey_response = SurveyResponses(user_id=user_id, survey_id=id)
+    # user_to_match = Matches.query.filter(Matches.user_1_id == user_id).all()
+    # second_user_to_match = Matches.query.filter(Matches.user_2_id == user_id).all()
+
     questions = Questions.query.filter(Questions.survey_id == id).all()
+
+    # print('QUESTIONSSSSS', questions)
+
+    # if prev_survey_response:
+    #     db.session.delete(prev_survey_response)
+
+    #     for match in user_to_match:
+    #         previous_compatibility_score = match.compatibility_score
+    #         compatibility_modification = 0
+    #         for question in questions:
+    #             print('THIS QUESTIONNN', question.to_dict())
+    #             question_id = question.to_dict()['id']
+    #             current_user = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).first()
+    #             current_user_response = current_user.response
+    #             second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_2_id, QuestionResponses.question_id == question_id).first()
+    #             average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+
+    #             if second_user and second_user.response:
+    #                 question_compatibility = (current_user_response - average) * (second_user.response - average)
+    #                 compatibility_modification += question_compatibility
+    #         match.compatibility_score = previous_compatibility_score - compatibility_modification
+    #         db.session.commit()
+
+    #     for match in second_user_to_match:
+    #         previous_compatibility_score = match.compatibility_score
+    #         compatibility_modification = 0
+    #         for question in questions:
+    #             question_id = question.to_dict()['id']
+    #             current_user = QuestionResponses.query.filter(QuestionResponses.user_id == user_id, QuestionResponses.question_id == question_id).first()
+    #             current_user_response = current_user.response
+    #             second_user = QuestionResponses.query.filter(QuestionResponses.user_id == match.user_1_id, QuestionResponses.question_id == question_id).first()
+    #             average = QuestionStats.query.filter(QuestionStats.question_id == question_id).first().average
+    #             if second_user and second_user.response:
+    #                 question_compatibility = (current_user_response - average) * (second_user.response - average)
+    #                 compatibility_modification += question_compatibility
+    #         match.compatibility_score = previous_compatibility_score - compatibility_modification
+
+
+
+
+    survey = SurveyResponses.query.filter(SurveyResponses.survey_id == id, SurveyResponses.user_id == user_id).first()
+    # questions = Questions.query.filter(Questions.survey_id == id).all()
     for question in questions:
-        question_response = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == userId).first()
+        question_response = QuestionResponses.query.filter(QuestionResponses.question_id == question.id, QuestionResponses.user_id == user_id).first()
         if question_response:
             db.session.delete(question_response)
         else:
