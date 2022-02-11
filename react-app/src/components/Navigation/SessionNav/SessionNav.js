@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LogoutButton from '../../auth/LogoutButton';
 
 function SessionNav({ sessionUser }) {
@@ -7,68 +7,62 @@ function SessionNav({ sessionUser }) {
             <>
                 <div className="nav__bar--child nav__bar--2">
                     <div className="nav__bar--grid">
-                        <div className="nav__bar--grid-left nav__link--light">
-                            <NavLink
-                                activeClassName='nav__bar--link-active nav__link--light'
-                                className="underline-slide"
+                        <div className="nav__bar--grid-left">
+                            <Link
+                                className="nav__link"
                                 to={`/users/${sessionUser.id}/matches`} >
                                 View Matches
-                            </NavLink>
-                        </div>
-                        <div className="nav__bar--grid-right nav__link--light">
-                            <NavLink
-                                activeClassName='nav__bar--link-active nav__link--light'
-                                className="underline-slide"
-                                to={`/users/${sessionUser.id}/edit`}>
-                                Edit Profile
-                            </NavLink>
-                        </div>
-                        <div className="nav__bar--grid-left nav__link--light">
-                            <NavLink
-                                activeClassName='nav__bar--link-active nav__link--light'
-                                className="underline-slide"
-                                to={`/surveys`}>
-                                Answer Questions
-                            </NavLink>
+                            </Link>
                         </div>
                         <div className="nav__bar--grid-right">
-                        <NavLink
-                                activeClassName='nav__bar--link-active nav__link--light'
-                                className="underline-slide"
+                            <Link
+                                className="nav__link"
+                                to={`/users/${sessionUser.id}/edit`}>
+                                Edit Profile
+                            </Link>
+                        </div>
+                        <div className="nav__bar--grid-left">
+                            <Link
+                                className="nav__link"
+                                to={`/surveys`}>
+                                Answer Questions
+                            </Link>
+                        </div>
+                        <div className="nav__bar--grid-right">
+                            <Link
+                                className="nav__link"
                                 to={`/`}>
                                 View Dashboard
-                            </NavLink>
+                            </Link>
                         </div>
                     </div>
                 </div>
                 <div className="nav__bar--child nav__bar--3">
                     <div className="nav__bar--grid">
                         <div className="nav__bar--grid-left">
-                            <NavLink
+                            <Link
                                 to="/">
                                 Participant
-                            </NavLink>
+                            </Link>
                         </div>
-                        <div className="nav__bar--grid-right nav__link--light">
-                            <NavLink
-                                activeClassName='nav__bar--link-active'
-                                className="underline-slide"
+                        <div className="nav__bar--grid-right">
+                            <Link
+                                className="nav__link"
                                 to="/about">
                                 About Us
-                            </NavLink>
+                            </Link>
                         </div>
                         <div className="nav__bar--grid-left">
                             <div className="nav__bar--user-no">
-                                <NavLink
+                                <Link
                                     to="">
                                     &#8470; {sessionUser.id}
-                                </NavLink>
+                                </Link>
                             </div>
                         </div>
-                        <div className="nav__bar--grid-right nav__link--light">
+                        <div className="nav__bar--grid-right">
                             <a
-                                // activeClassName='nav__bar--link-active'
-                                className="underline-slide"
+                                className="nav__link"
                                 href="https://github.com/JTannerShaw/One-to-Ten"
                                 target="_blank" rel="noreferrer noopener">
                                 Github
@@ -93,16 +87,16 @@ function SessionNav({ sessionUser }) {
                 </div>
                 <div className="nav__bar--child nav__bar--3">
                     <h2 className="nav__bar--title">
-                        <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                        <Link to='/sign-up' exact={true}>
                             Sign Up
-                        </NavLink>
+                        </Link>
                     </h2>
                 </div>
                 <div className="nav__bar--child nav__bar--4">
                     <h2 className='nav__bar--title nav__bar--auth'>
-                        <NavLink to='/login' exact={true} activeClassName='active'>
+                        <Link to='/login' exact={true}>
                             Login
-                        </NavLink>
+                        </Link>
                     </h2>
                 </div>
             </>
