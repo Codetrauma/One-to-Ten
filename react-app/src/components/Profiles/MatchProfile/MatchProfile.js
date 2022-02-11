@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Confirmation from '../../Utils/Confirmation/Confirmation';
 
 import { getMatches, deleteMatch } from '../../../store/matches';
+import roundMatch from '../../Utils/MatchScore/MatchScore';
 
 import './MatchProfile.css';
 
@@ -113,7 +114,7 @@ function MatchProfile({ user, children, previewMode }) {
                         </p>
                         :
                         <p className="p-1 accent-color-1">
-                            Your Match Compatibility: {match && match.compatibility_score}
+                            Your Match Compatibility: {match && roundMatch(match.compatibility_score)}
                         </p>
                     }
                     {previewMode && children}
