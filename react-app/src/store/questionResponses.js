@@ -34,7 +34,6 @@ export const getQuestionResponses = (surveyId, userId) => async dispatch => {
 
     if (res.ok) {
         const questionResponses = await res.json();
-        // console.log(`THUNKKKKKKKK`, surveyId, questionResponses)
 
         dispatch(loadQuestionsResponses(questionResponses, surveyId))
     }
@@ -92,8 +91,6 @@ const questionResponsesReducer = (state = initialState, action) => {
             newState = { ...state }
 
             let responseInfo = Object.values(action.questionResponses.questions)
-            // console.log(responseInfo, `999999999999999`)
-            // console.log(responseInfo[0].length)
 
             if (responseInfo[0]?.length) {
                 newState.bySurveyId_obj[action.surveyId] = action.questionResponses.questions
@@ -103,7 +100,6 @@ const questionResponsesReducer = (state = initialState, action) => {
                 }, {})
             }
 
-            console.log(`NEWSTATSTATe`, newState)
             return newState;
         }
         case ADD_QUESTION_RESPONSE: {

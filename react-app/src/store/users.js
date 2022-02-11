@@ -62,7 +62,6 @@ const userReducer = (state = initialState, action) => {
         case LOAD_USERS: {
             newState = { ...state };
             newState.byId = action.users.reduce((users, user) => {
-                // console.log(user)
                 users[user.id] = user;
                 return users
             }, {});

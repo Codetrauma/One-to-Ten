@@ -5,7 +5,6 @@ import { Route, Redirect } from 'react-router-dom';
 const ActiveOnlyRoute = props => {
     const user = useSelector(state => state.session.user)
     // const active = user.active;
-    // console.log('ACTIVE????', user.active)
 
     return (
         <Route {...props}>
