@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getMatches } from '../../store/matches';
@@ -9,7 +9,6 @@ import roundMatch from '../Utils/MatchScore/MatchScore';
 import './MatchList.css';
 
 function MatchList() {
-    const location = useHistory();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const matchesObj = useSelector(state => state.matches.byUserId)
