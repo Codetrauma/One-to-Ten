@@ -20,7 +20,7 @@ function SessionProfile() {
     const allSurveys = useSelector(state => state.surveyResponses.bySurveyId);
     const surveyList = Object.keys(allSurveys)
     //subtract base survey and multiply by number of questions
-    const numberOfQuestions = (surveyList.length - 1) * 3
+    const numberOfQuestions = (surveyList.length) * 3
 
     useEffect(() => {
         dispatch(getMatches(sessionUser.id));
