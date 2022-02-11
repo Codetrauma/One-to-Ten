@@ -30,7 +30,7 @@ def users():
     users = User.query.all()
     return {'users': [user.to_dict(current_user) for user in users]}
 
-@user_routes.route('/<int:user_id>', methods=['GET'])
+@user_routes.route('/<int:user_id>/', methods=['GET'])
 @login_required
 def user(user_id):
     """
@@ -41,7 +41,7 @@ def user(user_id):
 
     return user.to_dict(current_user)
 
-@user_routes.route('/<int:id>', methods=['PUT'])
+@user_routes.route('/<int:id>/', methods=['PUT'])
 @login_required
 def user_update(id):
     """
@@ -78,7 +78,7 @@ def user_update(id):
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {'errors': ['Unauthorized']}, 401
 
-@user_routes.route('/<int:user_id>/surveys', methods=['GET'])
+@user_routes.route('/<int:user_id>/surveys/', methods=['GET'])
 @login_required
 def user_survey_responses(user_id):
     """
@@ -88,7 +88,7 @@ def user_survey_responses(user_id):
 
     return { 'survey_responses': [survey_response.to_dict() for survey_response in survey_responses]}
 
-@user_routes.route('/<int:user_id>/matches')
+@user_routes.route('/<int:user_id>/matches/')
 @login_required
 def user_matches(user_id):
     """
@@ -97,7 +97,7 @@ def user_matches(user_id):
     matches = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in matches]}
 
-@user_routes.route('/<int:user_id>/matches', methods=['POST'])
+@user_routes.route('/<int:user_id>/matches/', methods=['POST'])
 @login_required
 def generate_matches(user_id):
     """
@@ -121,7 +121,7 @@ def generate_matches(user_id):
     matches = Matches.query.filter(Matches.user_1_id == user_id).all()
     return {'user_matches': [match.to_dict() for match in matches]}
 
-@user_routes.route('/<int:user_id>/matches', methods=['DELETE'])
+@user_routes.route('/<int:user_id>/matches/', methods=['DELETE'])
 @login_required
 def delete_matches(user_id):
     """

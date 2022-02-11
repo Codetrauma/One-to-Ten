@@ -28,7 +28,7 @@ export const getUsers = () => async dispatch => {
 }
 
 export const getOneUser = (id) => async dispatch => {
-    const response = await fetch(`/api/users/${id}`);
+    const response = await fetch(`/api/users/${id}/`);
 
     if (response.ok) {
         const user = await response.json()
@@ -38,7 +38,7 @@ export const getOneUser = (id) => async dispatch => {
 
 export const changeUser = (payload, id) => async dispatch => {
 
-    const response = await fetch(`/api/users/${id}`, {
+    const response = await fetch(`/api/users/${id}/`, {
         method: 'PUT',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
