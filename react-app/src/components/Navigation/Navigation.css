@@ -70,6 +70,16 @@
     all: unset;
 }
 
-.nav__link--light a {
+.nav__link {
+    text-decoration: none;
     background-image: linear-gradient(var(--accent-color-2), var(--accent-color-2));
+    background-size: 0% var(--half-border);
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+}
+
+.nav__link:hover {
+    background-size: 100% var(--half-border);
 }

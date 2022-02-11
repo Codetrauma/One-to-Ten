@@ -958,7 +958,7 @@ def seed_bulk():
             db.session.add(question_response)
 
 
-        for other_user_id in range(1,21):
+        for other_user_id in range(user_id,21):
             if user_id != other_user_id:
                 compatibility = 0
                 for question_id in range(1, 76):
