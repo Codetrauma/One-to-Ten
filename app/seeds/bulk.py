@@ -20,7 +20,7 @@ def seed_bulk():
         "Hailey",
         "Mackenzie",
         "Cameron",
-        "Alethia",
+        "Aletheia",
         "Christy",
         "Tanner"
     ]
