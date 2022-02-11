@@ -88,7 +88,7 @@ function SessionNav({ sessionUser }) {
                 </div>
                 <div className="nav__bar--child nav__bar--3">
                     <h2 className="nav__bar--title">
-                        <Link to='/sign-up' exact={true}>
+                        <Link to='/signup' exact={true}>
                             Sign Up
                         </Link>
                     </h2>
