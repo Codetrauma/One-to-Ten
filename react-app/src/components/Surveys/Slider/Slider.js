@@ -19,7 +19,6 @@ const Slider = ({
 
     function smartSlide(e) {
 
-    console.log('movement started')
       let target = e.target;
       //sets property to handle event start/stop logic
       target.movementEnabled = true;

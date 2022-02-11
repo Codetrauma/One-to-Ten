@@ -52,7 +52,6 @@ export const createSurveyResponse = (surveyResponse, surveyId, userId) => async 
         }
     })
 
-    console.log(responseObj)
 
     const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses/`, {
         method: "POST",
@@ -61,7 +60,6 @@ export const createSurveyResponse = (surveyResponse, surveyId, userId) => async 
     })
 
     if (res.ok) {
-        console.log('res is oka on reducer', res)
         const newSurveyResponse = await res.json();
         dispatch(addSurveyResponse(newSurveyResponse));
         return newSurveyResponse;

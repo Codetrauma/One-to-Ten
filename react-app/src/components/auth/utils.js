@@ -38,7 +38,6 @@ const validateSignUp = (email, dob, zipCode, password, repeatPassword) => {
     }
 
     if (dob && isDate(dob) && !(isOver18(dob))) {
-        console.log(dob)
         newErrors.push('You must be over 18 to use this site.')
     }
 

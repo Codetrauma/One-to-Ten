@@ -39,12 +39,10 @@ const questionReducer = (state = initialState, action) => {
         case LOAD_QUESTIONS: {
             newState = { ...state };
 
-            // console.log(`ACTION ACTION ACTION`, action)
 
             //newState.questions = action.questions.questions.map(question => question)
 
             // newState.questions = action.questions.questions
-            // console.log(`nsnsnsnsnsnsnsnsnsns`, newState)
             newState.byId = action.questions.questions.reduce((questions, question) => {
                 questions[question.id] = question;
                 return questions;

@@ -17,7 +17,6 @@ function SurveyButton({ name, completed, id, deleteResponseMode, setDeleteRespon
     const handleDelete = async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        console.log(`deleting id ${id}`)
         //dispatch deletion
         dispatch(removeQuestionResponses(id, userId));
         const deleteResponse = await dispatch(removeSurveyResponse(id, userId))

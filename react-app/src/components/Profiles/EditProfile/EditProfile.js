@@ -16,7 +16,7 @@ const EditProfile = ({initialPreviewMode}) => {
 
     const sessionUser = useSelector(state => state.session.user);
     const currentUserId = sessionUser.id;
-    
+
 
     const [previewMode, setPreviewMode] = useState(initialPreviewMode || false)
     const [biography, setBiography] = useState(sessionUser?.biography || '')
@@ -46,7 +46,6 @@ const EditProfile = ({initialPreviewMode}) => {
     }
 
     const onProfileUpdate = async (e) => {
-        // console.log('updating profile!!!!!!!!!!')
         e.preventDefault()
 
         const editedProfile = await dispatch(updateSessionUser(previewUser, sessionUser.id));
@@ -58,7 +57,6 @@ const EditProfile = ({initialPreviewMode}) => {
     }
 
     const handleCancel = () => {
-        console.log('handle cancel')
         history.push(`/users/${urlUserId}`)
     }
 
