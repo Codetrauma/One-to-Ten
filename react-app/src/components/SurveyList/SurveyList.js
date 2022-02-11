@@ -53,7 +53,7 @@ function SurveyList() {
             <h5
                     className={`edit-toggle underline-slide activated-${deleteResponseMode}`}
                 onClick={toggleDeleteResponse}>
-                Toggle Edit Mode
+                Delete A Response
             </h5>
             </div>
             )
