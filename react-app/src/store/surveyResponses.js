@@ -21,7 +21,7 @@ const addSurveyResponse = (surveyResponse) => ({
 
 //thunks
 export const getSurveyResponses = (userId) => async dispatch => {
-    const res = await fetch(`/api/users/${userId}/surveys`);
+    const res = await fetch(`/api/users/${userId}/surveys/`);
 
     if (res.ok) {
         const surveyResponses = await res.json();
@@ -31,7 +31,7 @@ export const getSurveyResponses = (userId) => async dispatch => {
 };
 
 export const removeSurveyResponse = (surveyId, userId) => async dispatch => {
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}`, {
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/`, {
         method: "DELETE"
     });
 
@@ -54,7 +54,7 @@ export const createSurveyResponse = (surveyResponse, surveyId, userId) => async 
 
     console.log(responseObj)
 
-    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses`, {
+    const res = await fetch(`/api/surveys/${surveyId}/users/${userId}/responses/`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(responseObj)

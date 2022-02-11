@@ -21,7 +21,7 @@ const removeAllMatches = () => ({
 
 // thunks
 export const createMatches = (userId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}/matches`, {
+    const response = await fetch(`/api/users/${userId}/matches/`, {
         method: 'POST'
     });
 
@@ -31,7 +31,7 @@ export const createMatches = (userId) => async dispatch => {
     }
 }
 export const getMatches = (userId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}/matches`);
+    const response = await fetch(`/api/users/${userId}/matches/`);
 
     if (response.ok) {
         const matches = await response.json();
@@ -40,7 +40,7 @@ export const getMatches = (userId) => async dispatch => {
 }
 
 export const deleteMatch = (userId, matchedUserId) => async dispatch => {
-    await fetch(`/api/matches/${userId}/${matchedUserId}`, {
+    await fetch(`/api/matches/${userId}/${matchedUserId}/`, {
         method: 'DELETE'
     });
 
@@ -48,7 +48,7 @@ export const deleteMatch = (userId, matchedUserId) => async dispatch => {
 }
 
 export const deleteAllMatches = (userId) => async dispatch => {
-    await fetch(`/api/users/${userId}/matches`, {
+    await fetch(`/api/users/${userId}/matches/`, {
         method: 'DELETE'
     });
 

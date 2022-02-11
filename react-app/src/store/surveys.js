@@ -9,7 +9,7 @@ const loadSurveys = (surveys) => ({
 
 //thunks
 export const getSurveys = () => async dispatch => {
-    const response = await fetch(`/api/surveys`);
+    const response = await fetch(`/api/surveys/`);
 
     if (response.ok) {
         const surveys = await response.json();
@@ -19,7 +19,7 @@ export const getSurveys = () => async dispatch => {
 };
 
 export const getOneSurvey = (id) => async dispatch => {
-    const response = await fetch(`/api/surveys/${id}`);
+    const response = await fetch(`/api/surveys/${id}/`);
 
     if (response.ok) {
         const survey = await response.json()

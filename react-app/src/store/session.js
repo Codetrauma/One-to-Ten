@@ -36,7 +36,7 @@ export const authenticate = () => async (dispatch) => {
 }
 
 export const login = (email, password) => async (dispatch) => {
-  const response = await fetch('/api/auth/login', {
+  const response = await fetch('/api/auth/login/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  const response = await fetch('/api/auth/logout', {
+  const response = await fetch('/api/auth/logout/', {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -79,7 +79,7 @@ export const logout = () => async (dispatch) => {
 
 
 export const signUp = (firstName, lastName, email, password, dob, zipCode, gender) => async (dispatch) => {
-  const response = await fetch('/api/auth/signup', {
+  const response = await fetch('/api/auth/signup/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ export const signUp = (firstName, lastName, email, password, dob, zipCode, gende
 }
 
 export const updateSessionUser = (payload, id) => async dispatch => {
-  const response = await fetch(`/api/users/${id}`, {
+  const response = await fetch(`/api/users/${id}/`, {
     method: 'PUT',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload)
@@ -133,7 +133,7 @@ export default function reducer(state = initialState, action) {
 
       newState.user = action.payload.user
 
-      return newState; 
+      return newState;
     case REMOVE_USER:
       return { user: null }
     default:

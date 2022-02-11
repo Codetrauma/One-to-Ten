@@ -10,18 +10,18 @@ def surveys():
     surveys = Surveys.query.all()
     return {'surveys': [survey.to_dict() for survey in surveys]}
 
-@survey_routes.route('/<int:id>')
+@survey_routes.route('/<int:id>/')
 def survey(id):
     survey = Surveys.query.get(id)
     return survey.to_dict()
 
-@survey_routes.route('/<int:id>/questions')
+@survey_routes.route('/<int:id>/questions/')
 def survey_questions(id):
     survey = Surveys.query.get(id)
     return {'questions': [question.to_dict() for question in survey.survey]}
 
 
-@survey_routes.route('/<int:id>/users/<int:user_id>/responses')
+@survey_routes.route('/<int:id>/users/<int:user_id>/responses/')
 def survey_user(id, user_id):
     all_questions_dict = {}
     questions = Questions.query.filter(Questions.survey_id == id).all()
@@ -31,7 +31,7 @@ def survey_user(id, user_id):
     return {'questions': all_questions_dict}
 
 
-@survey_routes.route('/<int:id>/users/<int:user_id>/questions')
+@survey_routes.route('/<int:id>/users/<int:user_id>/questions/')
 def survey_user_questions(id, user_id):
     surveys = Surveys.query.get(id)
     survey_list = [question.to_dict() for question in surveys.survey]
@@ -45,7 +45,7 @@ def survey_user_questions(id, user_id):
 
     return {'questions': survey_list}
 
-@survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['POST'])
+@survey_routes.route('/<int:id>/users/<int:user_id>/responses/', methods=['POST'])
 def survey_user_response(id, user_id):
     # request_body_list = request.json['question_responses']
     request_body_list = request.json
@@ -153,7 +153,7 @@ def survey_user_response(id, user_id):
     db.session.commit()
     return {"message": "Success"}
 
-@survey_routes.route('/<int:id>/users/<int:user_id>/responses', methods=['PUT'])
+@survey_routes.route('/<int:id>/users/<int:user_id>/responses/', methods=['PUT'])
 def survey_user_response_update(id, user_id):
     form = SurveyForm()
     question = QuestionResponses.query.get(form.data['question_id'])
@@ -164,7 +164,7 @@ def survey_user_response_update(id, user_id):
 
 
 
-@survey_routes.route('/<int:id>/users/<int:userId>', methods=['DELETE'])
+@survey_routes.route('/<int:id>/users/<int:userId>/', methods=['DELETE'])
 def survey_user_delete(id, userId):
     survey = SurveyResponses.query.filter(SurveyResponses.survey_id == id, SurveyResponses.user_id == userId).first()
     questions = Questions.query.filter(Questions.survey_id == id).all()
