@@ -15,7 +15,6 @@ import Navigation from './components/Navigation/Navigation';
 import SurveyList from './components/SurveyList/SurveyList';
 import Dots from './components/Dots/Dots';
 import Splash from './components/Splash/Splash';
-import StyleGuide from './components/StyleGuide/StyleGuide';
 import NoMatch from './components/404/404';
 
 import './App.css';
@@ -39,7 +38,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <StyleGuide /> */}
       <Navigation />
       <div id="main__content">
         <Switch>

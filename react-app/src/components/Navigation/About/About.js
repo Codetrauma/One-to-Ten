@@ -20,11 +20,11 @@ const About = () => {
           <h4>Cameron Whiteside</h4>
           <div>
             <ArrowButton>
-              <a href='https://github.com/CameronWhiteside' className="about__link" target="_blank">Github</a>
+              <a href='https://github.com/CameronWhiteside' className="about__link" target="_blank" rel="noreferrer">Github</a>
             </ArrowButton>
             <div>
               <ArrowButton>
-                <a href='https://www.linkedin.com/in/cameronwhiteside/' className="about__link" target="_blank">LinkedIn</a>
+                <a href='https://www.linkedin.com/in/cameronwhiteside/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
               </ArrowButton>
             </div>
           </div>
@@ -34,11 +34,11 @@ const About = () => {
           <h4> Christy Chen </h4>
           <div>
             <ArrowButton>
-              <a href='https://github.com/christywchen' className="about__link" target="_blank">Github</a>
+              <a href='https://github.com/christywchen' className="about__link" target="_blank" rel="noreferrer">Github</a>
             </ArrowButton>
             <div>
               <ArrowButton>
-                <a href='https://www.linkedin.com/in/christy-chen/' className="about__link" target="_blank">LinkedIn</a>
+                <a href='https://www.linkedin.com/in/christy-chen/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
               </ArrowButton>
             </div>
           </div>
@@ -47,12 +47,12 @@ const About = () => {
           <h4>Aletheia Kim</h4>
           <div>
             <ArrowButton>
-              <a href='https://github.com/akim38' className="about__link" target="_blank">Github</a>
+              <a href='https://github.com/akim38' className="about__link" target="_blank" rel="noreferrer">Github</a>
             </ArrowButton>
           </div>
           <div>
             <ArrowButton>
-              <a href='https://www.linkedin.com/in/aletheia-kim-47086922a/' className="about__link" target="_blank">LinkedIn</a>
+              <a href='https://www.linkedin.com/in/aletheia-kim-47086922a/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
             </ArrowButton>
           </div>
         </div>
@@ -60,12 +60,12 @@ const About = () => {
           <h4>Tanner Shaw</h4>
           <div>
             <ArrowButton>
-              <a href='https://github.com/JTannerShaw/' className="about__link" target="_blank">Github</a>
+              <a href='https://github.com/JTannerShaw/' className="about__link" target="_blank" rel="noreferrer">Github</a>
             </ArrowButton>
           </div>
           <div>
             <ArrowButton>
-              <a href='https://www.linkedin.com/in/tanner-shaw-a25702162/' className="about__link" target="_blank">LinkedIn</a>
+              <a href='https://www.linkedin.com/in/tanner-shaw-a25702162/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
             </ArrowButton>
           </div>
         </div>
