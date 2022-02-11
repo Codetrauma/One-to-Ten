@@ -63,9 +63,7 @@ const SignUpForm = () => {
           <p className='p-1'>
             This information is used for indentity verification and
             compatibility calculations. Your email, gender, zip code,
-            and date of birth will never be shared publicly,
-            however your age and city name will be visible on your
-            public profile.
+            and date of birth will never be shared publicly.
             <br />
             <br />
             <NavLink className='main-color underline-slide' to='/login'>Log in here</NavLink> if you already have an account.

@@ -18,6 +18,7 @@ const FirstSurvey = () => {
 
   // const [value, setValue] = useState('')
   const [validationObject, setValidationObject] = useState({ test: true });
+  const [errors, setErrors] = useState([]);
 
   const matches = useSelector(state => state.matches.allMatches);
 
@@ -35,6 +36,12 @@ const FirstSurvey = () => {
     let inputs = document.querySelectorAll('input')
 
     for (let i = 0; i < inputs.length; i++) {
+      let input = inputs[i]
+      let value = parseInt(input['value'])
+      if (!value) {
+        setErrors(['Responses cannot be left blank'])
+        return;
+      }
       entries[inputs[i]['id']] = parseInt(inputs[i]['value'])
     }
 
@@ -81,6 +88,16 @@ const FirstSurvey = () => {
             other users.
           </p>
           <div className='button-container'>
+          <div className='error-container'>
+                            {errors && errors.map(error => (
+                                <div className="database-errors">
+                                {error.includes(': ') ?
+                                    error.split(": ")[1]
+                                    : error
+                                }
+                                </div>
+                            ))}
+                            </div>
 
             <ArrowButton
               type='submit'
@@ -90,11 +107,11 @@ const FirstSurvey = () => {
               Submit
 
             </ArrowButton>
-            <ArrowButton
+            {/* <ArrowButton
               onClickFunction={handleCancel}
             >
               Cancel
-            </ArrowButton>
+            </ArrowButton> */}
           </div>
         </div>
         <div id='flex__container--divider'></div>
