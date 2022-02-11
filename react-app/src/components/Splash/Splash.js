@@ -23,7 +23,7 @@ function Splash() {
                     </div>
                 </div>
                 <div className="flex__container--child splash__links">
-                    <Link className="splash__link" to="/sign-up">
+                    <Link className="splash__link" to="/signup">
                         <ArrowButton>
                             Get Started
                         </ArrowButton>

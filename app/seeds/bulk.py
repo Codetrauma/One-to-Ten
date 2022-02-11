@@ -19,10 +19,10 @@ def seed_bulk():
         "Natalie",
         "Hailey",
         "Kenzie",
-        "Cameron",
-        "Aletheia",
-        "Christy",
-        "Tanner"
+        "Carmen",
+        "Eletheia",
+        "Kristen",
+        "Tamber"
     ]
 
     surnames = [
@@ -892,7 +892,7 @@ def seed_bulk():
     ]
 
     for question_id in range(1, 76):
-        response_count=100
+        response_count=10
         average = sum(question_response_seed[question_id-1])/100
 
         new_stat = QuestionStats(
@@ -910,7 +910,7 @@ def seed_bulk():
 
         #create user
 
-        email=f'user{user_id}@aa.io'
+        email=f'test{user_id}@test.com'
         first_name=names[user_id-1]
         last_name=surnames[user_id % 10]
         biography=biographies[user_id % 19]
@@ -921,12 +921,12 @@ def seed_bulk():
             first_name=first_name,
             last_name=last_name,
             biography=biography,
-            facebook=f'{first_name}{last_name}',
-            instagram=f'{first_name}{last_name}',
-            snapchat=f'{first_name}{last_name}',
-            tiktok=f'{first_name}{last_name}',
-            twitter=f'{first_name}{last_name}',
-            github=f'{first_name}{last_name}',
+            facebook='Meta',
+            instagram='instagram',
+            snapchat='snapchat',
+            tiktok='tiktok',
+            twitter='twitter',
+            github='github',
             active=active,
             password=password
         )

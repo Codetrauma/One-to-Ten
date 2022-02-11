@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { removeQuestionResponses } from "../../../store/questionResponses";
+import { getQuestions } from "../../../store/questions";
 import { getSurveyResponses, removeSurveyResponse } from "../../../store/surveyResponses";
 
 function SurveyButton({ name, completed, id, deleteResponseMode, setDeleteResponseMode }) {
@@ -19,8 +19,11 @@ function SurveyButton({ name, completed, id, deleteResponseMode, setDeleteRespon
         e.stopPropagation()
         //dispatch deletion
         dispatch(removeQuestionResponses(id, userId));
+
         const deleteResponse = await dispatch(removeSurveyResponse(id, userId))
-            .then(dispatch(getSurveyResponses(userId)))
+            .then(dispatch(getSurveyResponses(userId)));
+
+        dispatch(getQuestions(id, userId)); 
 
         setDeleteResponseMode(false)
     }

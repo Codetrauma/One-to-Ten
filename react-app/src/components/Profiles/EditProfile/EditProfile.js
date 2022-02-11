@@ -5,7 +5,7 @@ import ArrowButton from '../../Forms/ArrowButton/ArrowButton'
 import './EditProfile.css'
 import MatchProfile from "../MatchProfile/MatchProfile"
 import { useDispatch, useSelector } from "react-redux";
-import { changeUser, getOneUser } from '../../../store/users';
+import { getOneUser } from '../../../store/users';
 import { updateSessionUser } from "../../../store/session"
 
 const EditProfile = ({ initialPreviewMode }) => {

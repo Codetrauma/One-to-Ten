@@ -1,4 +1,4 @@
-import react, {useState} from 'react'
+import {useState} from 'react'
 import './Slider.css'
 // const { useState } = require("react")
 import FormInput from '../../Forms/FormInput/FormInput'

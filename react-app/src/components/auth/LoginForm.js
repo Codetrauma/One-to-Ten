@@ -4,7 +4,6 @@ import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
 import FormInput from '../Forms/FormInput/FormInput';
-import Lorem from '../Utils/Lorem/Lorem';
 import './Login.css'
 
 
@@ -27,7 +26,7 @@ const LoginForm = () => {
 
   const demoLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login('user10@aa.io', 'password'));
+    const data = await dispatch(login('test7@test.com', 'password'));
     if (data) {
       setErrors(data);
     }

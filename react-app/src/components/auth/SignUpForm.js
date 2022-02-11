@@ -4,9 +4,9 @@ import { Redirect, NavLink, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import FormInput from '../Forms/FormInput/FormInput';
 import ArrowButton from '../Forms/ArrowButton/ArrowButton';
-import Lorem from '../Utils/Lorem/Lorem';
 import './SignUpForm.css'
 import { validateSignUp, formatDate } from './utils';
+
 const SignUpForm = () => {
   const history = useHistory()
 
@@ -63,9 +63,7 @@ const SignUpForm = () => {
           <p className='p-1'>
             This information is used for indentity verification and
             compatibility calculations. Your email, gender, zip code,
-            and date of birth will never be shared publicly,
-            however your age and city name will be visible on your
-            public profile.
+            and date of birth will never be shared publicly.
             <br />
             <br />
             <NavLink className='main-color underline-slide' to='/login'>Log in here</NavLink> if you already have an account.

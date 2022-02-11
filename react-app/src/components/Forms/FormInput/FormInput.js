@@ -34,7 +34,7 @@ const FormInput = (
             currentValidationObject[id] = false
             setValidationObject(currentValidationObject)
         }
-    },[])
+    }, [])
 
     const acceptSuggestion = (suggestion) => setStateVar(suggestion)
     const updateStateVar = (e) => setStateVar(e.target.value)

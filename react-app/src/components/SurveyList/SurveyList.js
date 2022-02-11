@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { getSurveyResponses } from '../../store/surveyResponses';
 import { getSurveys } from '../../store/surveys';
 import SurveyButton from './SurveyButton/SurveyButton';
@@ -53,7 +52,7 @@ function SurveyList() {
             <h5
                     className={`edit-toggle underline-slide activated-${deleteResponseMode}`}
                 onClick={toggleDeleteResponse}>
-                Toggle Edit Mode
+                Delete A Response
             </h5>
             </div>
             )
