@@ -45,7 +45,7 @@ body {
     font-size: var(--body-normal);
     background-color: var(--main-color);
     color: var(--accent-color-1);
-    overflow: hidden;
+    overflow: clip;
 }
 
 h1 {

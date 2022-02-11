@@ -58,7 +58,7 @@ const SignUpForm = () => {
       <div className='light_background' />
       <div className='signup-form' id='flex__container--split'>
         {/* <div id='flex__container--divider'/> */}
-        <div className='left_col flex__container--child signup'>
+        <div className='flex__container--child flex__container--padded'>
           <h1>Account Setup</h1>
           <p className='p-1'>
             This information is used for indentity verification and
@@ -74,7 +74,7 @@ const SignUpForm = () => {
           </p>
         </div>
 
-        <div className='right_col flex__container--child signup'>
+        <div className='flex__container--child flex__container--padded'>
           <div className='top_group'>
 
             <form id='signup' onSubmit={onSignUp}>
@@ -148,7 +148,7 @@ const SignUpForm = () => {
                   setValidationObject={setValidationObject}
                 />
               </div>
-              <div>
+              <div className="left__col--input">
                 <FormInput
                   labelText='Birthdate'
                   id='dob'
