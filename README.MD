@@ -21,13 +21,14 @@
 <br>
 </br>
 
-## Launching Locally
+<h1 align='center' style='font-weight: bold'>Launching Locally </h1>
 
-### Prerequisites
- - [Python 3.10](https://www.python.org/downloads/)
- - [PostgreSQL 12](https://www.postgresql.org/docs/12/index.html)
+<h2 style='font-weight: bold'>Prerequisites </h2>
+- <a href='(https://www.python.org/downloads/'> Python 3.10 </a><br/>
+- <a href='https://www.postgresql.org/docs/12/index.html'> PostgreSQL 12s </a>
 
-### Getting Started
+<br/>
+<h2  style='font-weight: bold'>Getting Started </h2>
 
 1. Clone the project repository
 
@@ -71,130 +72,143 @@ DATABASE_URL=postgresql://<username>:<password>@<server>/<database>
     * ```flask run```
 
 
+<br/><br/>
+<h1 align='center' style='font-weight: bold'>Site Preview</h1>
 
-## Site Preview
-
-
+<br/><h4 align='left' style='font-weight: bold'>
 New users can register for an account by entering a unique email address, a username, a secure password, and by verifying they are over 18 years of age.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/64kr5hv/signup-demo.gif" alt="Registration Demo" width="500" align="center"/>
+<img src="https://i.ibb.co/64kr5hv/signup-demo.gif" alt="Registration Demo" width="500" />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Existing users can log in to their account by submitting their credentials via the login form.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/ZX1Tws4/login-example.gif" alt="Log-in" width="500" align="center"/>
+<img src="https://i.ibb.co/ZX1Tws4/login-example.gif" alt="Log-in" width="500"/>
 <br/>
 <br/>
 </div>
-
+<br/><h4 align='left' style='font-weight: bold'>
 Logged in users can end their session by clicking the log out button.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/SxYbF3y/logout-demo.gif" alt="Log-in"  width="500" align="center"/>
+<img src="https://i.ibb.co/SxYbF3y/logout-demo.gif" alt="Log-in"  width="500" />
 <br/>
 <br/>
 </div>
 
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Users may log in with an pre-existing demo user account by clicking the link on the login page.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/60Sx0Tw/demo-login.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/60Sx0Tw/demo-login.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
-
+<br/><h4 align='left' style='font-weight: bold'>
 Logged-in users can activate their account my taking the icebreaker survey which initiaties automatic match generation.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/JnYHjqV/account-activation.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/JnYHjqV/account-activation.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can answer questions in order to improve their compatibility with other users.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/Z6HNjVb/survey-completion-1.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/Z6HNjVb/survey-completion-1.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can view and amend their previous responses by clicking the respective survey button.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/wSCQwbd/view-previous.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/wSCQwbd/view-previous.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can delete their previous responses to a given question by toggling the 'Deletion Mode' text on the 'Answer Questions' page, and clicking the 'X' button next to the survey they wish to delete.
-<div align="center">
+</h4>
+<div  >
 <br/>
-<img src="https://i.ibb.co/3R6jtFF/response-deletion.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/3R6jtFF/response-deletion.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users may view their matches with other users, which will display their compatibility score, their most- and least-similar topics, their biography, and their social media links.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/HghYQNF/view-matches.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/HghYQNF/view-matches.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Logged-in users can edit their profile information and preview what their page will look like when other users are viewing their match profile.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/FhLS2db/Edit-Profile-and-Preview-1.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/FhLS2db/Edit-Profile-and-Preview-1.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can change their compatibility scores with other users by completing additional surveys.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/6PHW2Dr/edit-matches.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/6PHW2Dr/edit-matches.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can remove matches by blocking another user.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/t4XsLfG/block-user.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/t4XsLfG/block-user.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
 
-
+<br/><h4 align='left' style='font-weight: bold'>
 Activated users can remove all matches and survey responses by deactivating their profile.
+</h4>
 
-<div align="center">
+<div  >
 <br/>
-<img src="https://i.ibb.co/T0KzZ4M/Deactivate-profile.gif" alt="Demo User"  width="500"  align="center"/>
+<img src="https://i.ibb.co/T0KzZ4M/Deactivate-profile.gif" alt="Demo User"  width="500"   />
 <br/>
 <br/>
 </div>
