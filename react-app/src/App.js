@@ -9,6 +9,7 @@ import User from './components/Profiles/Profiles';
 import Survey from './components/Surveys/Survey/Survey'
 import FirstSurvey from './components/FirstSurvey/FirstSurvey';
 import About from './components/Navigation/About/About';
+import MobileOverlay from './components/MobileOverlay/MobileOverlay'
 import { authenticate } from './store/session';
 
 import Navigation from './components/Navigation/Navigation';
@@ -77,6 +78,7 @@ function App() {
         </Switch>
       </div>
       <Dots />
+      <MobileOverlay />
     </BrowserRouter>
   );
 }
