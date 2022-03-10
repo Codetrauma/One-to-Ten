@@ -10,6 +10,8 @@ import Survey from './components/Surveys/Survey/Survey'
 import FirstSurvey from './components/FirstSurvey/FirstSurvey';
 import About from './components/Navigation/About/About';
 import MobileOverlay from './components/MobileOverlay/MobileOverlay'
+import AlgoVisualizer from './components/AlgoVisualizer/AlgoVisualizer';
+
 import { authenticate } from './store/session';
 
 import Navigation from './components/Navigation/Navigation';
@@ -54,6 +56,9 @@ function App() {
           <Route path='/about' exact={true} >
             <About />
           </Route>
+          <Route path='/algo' exact={true} >
+            <AlgoVisualizer/>
+          </Route>
           <ProtectedRoute path='/first-survey' exact={true} >
             <FirstSurvey />
           </ProtectedRoute>
@@ -72,6 +77,7 @@ function App() {
           <ActiveOnlyRoute path='/surveys' exact={true} >
             <SurveyList />
           </ActiveOnlyRoute>
+
           <Route path="*">
             <NoMatch />
           </Route>
