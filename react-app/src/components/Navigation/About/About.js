@@ -1,5 +1,7 @@
-import './About.css';
 import ArrowButton from '../../Forms/ArrowButton/ArrowButton';
+import { Link } from 'react-router-dom';
+
+import './About.css';
 
 const About = () => {
 
@@ -8,10 +10,12 @@ const About = () => {
       <div className='about-us-header'>
         <h1>One-to-Ten</h1>
         <p className="p-1 main-color">
-          This project seeks to match like-minded individuals through collaborative surveys whose questions are answered on a scale of 1 to 10. Our algorithm calculates average response of each question, then determines how individual users scale against that average. From there, we match users with who share the highest compatibility.
+          This is a social experiment design to match like-minded individuals using collaborative surveys. Answer questions about your lifestyle habits and outlooks on life on a scale of 1 to 10, then get matched with users who share the most similarities.
         </p>
-        <p className="p-1 main-color">
-          Join us and find your perfect match.
+        <p className="p-1">
+          <Link to='/algo' className='underline-slide algo__link' >
+            Learn more about our matching algorithm.
+          </Link>
         </p>
       </div>
       <h3>The Creators of One-to-Ten</h3>
@@ -38,7 +42,7 @@ const About = () => {
             </ArrowButton>
             <div>
               <ArrowButton>
-                <a href='https://www.linkedin.com/in/christy-chen/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href='https://www.linkedin.com/in/christywchen/' className="about__link" target="_blank" rel="noreferrer">LinkedIn</a>
               </ArrowButton>
             </div>
           </div>

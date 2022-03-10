@@ -18,24 +18,29 @@
   margin: 15px 0;
 }
 
-.about__link {
+#about__container .about__link {
   color: var(--accent-color-4);
   font-size: 0.7em;
 }
 
-.about-us-main .arrow-button:hover .arrow-shaft {
+#about__container .algo__link {
+  color: var(--accent-color-3);
+  background-image: linear-gradient(var(--accent-color-3), var(--accent-color-3));
+}
+
+#about__container .arrow-button:hover .arrow-shaft {
   width: 40px;
   transition-delay: 0.05s;
   background-color: var(--accent-color-1);
 }
 
-.about-us-main .arrow-button:hover .arrow-shaft:before,
-.about-us-main .arrow-button:hover .arrow-shaft:after {
+#about__container .arrow-button:hover .arrow-shaft:before,
+#about__container .arrow-button:hover .arrow-shaft:after {
   width: 10px;
   transition-delay: 0.05s;
   background-color: var(--accent-color-1);
 }
 
-.about-us-main .arrow-button:hover > .main-arrow {
+#about__container .arrow-button:hover .main-arrow {
   transform: translateX(50px);
 }
