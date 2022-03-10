@@ -1,0 +1,11 @@
+.node{
+    height: 20px;
+    width: 20px;
+    border: 1px solid red
+}
+
+.node:hover{
+    background-color: red;
+}
+
+
