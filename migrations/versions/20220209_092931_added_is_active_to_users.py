@@ -48,6 +48,12 @@ def upgrade():
     sa.Column('compatibility_score', sa.Numeric(), nullable=False),
     sa.Column('user_1_id', sa.Integer(), nullable=False),
     sa.Column('user_2_id', sa.Integer(), nullable=False),
+    sa.Column('most_similar_score', sa.Numeric()),
+    sa.Column('most_similar_id', sa.Integer()),
+    sa.Column('least_similar_score', sa.Numeric()),
+    sa.Column('least_similar_id', sa.Integer()),
+    sa.ForeignKeyConstraint(['most_similar_id'], ['surveys.id']),
+    sa.ForeignKeyConstraint(['least_similar_id'], ['surveys.id']),
     sa.ForeignKeyConstraint(['user_1_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['user_2_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
