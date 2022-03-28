@@ -9,7 +9,7 @@ def seed_bulk():
         "Austin",
         "Dylan",
         "Ethan",
-        "Benjamin",
+        "Ben",
         "Noah",
         "Megan",
         "Victoria",
@@ -18,7 +18,7 @@ def seed_bulk():
         "Kaitlyn",
         "Natalie",
         "Hailey",
-        "Mackenzie",
+        "Kenzie",
         "Carmen",
         "Eletheia",
         "Kristen",
@@ -961,30 +961,52 @@ def seed_bulk():
         for other_user_id in range(user_id,21):
             if user_id != other_user_id:
                 compatibility = 0
-                for question_id in range(1, 76):
-                    average = sum(question_response_seed[question_id-1])/100
-                    user_response = question_response_seed[question_id-1][user_id-1]
-                    other_user_response = question_response_seed[question_id-1][other_user_id-1]
-                    delta_self = user_response - average
-                    delta_other = other_user_response - average
-                    raw_score = delta_other * delta_self
-                    adjustment = 0
-                    if raw_score > 0:
-                        adjustment = raw_score ** 0.5
-                    else:
-                        adjustment = -1 * ((-1 * raw_score) ** 0.5)
-                    compatibility += adjustment
+                most_similar_id = 1
+                least_similar_id = 1
+                most_similar_score = -300
+                least_similar_score = 300
+                for survey_id in range(1,26):
+                    survey_compatibility = 0
+                    for question in range(1, 4):
+                        question_id = (survey_id-1)*3 + question
+                        average = sum(question_response_seed[question_id-1])/100
+                        user_response = question_response_seed[question_id-1][user_id-1]
+                        other_user_response = question_response_seed[question_id-1][other_user_id-1]
+                        delta_self = user_response - average
+                        delta_other = other_user_response - average
+                        raw_score = delta_other * delta_self
+                        adjustment = 0
+                        if raw_score > 0:
+                            adjustment = raw_score ** 0.5
+                        else:
+                            adjustment = -1 * ((-1 * raw_score) ** 0.5)
+                        survey_compatibility += adjustment
+                    if survey_compatibility > most_similar_score:
+                        most_similar_id = survey_id
+                        most_similar_score = survey_compatibility
+                    if survey_compatibility < least_similar_score:
+                        least_similar_id = survey_id
+                        least_similar_score = survey_compatibility
+                    compatibility += survey_compatibility
 
                 new_match = Matches(
                     compatibility_score= compatibility,
                     user_1_id=user_id,
-                    user_2_id=other_user_id
+                    user_2_id=other_user_id,
+                    most_similar_id=most_similar_id,
+                    most_similar_score=most_similar_score,
+                    least_similar_id=least_similar_id,
+                    least_similar_score=least_similar_score
                     )
 
                 reversed_match = Matches(
                     compatibility_score= compatibility,
                     user_2_id=user_id,
-                    user_1_id=other_user_id
+                    user_1_id=other_user_id,
+                    most_similar_id=most_similar_id,
+                    most_similar_score=most_similar_score,
+                    least_similar_id=least_similar_id,
+                    least_similar_score=least_similar_score
                 )
 
                 db.session.add(new_match)

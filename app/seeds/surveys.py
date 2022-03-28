@@ -4,7 +4,7 @@ from app.models import db, Surveys
 
 def seed_surveys():
 
-  survey_01 = Surveys(name='Basic')
+  survey_01 = Surveys(name='Icebreaker')
   survey_02 = Surveys(name='Friendship')
   survey_03 = Surveys(name='Privacy')
   survey_04 = Surveys(name='Religion')
